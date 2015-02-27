@@ -11,22 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20150227233930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-
-  create_table "likes", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "moment_id"
-  end
-
-  create_table "moments", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "moment_id"
-  end
 
   create_table "fireworks", force: :cascade do |t|
     t.integer  "fireworker_id"
@@ -36,10 +24,34 @@ ActiveRecord::Schema.define(version: 20150227233930) do
     t.datetime "updated_at"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "moment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "matches", force: :cascade do |t|
     t.integer  "user1_id"
     t.integer  "user2_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.text     "message_content"
+    t.boolean  "read"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "moments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "moment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,13 +65,6 @@ ActiveRecord::Schema.define(version: 20150227233930) do
     t.string   "location"
     t.text     "profile_pic"
     t.boolean  "is_admin",        default: false
-  end
-
-  create_table "messages", force: :cascade do |t|
-    t.integer  "sender_id"
-    t.integer  "receiver_id"
-    t.text     "message_content"
-    t.boolean  "read"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
