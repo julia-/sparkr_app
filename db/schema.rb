@@ -19,6 +19,12 @@ ActiveRecord::Schema.define(version: 20150227231254) do
   create_table "moments", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "moment_id"
+  end
+
+  create_table "fireworks", force: :cascade do |t|
+    t.integer  "fireworker_id"
+    t.integer  "fireworkee_id"
+    t.boolean  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -34,6 +40,13 @@ ActiveRecord::Schema.define(version: 20150227231254) do
     t.string   "location"
     t.text     "profile_pic"
     t.boolean  "is_admin",        default: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.text     "message_content"
+    t.boolean  "read"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
