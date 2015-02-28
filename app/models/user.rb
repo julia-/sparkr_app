@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   def spark(other_user)
     user_likes = self.likes.map {|l| l.moment_id}
     other_user_moments = other_user.moments.map {|m| m.id}
-    user_likes && other_user_moments == other_user_moments
+   (other_user_moments - user_likes).empty? and not other_user_moments.empty?
   end
   #spark returns true when a user likes all three of another users moments 
 
@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   # sparks returns a list of users for whom I have liked three of their moments
 
   def matches
-
+    User.all.select {|u| self.spark(u) and u.spark(self)}
   end
   # returns a list of users for whom I have 
   # liked all three of their moments, and they have 
