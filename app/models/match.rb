@@ -9,5 +9,7 @@
 #  updated_at :datetime
 #
 
+
+
 class Match < ActiveRecord::Base
 end

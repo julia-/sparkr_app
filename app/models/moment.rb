@@ -7,6 +7,7 @@
 #  moment_id  :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  content    :text
 #
 
 class Moment < ActiveRecord::Base
