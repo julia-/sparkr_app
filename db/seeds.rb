@@ -1,5 +1,10 @@
 User.destroy_all
 Moment.destroy_all
+Like.destroy_all
+Match.destroy_all
+Message.destroy_all
+Firework.destroy_all
+
 u1 = User.create(:name => 'Amy', :username => 'amesimmons', :password => 'chicken', :password_confirmation => 'chicken', :email => 'amy@amy.com', :dob => '12/12/1990', :description => 'Hi I am Amy', :gender => 'F', :location => 'Sydney', :profile_pic => 'https://pbs.twimg.com/profile_images/562928882378997760/XLgyqnOy.jpeg')
 
 u2 = User.create(:name => 'Bob', :username => 'bob', :password => 'chicken', :password_confirmation => 'chicken', :email => 'bob@bob.com', :dob => '12/1/1990', :description => 'Hi I am Bob', :gender => 'M', :location => 'Sydney', :profile_pic => 'http://www.qtcanberra.com.au/files/2014/07/Bob.jpg')
@@ -11,9 +16,16 @@ m4 = Moment.create(:content => 'http://www.zoomerradio.ca/wp-content/uploads/201
 m5 = Moment.create(:content => 'http://dylanchords.info/pictures/1962_4thstapartment_gibson.jpg')
 m6 = Moment.create(:content => 'http://www.fortheyoungdude.com/wp-content/uploads/2011/11/bobdylan1965_avedon.jpg')
 
+
+
 # associate users with moments
 u1.moments << m1 << m2 << m3
 u2.moments << m4 << m5 << m6
+
+
+
+
+
 
 
 
