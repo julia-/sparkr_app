@@ -53,6 +53,17 @@ Like.create(:user_id => u4.id, :moment_id => m4.id)
 Like.create(:user_id => u4.id, :moment_id => m5.id)
 Like.create(:user_id => u4.id, :moment_id => m6.id)
 
+
+# Create messages 
+msg1 = Message.create(:sender_id => u2.id, :receiver_id => u1.id, :message_content => 'Hi there', :read => true)
+msg2 = Message.create(:sender_id => u1.id, :receiver_id => u2.id, :message_content => 'Hi bob', :read => true)
+msg3 = Message.create(:sender_id => u2.id, :receiver_id => u1.id, :message_content => 'How are you Amy?', :read => true)
+msg4 = Message.create(:sender_id => u1.id, :receiver_id => u2.id, :message_content => 'Good, and you?', :read => false)
+msg5 = Message.create(:sender_id => u2.id, :receiver_id => u4.id, :message_content => 'Hello Julia.', :read => true)
+msg6 = Message.create(:sender_id => u4.id, :receiver_id => u2.id, :message_content => 'How are you bob?', :read => true)
+msg7 = Message.create(:sender_id => u2.id, :receiver_id => u4.id, :message_content => 'Where do you live?', :read => false)
+
+
 # Associate users with moments
 u1.moments << m1 << m2 << m3
 u2.moments << m4 << m5 << m6
