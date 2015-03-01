@@ -1,6 +1,8 @@
 module ApplicationHelper
   def nav_menu
-    links = "<li>#{ link_to('Home', root_path) }</li>
+    links = 
+      "<a href='#{root_path}'><i class='fa fa-bolt'></i></a>
+      <li>#{ link_to('Home', root_path) }</li>
       <li>#{ link_to('Discover', root_path) }</li>
       <li>#{ link_to('Sparks', root_path) }</li>
       <li>#{ link_to('Messages', root_path) }</li>
