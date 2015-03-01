@@ -15,6 +15,9 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'font-awesome-rails'
+gem 'carrierwave'
+gem 'cloudinary'
+gem 'mini_magick'
 
 group :development do
   gem 'pry-rails'
