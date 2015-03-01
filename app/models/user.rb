@@ -25,37 +25,22 @@ class User < ActiveRecord::Base
   has_many :messages_received, :class_name => 'Message', :foreign_key => 'receiver_id'
   has_many :messages_sent, :class_name => 'Message', :foreign_key => 'sender_id'
 
-
+  # Spark returns true when a user likes all three of another users moments.
   def spark(other_user)
     user_likes = self.likes.map {|l| l.moment_id}
     other_user_moments = other_user.moments.map {|m| m.id}
-   (other_user_moments - user_likes).empty? and not other_user_moments.empty?
+    (other_user_moments - user_likes).empty? && other_user_moments.length >= 1
   end
-  #spark returns true when a user likes all three of another users moments 
 
+  # Sparks returns a list of users for whom I have liked three of their moments.
   def sparks
     User.all.select {|u| self.spark(u)}
   end
-  # sparks returns a list of users for whom I have liked three of their moments
 
+  # Matches returns a list of users for whom I have liked all three of their moments, 
+  # and they have liked all three of my moments.
   def matches
-    User.all.select {|u| self.spark(u) and u.spark(self)}
+    User.all.select {|u| self.spark(u) && u.spark(self)}
   end
-  # returns a list of users for whom I have 
-  # liked all three of their moments, and they have 
-  # liked all three of my moments.
-
-# def matches
-#  Match.where(user1 = self.id || user2  = self.id)
-#  #returns my own user id where i am either in the first 
-# or second column of the matches table
-# end
-# => []
-# Matches returns a list of users for whom I have 
-# liked all three of their moments, and they have 
-# liked all three of my moments.
 
 end
-
-
-
