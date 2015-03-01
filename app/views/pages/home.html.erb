@@ -1,55 +1,42 @@
 <% if @current_user.present? %>
 
-  <ul id="users"></ul>
+  <ul id="current_user"></ul>
+    <script type='x-handlebars-template' id='current_userTemplate'>
+      <li data-user-id="{{ id }}">
+        <span id ="{{ current_username }}">Name: {{ name }} </span>
+        <span id ="{{ current_userusername }}">User Name: {{ username }} </span>
+        <span id ="{{ current_useremail }}">Email: {{ email }} </span>
+        <span id ="{{ current_userdescription }}">Descripton: {{ description }} </span>
+        <span id ="{{ current_usergender }}">Gender: {{ gender }} </span>
+        <span id ="{{ current_userlocation }}">Address: {{ location }} </span>
+        <img id ="{{ current_userprofile_pic }}" src="{{ profile_pic }}"></img>
+      </li>
+      
+    </script>
+  <div id="current_user_moments"></div>
 
-  <script type='x-handlebars-template' id='userTemplate'>
+<% else %>
 
-<<<<<<< HEAD
+  <h2>Already a member?</h2>
+  <%= render :partial => 'session/new_session_form' %>
+  <h2>New user? Sign up</h2>
+  <%= render :partial => 'users/new_user_form' %>
+  
+<% end %>
+
+
+
 <ul id="users"></ul>
 
-<script type='x-handlebars-template' id='userTemplate'>
+  <script type='x-handlebars-template' id='userTemplate'>
 
   <li data-user-id="{{ id }}">
     <span id ="{{ name }}"> {{ name }} </span>
   </li>
-  
-</script>
-=======
-    <li data-user-id="{{ id }}">
-      <span id ="{{ name }}"> {{ name }} </span>
-      <span id ="{{ username }}"> {{ username }}</span>
-    </li>
-    
-  </script>
->>>>>>> dcd4d1c0d7fa654b37ef8f533f68dda89b84f0c1
 
-  <ul id="current_user"></ul>
-
-  <script type='x-handlebars-template' id='current_userTemplate'>
-
-    <li data-user-id="{{ id }}">
-      <span id ="{{ name }}"> {{ name }} </span>
-      <span id ="{{ username }}"> {{ username }}</span>
-    </li>
-    
   </script>
 
-<% else %>
-
-<<<<<<< HEAD
-  <li data-user-id="{{ id }}">
-    <span id ="{{ current_username }}">Name: {{ name }} </span>
-    <span id ="{{ current_userusername }}">User Name: {{ username }} </span>
-    <span id ="{{ current_useremail }}">Email: {{ email }} </span>
-    <span id ="{{ current_userdescription }}">Descripton: {{ description }} </span>
-    <span id ="{{ current_usergender }}">Gender: {{ gender }} </span>
-    <span id ="{{ current_userlocation }}">Address: {{ location }} </span>
-    <img id ="{{ current_userprofile_pic }}" src="{{ profile_pic }}"></img>
-  </li>
   
-</script>
-
-<div id="current_user_moments"></div>
 
 <script type='x-handlebars-template' id='momentTemplate'>
 
@@ -57,14 +44,4 @@
     <img  src="{{ content }}"></img>
   </li>
   
-  
-  
 </script>
-=======
-  <h2>Already a member?</h2>
-  <%= render :partial => 'session/new_session_form' %>
-  <h2>New user? Sign up</h2>
-  <%= render :partial => 'users/new_user_form' %>
-  
-<% end %>
->>>>>>> dcd4d1c0d7fa654b37ef8f533f68dda89b84f0c1
