@@ -1,10 +1,10 @@
-<h2>Already a member?</h2>
-<%= render :partial => 'session/new_session_form' %>
-<h2>New user? Sign up</h2>
-<%= render :partial => 'users/new_user_form' %>
+<% if @current_user.present? %>
 
+  <ul id="users"></ul>
 
+  <script type='x-handlebars-template' id='userTemplate'>
 
+<<<<<<< HEAD
 <ul id="users"></ul>
 
 <script type='x-handlebars-template' id='userTemplate'>
@@ -14,13 +14,29 @@
   </li>
   
 </script>
+=======
+    <li data-user-id="{{ id }}">
+      <span id ="{{ name }}"> {{ name }} </span>
+      <span id ="{{ username }}"> {{ username }}</span>
+    </li>
+    
+  </script>
+>>>>>>> dcd4d1c0d7fa654b37ef8f533f68dda89b84f0c1
 
+  <ul id="current_user"></ul>
 
+  <script type='x-handlebars-template' id='current_userTemplate'>
 
-<ul id="current_user"></ul>
+    <li data-user-id="{{ id }}">
+      <span id ="{{ name }}"> {{ name }} </span>
+      <span id ="{{ username }}"> {{ username }}</span>
+    </li>
+    
+  </script>
 
-<script type='x-handlebars-template' id='current_userTemplate'>
+<% else %>
 
+<<<<<<< HEAD
   <li data-user-id="{{ id }}">
     <span id ="{{ current_username }}">Name: {{ name }} </span>
     <span id ="{{ current_userusername }}">User Name: {{ username }} </span>
@@ -44,3 +60,11 @@
   
   
 </script>
+=======
+  <h2>Already a member?</h2>
+  <%= render :partial => 'session/new_session_form' %>
+  <h2>New user? Sign up</h2>
+  <%= render :partial => 'users/new_user_form' %>
+  
+<% end %>
+>>>>>>> dcd4d1c0d7fa654b37ef8f533f68dda89b84f0c1
