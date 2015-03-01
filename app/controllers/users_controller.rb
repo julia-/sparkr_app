@@ -9,9 +9,11 @@ class UsersController < ApplicationController
 
   def show
     render json:@current_user
-    # respond_to do |format|
-    #   format.html {redirect_to @current_user}
-    #   format.json {render :json => @current_user}
+  end
+
+  def moment
+    @moments = @current_user.moments
+    render json:@moments
   end
  
   def create

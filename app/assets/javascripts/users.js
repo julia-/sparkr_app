@@ -21,18 +21,24 @@ var sparkrApp = {
       $('#current_user').empty();
       var li = sparkrApp.sparkrHTML(user);
       $('#current_user').append(li);
-      // sparkrApp.rendermoments();      
+      sparkrApp.renderUser();      
     });
   },
 
-  // rendermoments: function() {
-  //   $.ajax('/users/:id', {
-  //     type: 'GET'
-  //   }).done(function (user){
-    
-  //    console.log(user);
-  //   }); 
-  // }
+  renderUser: function() {
+    $.getJSON('/users/:id/moments').done(function (result) {
+      console.log(result);
+      $('#current_user_moments').empty();
+      for (var i = 0; i < result.length; i++) {
+      var moment = result[i];
+      // debugger;
+      var $img = $('<img/>').attr('src', moment.content);  
+      $('#current_user_moments').append($img);
+      };
+    });
+  }
+
+
 
 };
 
