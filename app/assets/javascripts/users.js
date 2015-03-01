@@ -14,12 +14,13 @@ var sparkrApp = {
       var li = this.sparkrHTML(user);
       $('#users').append(li);
     };
-  }
-  // showUser: function() {
-  //   $.getJSON('/users/:id').done(function(result){
-  //     console.log(result);
-  //   });
-  // },
+  },
+
+  showUser: function() {
+    $.getJSON('/users/@current_user.id').done(function(result){
+      console.log(result);
+    });
+  },
 
 };
 
@@ -27,5 +28,9 @@ var sparkrApp = {
 $(document).ready(function (){
   sparkrApp.sparkrHTML = Handlebars.compile( $('#userTemplate').html() );
   sparkrApp.loadUsers();
+
+  sparkrApp.sparkrHTML = Handlebars.compile( $('#current_userTemplate').html() );
+  sparkrApp.showUser();
+
 
 });
