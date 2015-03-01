@@ -9,9 +9,9 @@ var sparkrApp = {
 
   renderUsers: function() {
     $('#users').empty();
-    for (var i = 0; i < this.users.length; i++) {
-      var user = this.users[i];
-      var li = this.sparkrHTML(user);
+    for (var i = 0; i < sparkrApp.users.length; i++) {
+      var user = sparkrApp.users[i];
+      var li = sparkrApp.usersHTML(user);
       $('#users').append(li);
     };
   },
@@ -19,21 +19,18 @@ var sparkrApp = {
   showUser: function() {
     $.getJSON('/users/:id').done(function(user){
       $('#current_user').empty();
-      var li = sparkrApp.sparkrHTML(user);
-      $('#current_user').append(li);
-      sparkrApp.renderUser();      
+      var li = sparkrApp.currentUserHTML(user);
+      $('#current_user').append(li);     
     });
   },
 
-  renderUser: function() {
+  renderMoments: function() {
     $.getJSON('/users/:id/moments').done(function (result) {
-      console.log(result);
       $('#current_user_moments').empty();
       for (var i = 0; i < result.length; i++) {
       var moment = result[i];
-      // debugger;
-      var $img = $('<img/>').attr('src', moment.content);  
-      $('#current_user_moments').append($img);
+      var li = sparkrApp.momentHTML(moment);  
+      $('#current_user_moments').append(li);
       };
     });
   }
@@ -44,11 +41,14 @@ var sparkrApp = {
 
 
 $(document).ready(function (){
-  sparkrApp.sparkrHTML = Handlebars.compile( $('#userTemplate').html() );
+  sparkrApp.usersHTML = Handlebars.compile( $('#userTemplate').html() );
   sparkrApp.loadUsers();
 
-  sparkrApp.sparkrHTML = Handlebars.compile( $('#current_userTemplate').html() );
+  sparkrApp.currentUserHTML = Handlebars.compile( $('#current_userTemplate').html() );
   sparkrApp.showUser();
+
+  sparkrApp.momentHTML = Handlebars.compile( $('#momentTemplate').html() );
+  sparkrApp.renderMoments();
 
 
 });

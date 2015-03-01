@@ -10,10 +10,19 @@
         <span id ="{{ current_usergender }}">Gender: {{ gender }} </span>
         <span id ="{{ current_userlocation }}">Address: {{ location }} </span>
         <img id ="{{ current_userprofile_pic }}" src="{{ profile_pic }}"></img>
-      </li>
+      </li>   
       
     </script>
-  <div id="current_user_moments"></div>
+
+  <ul id="current_user_moments"></ul>
+
+    <script type='x-handlebars-template' id='momentTemplate'>
+
+      <li data-moment-id="{{ id }}">
+        <img  src="{{ content }}"></img>
+      </li>
+    
+    </script>
 
 <% else %>
 
@@ -38,10 +47,3 @@
 
   
 
-<script type='x-handlebars-template' id='momentTemplate'>
-
-  <li data-moment-id="{{ id }}">
-    <img  src="{{ content }}"></img>
-  </li>
-  
-</script>
