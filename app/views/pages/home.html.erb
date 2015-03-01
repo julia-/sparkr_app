@@ -11,7 +11,6 @@
 
   <li data-user-id="{{ id }}">
     <span id ="{{ name }}"> {{ name }} </span>
-    <span id ="{{ username }}"> {{ username }}</span>
   </li>
   
 </script>
@@ -23,8 +22,26 @@
 <script type='x-handlebars-template' id='current_userTemplate'>
 
   <li data-user-id="{{ id }}">
-    <span id ="{{ name }}"> {{ name }} </span>
-    <span id ="{{ username }}"> {{ username }}</span>
+    <span id ="{{ current_username }}">Name: {{ name }} </span>
+    <span id ="{{ current_userusername }}">User Name: {{ username }} </span>
+    <span id ="{{ current_useremail }}">Email: {{ email }} </span>
+    <span id ="{{ current_userdescription }}">Descripton: {{ description }} </span>
+    <span id ="{{ current_usergender }}">Gender: {{ gender }} </span>
+    <span id ="{{ current_userlocation }}">Address: {{ location }} </span>
+    <img id ="{{ current_userprofile_pic }}" src="{{ profile_pic }}"></img>
   </li>
+  
+</script>
+
+<ul id="current_user_moments"></ul>
+
+
+<script type='x-handlebars-template' id='momentTemplate'>
+
+  <li data-moment-id="{{ id }}">
+    <img  src="{{ content }}"></img>
+  </li>
+  
+  
   
 </script>

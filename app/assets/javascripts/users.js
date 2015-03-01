@@ -17,10 +17,22 @@ var sparkrApp = {
   },
 
   showUser: function() {
-    $.getJSON('/users/@current_user.id').done(function(result){
-      console.log(result);
+    $.getJSON('/users/:id').done(function(user){
+      $('#current_user').empty();
+      var li = sparkrApp.sparkrHTML(user);
+      $('#current_user').append(li);
+      // sparkrApp.rendermoments();      
     });
   },
+
+  // rendermoments: function() {
+  //   $.ajax('/users/:id', {
+  //     type: 'GET'
+  //   }).done(function (user){
+    
+  //    console.log(user);
+  //   }); 
+  // }
 
 };
 
