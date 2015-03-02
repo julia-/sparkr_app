@@ -8,12 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json:@current_user
-  end
-
-  def moment
-    @moments = @current_user.moments
-    render json:@moments
+    render json:@current_user.as_json(:include => :moments)
   end
  
   def create

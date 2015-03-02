@@ -17,22 +17,23 @@ var sparkrApp = {
   },
 
   showUser: function() {
-    $.getJSON('/users/:id').done(function(user){
+    $.getJSON('/users/:id').success(function(user){
       $('#current_user').empty();
       var li = sparkrApp.currentUserHTML(user);
-      $('#current_user').append(li);     
+      $('#current_user').append(li);
+      sparkrApp.current_user_moments = user.moments;    
+      sparkrApp.momentHTML = Handlebars.compile( $('#momentTemplate').html() );
+      sparkrApp.renderMoments();
     });
   },
 
-  renderMoments: function() {
-    $.getJSON('/users/:id/moments').done(function (result) {
-      $('#current_user_moments').empty();
-      for (var i = 0; i < result.length; i++) {
-      var moment = result[i];
-      var li = sparkrApp.momentHTML(moment);  
-      $('#current_user_moments').append(li);
-      };
-    });
+  renderMoments: function() { 
+    $('#current_user_moments').empty();
+    for (var i = 0; i < sparkrApp.current_user_moments.length; i++) {
+    var moment = sparkrApp.current_user_moments[i];
+    var li = sparkrApp.momentHTML(moment);  
+    $('#current_user_moments').append(li);
+    };
   }
 
 
@@ -46,9 +47,6 @@ $(document).ready(function (){
 
   sparkrApp.currentUserHTML = Handlebars.compile( $('#current_userTemplate').html() );
   sparkrApp.showUser();
-
-  sparkrApp.momentHTML = Handlebars.compile( $('#momentTemplate').html() );
-  sparkrApp.renderMoments();
 
 
 });
