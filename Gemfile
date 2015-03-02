@@ -13,8 +13,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
+gem "figaro"
 gem 'font-awesome-rails'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 group :development do
   gem 'pry-rails'
