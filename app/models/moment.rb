@@ -10,10 +10,14 @@
 #
 
 class Moment < ActiveRecord::Base
+
+    mount_uploader :content, MomentUploader
+
     belongs_to :user
     has_many :likes 
 
     def likers
       self.likes.map { |l| l.user }
     end
+    
 end

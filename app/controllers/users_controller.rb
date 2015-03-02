@@ -20,9 +20,9 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       session[:user_id] = @user.id
-      redirect_to edit_user_path
+      redirect_to root_path
     else
-      render :new
+      redirect_to root_path
     end
   end
 
@@ -33,9 +33,19 @@ class UsersController < ApplicationController
   def destroy
   end
 
+  def edit
+    @user = User.find_by :id => session[:user_id]
+  end
+
+  def update
+    user = User.find_by :id => session[:user_id]
+    user.update user_params
+    redirect_to root_path
+  end
+
   private 
   def user_params
-    params.require(:user).permit(:name, :email, :username, :password, :password_confirmation, :dob, :description, :gender, :location, :profile_pic, :is_admin)
+    params.require(:user).permit(:name, :email, :username, :password, :password_confirmation, :dob, :description, :gender, :location, :profile_pic, :remote_profile_pic_url, :is_admin)
   end
 
   def check_if_admin

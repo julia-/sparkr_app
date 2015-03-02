@@ -18,9 +18,10 @@
 #
 
 class User < ActiveRecord::Base
-  has_secure_password
 
   mount_uploader :profile_pic, ProfilePicUploader
+
+  has_secure_password
 
   has_many :moments
   has_many :likes 
