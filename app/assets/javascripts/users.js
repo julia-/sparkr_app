@@ -37,7 +37,7 @@ var sparkrApp = {
   },
 
   loadMatches: function() {
-   $.getJSON('/users/:id/match').done(function(result) {
+   $.getJSON('/users/2/match').done(function(result) {
       sparkrApp.matches = result;
       sparkrApp.renderMatches(); 
   });
