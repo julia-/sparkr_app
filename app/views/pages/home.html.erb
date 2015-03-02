@@ -14,13 +14,23 @@
       
     </script>
 
-  <ul id="current_user_moments"></ul>
+
+<div class="single-moment-form">
+  <%if @current_user.present? %>
+    <%= render :partial => 'moments/single_moment_form' %>
+  <%end%>
+</div>
+
+
+  <ul class="moments-container" id="current_user_moments"></ul>
 
     <script type='x-handlebars-template' id='momentTemplate'>
 
-      <li data-moment-id="{{ id }}">
-        <img  src="{{ content.medium.url }}"></img>
+      <li class="moment" data-moment-id="{{ id }}">
+        <img class="moment-image" src="{{ content.medium.url }}"></img>
+        <a href="#" class="delete">Delete</a>
       </li>
+
     
     </script>
 

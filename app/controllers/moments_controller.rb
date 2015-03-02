@@ -5,8 +5,15 @@ class MomentsController < ApplicationController
   end
 
   def create
+
     @current_user = User.find_by :id => session[:user_id]
-    moment = @current_user.moments.create(moment_params)
+            # binding.pry
+    
+    params["moment"]["content"].each do |content|
+      # binding.pry
+      moment = @current_user.moments.create(:content => content)
+    end
+
     redirect_to root_path
   end
 
@@ -25,8 +32,15 @@ class MomentsController < ApplicationController
     redirect_to root_path
   end
 
+  def destroy
+    moment = Moment.find params[:id]
+    moment.destroy
+    redirect_to root_path
+  end
+
   private
   def moment_params
+    # binding.pry
     params.require(:moment).permit(:content)
   end
 
