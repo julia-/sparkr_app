@@ -9,7 +9,7 @@
         <span id ="{{ current_userdescription }}">Descripton: {{ description }} </span>
         <span id ="{{ current_usergender }}">Gender: {{ gender }} </span>
         <span id ="{{ current_userlocation }}">Address: {{ location }} </span>
-        <img id ="{{ current_userprofile_pic }}" src="{{ profile_pic }}"></img>
+        <img id ="{{ current_userprofile_pic }}" src="{{ profile_pic.medium.url }}"></img>
       </li>   
       
     </script>
@@ -19,7 +19,7 @@
     <script type='x-handlebars-template' id='momentTemplate'>
 
       <li data-moment-id="{{ id }}">
-        <img  src="{{ content }}"></img>
+        <img  src="{{ content.medium.url }}"></img>
       </li>
     
     </script>
@@ -49,7 +49,7 @@
   <script type='x-handlebars-template' id='matchTemplate'>
     <li data-match-id="{{ id }}">
       <span id ="{{ match_username }}">User Name: {{ username }} </span>
-      <img id ="{{ match_userprofile_pic }}" src="{{ profile_pic }}"></img>
+      <img id ="{{ match_userprofile_pic }}" src="{{ profile_pic.medium.url }}"></img>
     </li>   
     
   </script>
