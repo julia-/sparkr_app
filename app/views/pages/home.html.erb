@@ -45,5 +45,14 @@
 
   </script>
 
+  <ul id="matches"></ul>
+    <script type='x-handlebars-template' id='matchTemplate'>
+      <li data-match-id="{{ id }}">
+        <span id ="{{ match_username }}">User Name: {{ username }} </span>
+        <img id ="{{ match_userprofile_pic }}" src="{{ profile_pic }}"></img>
+      </li>   
+      
+    </script>
+
   
 

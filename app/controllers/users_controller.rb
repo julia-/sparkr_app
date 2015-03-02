@@ -10,6 +10,11 @@ class UsersController < ApplicationController
   def show
     render json:@current_user.as_json(:include => :moments)
   end
+
+  def match
+    matches = @current_user.matches
+   render json:matches
+  end
  
   def create
     @user = User.new user_params

@@ -34,7 +34,23 @@ var sparkrApp = {
     var li = sparkrApp.momentHTML(moment);  
     $('#current_user_moments').append(li);
     };
-  }
+  },
+
+  loadMatches: function() {
+   $.getJSON('/users/:id/match').done(function(result) {
+      sparkrApp.matches = result;
+      sparkrApp.renderMatches(); 
+  });
+ },
+
+  renderMatches: function() {
+    $('#matches').empty();
+    for (var i = 0; i < sparkrApp.matches.length; i++) {
+      var match = sparkrApp.matches[i];
+      var li = sparkrApp.matchesHTML(match);
+      $('#matches').append(li);
+    };
+  },  
 
 
 
@@ -47,6 +63,9 @@ $(document).ready(function (){
 
   sparkrApp.currentUserHTML = Handlebars.compile( $('#current_userTemplate').html() );
   sparkrApp.showUser();
+
+  sparkrApp.matchesHTML = Handlebars.compile( $('#matchTemplate').html() );
+  sparkrApp.loadMatches();
 
 
 });

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :users
 
+  get '/users/:id/match' => 'users#match', as: :match
+
   get '/login' => 'session#new'
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
