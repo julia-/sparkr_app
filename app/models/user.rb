@@ -22,6 +22,8 @@
 #
 
 class User < ActiveRecord::Base
+  mount_uploader :profile_pic, ProfilePicUploader
+  
   # validates :username, :presence => true, :uniqueness => true, :length => { :minimum => 6 }, :on => :create
   # validates :password, length: { in: 6..20 }
   has_secure_password
@@ -51,8 +53,10 @@ class User < ActiveRecord::Base
   # Spark returns true when a user likes all three of another users moments.
   def spark(other_user)
     user_likes = self.likes.map {|l| l.moment_id}
-    other_user_moments = other_user.moments.map {|m| m.id}
-    (other_user_moments - user_likes).empty? && other_user_moments.length >= 1
+    other_user_moments = other_user.moments.map { |m| m.id }
+    # To check if current user lided other user's three moments.
+    common_element = user_likes & other_user_moments
+    common_element.length == 3
   end
 
   # Sparks returns a list of users for whom I have liked three of their moments.
@@ -63,6 +67,7 @@ class User < ActiveRecord::Base
   # Matches returns a list of users for whom I have liked all three of their moments, 
   # and they have liked all three of my moments.
   def matches
+    # binding.pry
     User.all.select {|u| self.spark(u) && u.spark(self)}
   end
 

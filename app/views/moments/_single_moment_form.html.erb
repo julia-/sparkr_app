@@ -1,0 +1,10 @@
+<% @moment = @moment || Moment.new %>
+<%= form_for @moment, :html => {:multipart => true} do |f| %>
+    <div>
+        <%= f.label :content, "New moment"%>
+        <%= file_field_tag "moment[content][]" %>
+    </div>
+    <div>
+        <%= f.submit 'Upload moment', :class => 'btn add-moments-btn' %>
+    </div>
+<% end %>

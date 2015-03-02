@@ -1,31 +1,69 @@
-<section class="sign-in sign-up">
+<% if @current_user.present? %>
+
+  <ul id="current_user"></ul>
+    <script type='x-handlebars-template' id='current_userTemplate'>
+      <li data-user-id="{{ id }}">
+        <span id ="{{ current_username }}">Name: {{ name }} </span>
+        <span id ="{{ current_userusername }}">User Name: {{ username }} </span>
+        <span id ="{{ current_useremail }}">Email: {{ email }} </span>
+        <span id ="{{ current_userdescription }}">Descripton: {{ description }} </span>
+        <span id ="{{ current_usergender }}">Gender: {{ gender }} </span>
+        <span id ="{{ current_userlocation }}">Address: {{ location }} </span>
+        <img id ="{{ current_userprofile_pic }}" src="{{ profile_pic.medium.url }}"></img>
+      </li>   
+      
+    </script>
+
+
+<div class="single-moment-form">
+  <%if @current_user.present? %>
+    <%= render :partial => 'moments/single_moment_form' %>
+  <%end%>
+</div>
+
+
+  <ul class="moments-container" id="current_user_moments"></ul>
+
+    <script type='x-handlebars-template' id='momentTemplate'>
+      <li class="moment" data-moment-id="{{ id }}">
+        <img class="moment-image" src="{{ content.medium.url }}"></img>
+        <a href="#" class="delete">Delete</a>
+      </li>
+    
+    </script>
+
+<% else %>
+
   <h2>Already a member?</h2>
-  <% @user = User.new %>
   <%= render :partial => 'session/new_session_form' %>
   <h2>New user? Sign up</h2>
   <%= render :partial => 'users/new_user_form' %>
-</section>
-
-<section class="user-profile">
-  <ul class="current-user"></ul>
-<!--   <ul id="current_user"></ul> -->
-</section>
-
-<section class="users-all">
-  <ul id="users"></ul>
-</section>
+  
+<% end %>
 
 
-<!-- Scripts -->
-<script type='x-handlebars-template' id='current_userTemplate'>
+
+<ul id="users"></ul>
+
+  <script type='x-handlebars-template' id='userTemplate'>
   <li data-user-id="{{ id }}">
     <span id ="{{ name }}"> {{ name }} </span>
-    <span id ="{{ username }}"> {{ username }}</span>
   </li>
-</script>
-<script type='x-handlebars-template' id='userTemplate'>
-  <li data-user-id="{{ id }}">
-    <span id ="{{ name }}"> {{ name }} </span>
-    <span id ="{{ username }}"> {{ username }}</span>
-  </li>
-</script>
+  </script>
+
+<ul id="matches"></ul>
+  <script type='x-handlebars-template' id='matchTemplate'>
+    <li data-match-id="{{ id }}">
+      <span id ="{{ match_username }}">User Name: {{ username }} </span>
+      <img id ="{{ match_userprofile_pic }}" src="{{ profile_pic.medium.url }}"></img>
+    </li>   
+    
+  </script>
+
+<%if @current_user.present? %>
+  <%= render :partial => 'moments/moments_form' %>
+  <%= render :partial => 'users/edit_user_form' %>
+<%end%>
+<%if @user.profile_pic.present? %>
+    <%=image_tag @user.profile_pic_url(:medium), :class => 'profile-main'%>
+<%end%>

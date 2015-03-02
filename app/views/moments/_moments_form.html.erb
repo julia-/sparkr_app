@@ -1,0 +1,20 @@
+<% @moment = @moment || Moment.new %>
+<!-- if youre editing a moment, leave it alone, but if theres no moment passed in then create its own moment -->
+<!-- the form always needs a moment, either an existing one, or a brand new one -->
+<%= form_for @moment, :html => {:multipart => true} do |f| %>
+    <div>
+        <%= f.label :content, "Moment 1"%>
+        <%= file_field_tag "moment[content][]" %>
+    </div>
+    <div>
+        <%= f.label :content, "Moment 2"%>
+        <%= file_field_tag "moment[content][]" %>
+    </div>
+    <div>
+        <%= f.label :content, "Moment 3"%>
+        <%= file_field_tag "moment[content][]" %>
+    </div>
+    <div>
+        <%= f.submit 'Upload moments', :class => 'btn add-moments-btn' %>
+    </div>
+<% end %>
