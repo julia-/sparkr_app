@@ -7,14 +7,25 @@ class MomentsController < ApplicationController
   def create
 
     @current_user = User.find_by :id => session[:user_id]
-            # binding.pry
-    
-    params["moment"]["content"].each do |content|
-      # binding.pry
-      moment = @current_user.moments.create(:content => content)
-    end
 
-    redirect_to root_path
+    # dropzone testing
+    @moment = @current_user.moments.create(content: params[:file])
+    if @moment.save!
+      respond_to do |format|
+        format.json{ render :json => @moment }
+        # binding.pry
+      end
+    end
+    # dropzone testing
+
+    # binding.pry
+
+    # params["moment"]["content"].each do |content|
+    #   # binding.pry
+    #   moment = @current_user.moments.create(:content => content)
+    # end
+
+    # redirect_to root_path
   end
 
   def new

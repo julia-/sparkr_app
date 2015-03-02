@@ -18,3 +18,11 @@
         <%= f.submit 'Upload moments', :class => 'btn add-moments-btn' %>
     </div>
 <% end %>
+
+
+<%= form_tag '/moments', method: :post, class: "dropzone", id: "media-dropzone" do %>
+  <div class="fallback">
+    <%= file_field_tag "media", multiple: true%>
+  </div>
+<% end %>
+

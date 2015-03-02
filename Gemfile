@@ -20,6 +20,7 @@ gem 'omniauth-facebook'
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'mini_magick'
+gem 'dropzonejs-rails'
 
 group :development do
   gem 'pry-rails'
