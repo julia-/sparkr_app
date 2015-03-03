@@ -1,40 +1,37 @@
-<h2>Update profile</h2>
-    <%= form_for @current_user do |f| %>
-        <div class="form-group">
-            <%= f.label :name %>
-            <%= f.text_field :name, :autofocus => true, :required => true %>
-        </div>
-        <div class="form-group">
-            <%= f.label :username %>
-            <%= f.text_field :username, :required => true %>
-        </div>
-        <div class="form-group">
-            <%= f.label :email %>
-            <%= f.email_field :email, :required => true %>
-        </div>
-        <div>
-            <%= f.label :dob, "Date of birth"%>
-            <%= f.text_field :dob %>
-        </div>
-        <div>
-            <%= f.label :gender, "Gender"%>
-            <%= f.text_field :gender %>
-        </div>
-        <div>
-            <%= f.label :location, "Location"%>
-            <%= f.text_field :location %>
-        </div>
-        <div>
-            <%= f.label :description, "Description" %>
-            <%= f.text_area :description %>
-        </div>
-        <div>
-            <%= f.label :profile_pic, "Profile picture"%>
-            <%= f.file_field :profile_pic %>
-        </div>
-        <div>
-            <%= f.submit 'Update profile', :class => 'btn edit-profile-btn' %>
-        </div>
+<% if @current_user.present? %>
+  <%= form_for @current_user, :method => "put" do |f| %>
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name, :autofocus => true, :required => true %>
+    </div>
+    <div>
+      <%= f.label :username %>
+      <%= f.text_field :username, :required => true %>
+    </div>
+    <div>
+      <%= f.label :email %>
+      <%= f.email_field :email, :required => true %>
+    </div>
+    <div>
+      <%= f.label :dob, "Date of birth", :class => 'form-dob'%>
+      <%= date_select :user, :dob, :end_year => 1900, :start_year => Date.today.year - 18, :order => [:day, :month, :year] %>
+    </div>
+    <div>
+      <%= f.label :gender, "Gender"%>
+      <%= select(:user, :gender, options_for_select([['Female'], ['Male'], ['Other']])) %>
+    </div>
+    <div>
+      <%= f.label :location, "Location"%>
+      <%= f.text_field :location %>
+    </div>
+    <div>
+      <%= f.label :description, "About me" %>
+      <%= f.text_area :description %>
+    </div>
+    <div>
+      <%= f.submit 'Update profile', :class => 'btn edit-profile-btn' %>
+    </div>
+  <% end %>
 <% end %>
   
 

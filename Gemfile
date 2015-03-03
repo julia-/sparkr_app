@@ -20,7 +20,11 @@ gem 'omniauth-facebook'
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'mini_magick'
+gem 'private_pub'
+gem 'thin'
 gem 'dropzonejs-rails'
+gem 'normalize-rails'
+gem 'geocoder'
 
 group :development do
   gem 'pry-rails'
@@ -34,8 +38,6 @@ end
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.

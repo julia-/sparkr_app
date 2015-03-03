@@ -5,17 +5,10 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta content='<%= @current_user.present? ? @current_user.id : "" %>' name='user-id'/>
+
 </head>
 <body>
-  <div id="user_nav">
-    <% if @current_user %>
-      Signed in as <strong><%= @current_user.name %></strong>!
-      <%= link_to "Sign out", signout_path, id: "sign_out" %>
-    <% else %>
-      <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-    <% end %>
-  </div>
-
   <nav class="main-nav">
     <ul>
       <%== nav_menu %>
@@ -24,5 +17,7 @@
   <div class="container">
     <%= yield %>
   </div>
+  <footer>  
+  </footer>
 </body>
 </html>

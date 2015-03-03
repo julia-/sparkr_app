@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require handlebars
+//= require private_pub
 //= require dropzone
+//= require chat
+//= require user_chat
 //= require_tree .

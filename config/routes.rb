@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :locations
+
   root :to => 'pages#home'
 
   get '/users/momentshow' => 'users#momentshow', as: :momentshow
@@ -11,6 +13,12 @@ Rails.application.routes.draw do
 
   get '/login' => 'session#new'
   post '/login' => 'session#create'
+  get '/messages' => 'pages#messaging_index'
+
+  resources :conversations do
+    resources :messages
+  end
+
   delete '/logout' => 'session#destroy'
 
   match 'auth/:provider/callback', to: 'session#create_fb', via: [:get, :post]

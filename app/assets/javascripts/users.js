@@ -32,10 +32,14 @@ var sparkrApp = {
 
   renderCurrentUserMoments: function() { 
     $('#current_user_moments').empty();
-    for (var i = 0; i < sparkrApp.current_user_moments.length; i++) {
-    var moment = sparkrApp.current_user_moments[i];
-    var li = sparkrApp.momentHTML(moment);  
-    $('#current_user_moments').append(li);
+    var start = sparkrApp.current_user_moments.length - 3;
+    if (start < 0) {
+      start = 0;
+    }
+    for (var i = start; i < sparkrApp.current_user_moments.length; i++) {
+      var moment = sparkrApp.current_user_moments[i];
+      var li = sparkrApp.momentHTML(moment);  
+      $('#current_user_moments').prepend(li);
     };
   },
 
@@ -57,7 +61,6 @@ var sparkrApp = {
 
   showMoments: function(userIndex, momentIndex) {  
     $.getJSON('/users/momentshow').done(function(users) {
-      debugger;
       if (userIndex < users.length) {
         var userOnShow = users[userIndex].name;
         sparkrApp.user_id = users[userIndex].id;
@@ -73,9 +76,7 @@ var sparkrApp = {
       };
     });
   }
-
 };
-
 
 $(document).ready(function (){
     sparkrApp.usersHTML = Handlebars.compile( $('#userTemplate').html() );
@@ -117,6 +118,45 @@ $(document).ready(function (){
       });
     });
 });
+
+
+
+
+$(document).ready(function(){
+    console.log('dropzone in');
+
+    Dropzone.autoDiscover = false;
+
+    Dropzone.options.profileDropzone = {
+
+    maxFiles: 1,
+    accept: function(file, done) {
+      console.log("uploaded");
+      done();
+    },
+    init: function() {
+      this.on("maxfilesexceeded", function(file){
+          alert("Sorry, only three moments allowed!");
+      });
+    }
+  };
+
+  var profileDropzone;
+  profileDropzone = new Dropzone("#profile-dropzone");
+  return profileDropzone.on("success", function(file, responseText) {
+    var imageUrl;
+    console.log(responseText);
+    imageUrl = responseText.content.url;
+
+    // add this img url to the page
+
+  });
+
+});
+
+
+
+
 
 
 
