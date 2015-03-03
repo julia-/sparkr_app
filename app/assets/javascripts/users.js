@@ -44,7 +44,7 @@ var sparkrApp = {
   },
 
   loadMatches: function() {
-   $.getJSON('/users/2/match').done(function(result) {
+   $.getJSON('/users/:id/match').done(function(result) {
       sparkrApp.matches = result;
       sparkrApp.renderMatches(); 
   });
@@ -59,64 +59,75 @@ var sparkrApp = {
     };
   }, 
 
-  showMoments: function(userIndex, momentIndex) {  
-    $.getJSON('/users/momentshow').done(function(users) {
-      if (userIndex < users.length) {
-        var userOnShow = users[userIndex].name;
-        sparkrApp.user_id = users[userIndex].id;
-        var momentOnShow = users[userIndex].moments[momentIndex].content.large.url
-        sparkrApp.moment_id = users[userIndex].moments[momentIndex].id;
-        $('#user_moment').empty();
-        var $user = $('<p/>').text = userOnShow;
-        var $moment = $('<img/>').attr('src', momentOnShow);
-        $('#user_moment').append($user);
-        $('#user_moment').append($moment);
-      } else {
-        alert("You have seen all the users' moments.");
-      };
+  loadMomentUsers: function() {
+    $.getJSON('/users/momentshow').done(function(result) {
+      sparkrApp.momentUsers = result;
+      // debugger;
+      sparkrApp.showMoments(0,0);
     });
+  },
+
+
+  showMoments: function(userIndex, momentIndex) {  
+    if (userIndex < sparkrApp.momentUsers.length) {
+      var userOnShow = sparkrApp.momentUsers[userIndex].name;
+      sparkrApp.user_id = sparkrApp.momentUsers[userIndex].id;
+      var momentOnShow = sparkrApp.momentUsers[userIndex].moments[momentIndex].content.large.url
+      sparkrApp.moment_id = sparkrApp.momentUsers[userIndex].moments[momentIndex].id;
+      $('#user_moment').empty();
+      var $user = $('<p/>').text = userOnShow;
+      var $moment = $('<img/>').attr('src', momentOnShow);
+      $('#user_moment').append($user);
+      $('#user_moment').append($moment);
+    } else {
+      alert("You have seen all the users' moments.");
+    };
   }
+
 };
 
 $(document).ready(function (){
-    sparkrApp.usersHTML = Handlebars.compile( $('#userTemplate').html() );
-    sparkrApp.loadUsers();
+  sparkrApp.usersHTML = Handlebars.compile( $('#userTemplate').html() );
+  sparkrApp.loadUsers();
 
-    sparkrApp.currentUserHTML = Handlebars.compile( $('#current_userTemplate').html() );
-    sparkrApp.showUser();
+  sparkrApp.currentUserHTML = Handlebars.compile( $('#current_userTemplate').html() );
+  sparkrApp.showUser();
 
-    sparkrApp.matchesHTML = Handlebars.compile( $('#matchTemplate').html() );
-    sparkrApp.loadMatches();
+  sparkrApp.matchesHTML = Handlebars.compile( $('#matchTemplate').html() );
+  sparkrApp.loadMatches();
 
 
-    sparkrApp.showMoments(0,0);
+  sparkrApp.loadMomentUsers();
 
-    $('#not_like').on('click', function (event) {
-      event.preventDefault();
-      sparkrApp.showMoments(sparkrApp.userIndex += 1, sparkrApp.momentIndex);
-    });
+  $('#not_like').on('click', function (event) {
+    event.preventDefault();
+    sparkrApp.showMoments(sparkrApp.userIndex += 1, sparkrApp.momentIndex);
+  });
 
-    $('#like').on('click', function (event) {
-      event.preventDefault();
-      $.ajax('/likes', {
-        type: 'POST',
-        data: {
-          "like[user_id]": sparkrApp.user_id,
-          "like[moment_id": sparkrApp.moment_id
+  $('#like').on('click', function (event) {
+    event.preventDefault();
+    $.ajax('/likes', {
+      type: 'POST',
+      data: {
+        like: {
+          user_id: sparkrApp.user_id,
+          moment_id: sparkrApp.moment_id
         }
-      }).done(function (result) {
-        if (result.spark === true){
-          alert('You have a match with '+ result.user.name);
-        } else {
-          if (sparkrApp.momentIndex == 2) {
-            sparkrApp.momentIndex = 0;
-            sparkrApp.showMoments(sparkrApp.userIndex += 1, sparkrApp.momentIndex);
-          } else {
-            sparkrApp.showMoments(sparkrApp.userIndex, sparkrApp.momentIndex +=1);
-          };
-        };
-      });
+      }
+    }).done(function (result) {
+      if (result.spark === true){
+        console.log('You have a match with '+ result.user.name);
+       alert('You have a match with '+ result.user.name);
+      }  
+      // console.log("Current indices: userIndex = " + sparkrApp.userIndex + "; momentIndex = " + sparkrApp.momentIndex);
+      if (sparkrApp.momentIndex == 2) {
+        sparkrApp.momentIndex = 0;
+        sparkrApp.showMoments(sparkrApp.userIndex += 1, sparkrApp.momentIndex);
+      } else {
+        sparkrApp.showMoments(sparkrApp.userIndex, sparkrApp.momentIndex +=1);
+      }
     });
+  });
 });
 
 

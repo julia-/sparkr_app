@@ -17,7 +17,6 @@ class UsersController < ApplicationController
   end
 
   def momentshow
-    # binding.pry
     all_user = User.all.map {|u| u.id}
     matches = @current_user.matches.map {|u| u.id}
     users_id = all_user - matches - [@current_user.id]
