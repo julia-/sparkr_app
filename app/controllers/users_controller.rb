@@ -46,7 +46,7 @@ class UsersController < ApplicationController
 
   private 
   def user_params
-    params.require(:user).permit(:name, :email, :username, :password, :password_confirmation, :dob, :description, :gender, :location, :profile_pic, :remote_profile_pic_url, :is_admin)
+    params.require(:user).permit(:name, :email, :username, :password, :password_confirmation, :dob, :description, :gender, :location, :profile_pic, :remote_profile_pic_url, :is_admin, :latitude, :longitude)
   end
 
   def check_if_admin
