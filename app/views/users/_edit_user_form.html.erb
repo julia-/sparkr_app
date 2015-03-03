@@ -1,4 +1,5 @@
 <h2>Update profile</h2>
+    <% if @current_user.present? %>
     <%= form_for @current_user do |f| %>
         <div class="form-group">
             <%= f.label :name %>
@@ -35,6 +36,7 @@
         <div>
             <%= f.submit 'Update profile', :class => 'btn edit-profile-btn' %>
         </div>
+    <% end %>
 <% end %>
   
 
