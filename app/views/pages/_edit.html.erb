@@ -15,7 +15,9 @@
   <div class="edit-profile-container">
     <h2>Edit your profile</h2>
     <%if @current_user.present? %>
-      <%= render :partial => 'users/edit_user_form' %>
+      <div class="edit-form">
+        <%= render :partial => 'users/edit_user_form' %> 
+      </div>
     <%end%>
   </div>
 </div>

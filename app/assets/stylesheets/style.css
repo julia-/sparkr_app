@@ -3,12 +3,14 @@
   box-sizing: border-box;
 }
 body {
-  max-width: 90%;
-  margin: 0 auto;
   font-size: 18px;
   font-family: 'Helvetica Neue', Helvetica, arial, sans-serif;
   color: #000;
   line-height: 150%;
+}
+.container {
+  max-width: 90%;
+  margin: 0 auto;
 }
 a {
   text-decoration: none;
@@ -21,6 +23,9 @@ a {
 .edit-moments-container, .edit-profile-container {
   margin: 0 auto;
   max-width: 75%;
+}
+.moments-container {
+  margin: 1.5em auto;
 }
 .moments-container > li {
   display: inline-block;
@@ -38,8 +43,14 @@ a {
 .dropzone {
   border: 1px solid #403F3D;
   border-radius: 3px;
+  margin: 1.5em 0;
 }
-
+.form-dob {
+  display: block;
+}
+.edit-form {
+  margin: 1.5em 0;
+}
 input, textarea {
   display: inline-block;
   width: 100%;
@@ -50,7 +61,7 @@ input, textarea {
   line-height: 150%;
 }
 textarea {
-  height: 250px;
+  height: 200px;
 }
 input[type="submit"] {
   background-color: #047878;
@@ -65,4 +76,13 @@ input[type="submit"]:hover {
   color: #fff;
   text-transform: uppercase;
   font-weight: 600;
+}
+
+select {
+  width: 7.5em;
+  border: 1px solid #047878;
+  margin: 8px auto;
+  font-size: 18px;
+  line-height: 150%;
+  display: inline-block;
 }
