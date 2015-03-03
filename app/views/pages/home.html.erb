@@ -5,6 +5,24 @@
       <%= message %>
     </div>
   <% end %>
+
+  <!-- Displays all users whose location is within 50 miles of the current user's -->
+  <div class="nearby-users">
+    <h2>Near by users</h1>
+    <% if @nearby_users %>
+      <% @nearby_users.each do |user| %>
+        <% if user.id != @current_user.id %>
+          <h3>Name: <%= user.name %></h3>
+          <p>User Name: <%= user.username %></p>
+          <p>Location: <%= user.location %></p>
+          <p>Latitude: <%= user.latitude %></p>
+          <p>Longitude: <%= user.longitude %></p>
+        <% end %>
+      <% end %>
+    <% end %>  
+  </div>
+
+  <!-- Display current user's profile --> 
   <ul id="current_user"></ul>
     <script type="x-handlebars-template" id="current_userTemplate">
       <li data-user-id="{{ id }}">
@@ -18,28 +36,35 @@
       </li>   
     </script>
 
+  <!-- Show other user's moments -->   
+  <div id="moment_on_show">
+    <div id="user_moment"></div>
+      <button id="not_like">No</button>
+      <button id="like">Yes</button>
+  </div> 
+  
+  <!-- Displays all users - admin only -->
+  <div id="all_users">
     <ul id="users"></ul>
+      <script type="x-handlebars-template" id="userTemplate">
+      <li data-user-id="{{ id }}">
+        <span id="{{ name }}"> {{ name }} </span>
+      </li>
+      </script>
+  </div>
 
-  <script type="x-handlebars-template" id="userTemplate">
-  <li data-user-id="{{ id }}">
-    <span id="{{ name }}"> {{ name }} </span>
-  </li>
-  </script>
+  <!-- List all the matches of current user -->   
+  <div id="current_user_matches">
+    <ul id="matches"></ul>
+    <script type="x-handlebars-template" id="matchTemplate">
+      <li data-match-id="{{ id }}">
+        <span id="{{ match_username }}">Username: {{ username }} </span>
+        <img id="{{ match_userprofile_pic }}" src="{{ profile_pic.medium.url }}"></img>
+      </li>     
+    </script>
+  </div>
 
-<ul id="matches"></ul>
-  <script type="x-handlebars-template" id="matchTemplate">
-    <li data-match-id="{{ id }}">
-      <span id="{{ match_username }}">Username: {{ username }} </span>
-      <img id="{{ match_userprofile_pic }}" src="{{ profile_pic.medium.url }}"></img>
-    </li>   
-    
-  </script>
-
-<h1>Amy's edit page testing</h1>
-<%= render :partial => 'edit' %>
-
-
-
+ <%= render :partial => 'users/edit_user_form' %>
 
 <% else %>
 

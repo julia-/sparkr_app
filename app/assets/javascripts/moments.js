@@ -23,6 +23,8 @@ $(document).ready(function(){
     var imageUrl;
     console.log(responseText);
     imageUrl = responseText.content.url;
+    sparkrApp.showUser();
+    mediaDropzone.removeAllFiles();
   });
 
 });

@@ -24,6 +24,7 @@ gem 'private_pub'
 gem 'thin'
 gem 'dropzonejs-rails'
 gem 'normalize-rails'
+gem 'geocoder'
 
 group :development do
   gem 'pry-rails'

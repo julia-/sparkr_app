@@ -19,13 +19,16 @@
 #  uid              :string
 #  oauth_token      :string
 #  oauth_expires_at :datetime
+#  latitude         :float
+#  longitude        :float
 #
 
 class User < ActiveRecord::Base
   mount_uploader :profile_pic, ProfilePicUploader
   
-  # validates :username, :presence => true, :uniqueness => true, :length => { :minimum => 6 }, :on => :create
   has_secure_password
+  geocoded_by :location
+  after_validation :geocode, :if => lambda{ |obj| obj.location_changed? }
   validates :username, :format => { with: /\A[a-zA-Z0-9_.@-]+\Z/ }, :presence => true, :uniqueness => true
   validates :email, :presence => true, :uniqueness => true
   validates :password, :presence => true,

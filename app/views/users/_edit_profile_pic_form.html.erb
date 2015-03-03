@@ -1,0 +1,6 @@
+<% @user = @user || User.new %>
+<%= form_tag '/users', method: :post, class: "dropzone", id: "profile-dropzone" do %>
+  <div class="fallback">
+    <%= file_field_tag "media"%>
+  </div>
+<% end %>

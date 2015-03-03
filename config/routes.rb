@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
 
+  resources :locations
+
   root :to => 'pages#home'
 
+  get '/users/momentshow' => 'users#momentshow', as: :momentshow
   resources :users
   resources :moments
+  resources :likes, only: [:create]
 
   get '/users/:id/match' => 'users#match', as: :match
 

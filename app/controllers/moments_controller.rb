@@ -38,6 +38,7 @@ class MomentsController < ApplicationController
     redirect_to root_path
   end
 
+  
   private
   def moment_params
     # binding.pry
