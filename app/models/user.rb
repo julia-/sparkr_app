@@ -2,26 +2,36 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  name            :string
-#  username        :string
-#  email           :string
-#  password_digest :string
-#  dob             :date
-#  description     :text
-#  gender          :string
-#  location        :string
-#  profile_pic     :text
-#  is_admin        :boolean          default("false")
-#  created_at      :datetime
-#  updated_at      :datetime
+#  id               :integer          not null, primary key
+#  name             :string
+#  username         :string
+#  email            :string
+#  password_digest  :string
+#  dob              :date
+#  description      :text
+#  gender           :string
+#  location         :string
+#  profile_pic      :text
+#  is_admin         :boolean          default("false")
+#  created_at       :datetime
+#  updated_at       :datetime
+#  provider         :string
+#  uid              :string
+#  oauth_token      :string
+#  oauth_expires_at :datetime
 #
 
 class User < ActiveRecord::Base
-
   mount_uploader :profile_pic, ProfilePicUploader
-
+  
+  # validates :username, :presence => true, :uniqueness => true, :length => { :minimum => 6 }, :on => :create
   has_secure_password
+  validates :username, :format => { with: /\A[a-zA-Z0-9_.@-]+\Z/ }, :presence => true, :uniqueness => true
+  validates :email, :presence => true, :uniqueness => true
+  validates :password, :presence => true,
+                       :confirmation => true,
+                       :length => {:within => 6..30},
+                       :on => :create
 
   has_many :moments
   has_many :likes
@@ -30,6 +40,22 @@ class User < ActiveRecord::Base
   
   # has_many :messages_received, :class_name => 'Message', :foreign_key => 'receiver_id'
   # has_many :messages_sent, :class_name => 'Message', :foreign_key => 'sender_id'
+
+  # Create user account when signing in using Facebook for the first time
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.name = auth.info.name
+      user.email = auth.info.email
+      user.username = auth.info.email
+      user.password = auth.uid
+      user.password_confirmation = auth.uid
+      user.oauth_token = auth.credentials.token
+      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      user.save!
+    end
+  end
 
   # Spark returns true when a user likes all three of another users moments.
   def spark(other_user)

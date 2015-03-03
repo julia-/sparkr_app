@@ -21,3 +21,10 @@
 
 en:
   hello: "Hello world"
+
+# en:
+#   activerecord:
+#     errors:
+#       full_messages:
+#         username:
+#           taken: "Please fill in your %{attribute}"

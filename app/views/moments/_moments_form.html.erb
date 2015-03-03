@@ -1,12 +1,9 @@
 <% @moment = @moment || Moment.new %>
 <!-- if youre editing a moment, leave it alone, but if theres no moment passed in then create its own moment -->
 <!-- the form always needs a moment, either an existing one, or a brand new one -->
-<%= form_for @moment do |f| %>
-    <div>
-        <%= f.label :content, "Moment"%>
-        <%= f.file_field :content %>
-    </div>
-    <div>
-        <%= f.submit 'Upload moments', :class => 'btn add-moments-btn' %>
-    </div>
+<%= form_tag '/moments', method: :post, class: "dropzone", id: "media-dropzone" do %>
+  <div class="fallback">
+    <%= file_field_tag "media", multiple: true%>
+  </div>
 <% end %>
+

@@ -10,7 +10,7 @@ module ApplicationHelper
       <li>#{ link_to('Help', root_path) }</li>"
     if @current_user.present?
       links += "<li>#{ link_to(@current_user.name, user_path(@current_user)) } <i class='fa fa-user'></i></li>
-      <li>#{ link_to('Sign Out ', login_path, :method => :delete) }<i class='fa fa-sign-out'></i></li>"
+      <li>#{ link_to('Sign Out ', logout_path, :method => :delete) }<i class='fa fa-sign-out'></i></li>"
     elsif @current_user.present? && @curent_user.is_admin?
       links += "<li>#{ link_to('All users', root_path) }</li>"
     else 

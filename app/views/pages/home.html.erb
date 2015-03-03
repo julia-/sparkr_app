@@ -1,28 +1,34 @@
+<!-- Message to confirm user has successfully signed up via username and password -->
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>">
+    <%= message %>
+  </div>
+<% end %>
+
+<!-- Sign in/out link for Facebook authentication -->
+<div id="user_nav">
+  <% if @current_user %>
+    Signed in as <strong><%= @current_user.name %></strong>!
+    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+  <% else %>
+    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+  <% end %>
+</div>
+
 <% if @current_user.present? %>
-
   <ul id="current_user"></ul>
-    <script type='x-handlebars-template' id='current_userTemplate'>
+    <script type="x-handlebars-template" id="current_userTemplate">
       <li data-user-id="{{ id }}">
-        <span id ="{{ current_username }}">Name: {{ name }} </span>
-        <span id ="{{ current_userusername }}">User Name: {{ username }} </span>
-        <span id ="{{ current_useremail }}">Email: {{ email }} </span>
-        <span id ="{{ current_userdescription }}">Descripton: {{ description }} </span>
-        <span id ="{{ current_usergender }}">Gender: {{ gender }} </span>
-        <span id ="{{ current_userlocation }}">Address: {{ location }} </span>
-        <img id ="{{ current_userprofile_pic }}" src="{{ profile_pic.medium.url }}"></img>
+        <span id="{{ current_username }}">Name: {{ name }} </span>
+        <span id="{{ current_userusername }}">Username: {{ username }} </span>
+        <span id="{{ current_useremail }}">Email: {{ email }} </span>
+        <span id="{{ current_userdescription }}">About: {{ description }} </span>
+        <span id="{{ current_usergender }}">Gender: {{ gender }} </span>
+        <span id="{{ current_userlocation }}">Location: {{ location }} </span>
+        <img id="{{ current_userprofile_pic }}" src="{{ profile_pic.medium.url }}"></img>
       </li>   
-      
     </script>
 
-  <ul id="current_user_moments"></ul>
-
-    <script type='x-handlebars-template' id='momentTemplate'>
-
-      <li data-moment-id="{{ id }}">
-        <img  src="{{ content.medium.url }}"></img>
-      </li>
-    
-    </script>
 
 <% else %>
 
@@ -33,35 +39,24 @@
   
 <% end %>
 
-
-
 <ul id="users"></ul>
 
-  <script type='x-handlebars-template' id='userTemplate'>
-
+  <script type="x-handlebars-template" id="userTemplate">
   <li data-user-id="{{ id }}">
-    <span id ="{{ name }}"> {{ name }} </span>
+    <span id="{{ name }}"> {{ name }} </span>
   </li>
-
   </script>
 
 <ul id="matches"></ul>
-  <script type='x-handlebars-template' id='matchTemplate'>
+  <script type="x-handlebars-template" id="matchTemplate">
     <li data-match-id="{{ id }}">
-      <span id ="{{ match_username }}">User Name: {{ username }} </span>
-      <img id ="{{ match_userprofile_pic }}" src="{{ profile_pic.medium.url }}"></img>
+      <span id="{{ match_username }}">Username: {{ username }} </span>
+      <img id="{{ match_userprofile_pic }}" src="{{ profile_pic.medium.url }}"></img>
     </li>   
     
   </script>
 
-  
-<%= render :partial => 'moments/moments_form' %>
-
-<%= render :partial => 'users/edit_user_form' %>
-
-<%if @user.profile_pic.present? %>
-    <%=image_tag @user.profile_pic_url(:medium), :class => 'profile-main'%>
-<%end%>
-
+<h1>Amy's edit page testing</h1>
+<%= render :partial => 'edit' %>
 
 

@@ -29,7 +29,11 @@ var sparkrApp = {
 
   renderMoments: function() { 
     $('#current_user_moments').empty();
-    for (var i = 0; i < sparkrApp.current_user_moments.length; i++) {
+    var start = sparkrApp.current_user_moments.length - 3;
+    if (start < 0) {
+      start = 0;
+    }
+    for (var i = sparkrApp.current_user_moments.length; i >= start; i--) {
     var moment = sparkrApp.current_user_moments[i];
     var li = sparkrApp.momentHTML(moment);  
     $('#current_user_moments').append(li);
@@ -51,11 +55,7 @@ var sparkrApp = {
       $('#matches').append(li);
     };
   },  
-
-
-
 };
-
 
 $(document).ready(function (){
   sparkrApp.usersHTML = Handlebars.compile( $('#userTemplate').html() );
@@ -69,3 +69,4 @@ $(document).ready(function (){
 
 
 });
+
