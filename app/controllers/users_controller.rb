@@ -4,16 +4,21 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    render json:@users.as_json(:include => :moments)
+    render :json => @users, :include => :moments
   end
 
   def show
-    render json:@current_user.as_json(:include => :moments)
+    render :json => @current_user, :include => :moments
   end
 
   def match
     matches = @current_user.matches
    render json:matches
+  end
+
+  def momentshow
+    user_list = User.all.select {|u| u.id != @current_user.id}
+    render :json => user_list, :include => :moments
   end
  
   def create

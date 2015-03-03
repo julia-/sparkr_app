@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root :to => 'pages#home'
 
+  get '/users/momentshow' => 'users#momentshow', as: :momentshow
+
   resources :users
   resources :moments
 
