@@ -1,9 +1,11 @@
 <% if @user.errors.any? %>
-  <ul>
+  <div id="error_explanation">
+    <ul>
     <% @user.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
-  </ul>
+    </ul>
+  </div>
 <% end %>
 
 <%= form_for @user do |f| %>
