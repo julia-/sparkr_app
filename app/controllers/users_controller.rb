@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     else
       @current_user.update( profile_pic: params[:file] )  
       respond_to do |format|
-        format.json{ render :json => { status: "OK"} }
+        format.json{ render :json => @current_user }
       end
     end
   end

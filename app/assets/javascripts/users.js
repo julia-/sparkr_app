@@ -84,7 +84,7 @@ $(document).ready(function(){
     },
     init: function() {
       this.on("maxfilesexceeded", function(file){
-          alert("Sorry, only three moments allowed!");
+          alert("Sorry, only one profile picture allowed!");
       });
     }
   };
@@ -94,10 +94,10 @@ $(document).ready(function(){
   return profileDropzone.on("success", function(file, responseText) {
     var imageUrl;
     console.log(responseText);
-    imageUrl = responseText.content.url;
-
-    // add this img url to the page
-
+    imageUrl = responseText.profile_pic.url;
+    console.log(imageUrl);
+    sparkrApp.showUser();
+    profileDropzone.removeAllFiles();
   });
 
 });
