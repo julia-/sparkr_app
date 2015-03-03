@@ -18,7 +18,7 @@
     </div>
     <div>
       <%= f.label :gender, "Gender"%>
-      <%= f.text_field :gender %>
+      <%= select_tag(:gender, options_for_select([['Female'], ['Male'], ['Other']])) %>
     </div>
     <div>
       <%= f.label :location, "Location"%>
