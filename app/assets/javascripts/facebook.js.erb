@@ -18,7 +18,7 @@
       e.preventDefault();
       return FB.login(function(response) {
         if (response.authResponse) {
-          return window.location = '/auth/facebook/callback?' + $.param({signed_request: response.authResponse.signedRequest});
+          return window.location = '/auth/facebook/callback?' + $.param(signed_request: response.authResponse.signedRequest);
         }
       });
     });
