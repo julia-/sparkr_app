@@ -34,6 +34,9 @@
 </div>
 
 <% if @current_user.present? %>
+
+<!-- Show current user's information here --> 
+<div id="current_user_div">
   <ul id="current_user"></ul>
     <script type="x-handlebars-template" id="current_userTemplate">
       <li data-user-id="{{ id }}">
@@ -46,6 +49,15 @@
         <img id="{{ current_userprofile_pic }}" src="{{ profile_pic.medium.url }}"></img>
       </li>   
     </script>
+</div>
+
+<!-- Show other user's moments here -->   
+<div id="moment_on_show">
+  <div id="user_moment"></div>
+    <button id="not_like">No</button>
+    <button id="like">Yes</button>
+</div> 
+  
 
 
 <% else %>
@@ -57,22 +69,26 @@
   
 <% end %>
 
-<ul id="users"></ul>
+<!-- List all the users -->   
+<div id="all_users">
+  <ul id="users"></ul>
+    <script type="x-handlebars-template" id="userTemplate">
+    <li data-user-id="{{ id }}">
+      <span id="{{ name }}"> {{ name }} </span>
+    </li>
+    </script>
+</div>
 
-  <script type="x-handlebars-template" id="userTemplate">
-  <li data-user-id="{{ id }}">
-    <span id="{{ name }}"> {{ name }} </span>
-  </li>
-  </script>
-
-<ul id="matches"></ul>
-  <script type="x-handlebars-template" id="matchTemplate">
-    <li data-match-id="{{ id }}">
-      <span id="{{ match_username }}">Username: {{ username }} </span>
-      <img id="{{ match_userprofile_pic }}" src="{{ profile_pic.medium.url }}"></img>
-    </li>   
-    
-  </script>
+<!-- List all the matches of current user -->   
+<div id="current_user_matches">
+  <ul id="matches"></ul>
+    <script type="x-handlebars-template" id="matchTemplate">
+      <li data-match-id="{{ id }}">
+        <span id="{{ match_username }}">Username: {{ username }} </span>
+        <img id="{{ match_userprofile_pic }}" src="{{ profile_pic.medium.url }}"></img>
+      </li>     
+    </script>
+</div>
 
 <h1>Amy's edit page testing</h1>
 <%= render :partial => 'edit' %>
