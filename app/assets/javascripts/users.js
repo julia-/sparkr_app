@@ -57,7 +57,6 @@ var sparkrApp = {
   },  
 };
 
-
 $(document).ready(function (){
   sparkrApp.usersHTML = Handlebars.compile( $('#userTemplate').html() );
   sparkrApp.loadUsers();
@@ -70,3 +69,4 @@ $(document).ready(function (){
 
 
 });
+
