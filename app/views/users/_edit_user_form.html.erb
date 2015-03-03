@@ -15,7 +15,7 @@
         </div>
         <div>
             <%= f.label :dob, "Date of birth"%>
-            <%= f.text_field :dob %>
+            <%= date_select :user, :dob, :end_year => 1900, :start_year => Date.today.year - 18 %>
         </div>
         <div>
             <%= f.label :gender, "Gender"%>

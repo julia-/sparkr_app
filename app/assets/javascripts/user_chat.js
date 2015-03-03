@@ -1,11 +1,10 @@
-var ready = function () {
+var userChatReady = function () {
 
     /**
      * When the send message link on our home page is clicked
      * send an ajax request to our rails app with the sender_id and
      * recipient_id
      */
-
     $('.start-conversation').click(function (e) {
         e.preventDefault();
 
@@ -65,6 +64,5 @@ var ready = function () {
 
 
 }
-
-$(document).ready(ready);
-$(document).on("page:load", ready);
+$(document).ready(userChatReady);
+$(document).on("page:load", userChatReady);
