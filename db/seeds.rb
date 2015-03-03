@@ -6,10 +6,10 @@ Message.destroy_all
 Firework.destroy_all
 
 # Create users
-u1 = User.create(:name => 'Amy', :username => 'amesimmons', :password => 'chicken', :password_confirmation => 'chicken', :email => 'amy@amy.com', :dob => '12/12/1990', :description => 'Hi I am Amy', :gender => 'F', :location => 'Sydney', :profile_pic => 'https://pbs.twimg.com/profile_images/562928882378997760/XLgyqnOy.jpeg')
-u2 = User.create(:name => 'Bob', :username => 'bob', :password => 'chicken', :password_confirmation => 'chicken', :email => 'bob@bob.com', :dob => '12/1/1990', :description => 'Hi I am Bob', :gender => 'M', :location => 'Sydney', :profile_pic => 'http://www.qtcanberra.com.au/files/2014/07/Bob.jpg')
-u3 = User.create(:name => 'May', :username => 'may', :password => 'chicken', :password_confirmation => 'chicken', :email => 'may@may.com', :dob => '12/3/1990', :description => 'Hi I am May', :gender => 'F', :location => 'Sydney', :profile_pic => '')
-u4 = User.create(:name => 'Julia', :username => 'julia', :password => 'chicken', :password_confirmation => 'chicken', :email => 'julia@julia.com', :dob => '12/3/1992', :description => 'Hi I am Julia', :gender => 'F', :location => 'Sydney', :profile_pic => '')
+u1 = User.create(:name => 'Amy', :username => 'amesimmons', :password => 'chicken', :password_confirmation => 'chicken', :email => 'amy@amy.com', :dob => '12/12/1990', :description => 'Hi I am Amy', :gender => 'F', :location => 'Clifton Gardens, Sydney', :profile_pic => 'https://pbs.twimg.com/profile_images/562928882378997760/XLgyqnOy.jpeg', :latitude => "-33.8292248", :longitude => "151.2440601")
+u2 = User.create(:name => 'Bob', :username => 'bob', :password => 'chicken', :password_confirmation => 'chicken', :email => 'bob@bob.com', :dob => '12/1/1990', :description => 'Hi I am Bob', :gender => 'M', :location => 'Mosman', :profile_pic => 'http://www.qtcanberra.com.au/files/2014/07/Bob.jpg', :latitude => "-33.8322525", :longitude => "151.2218552")
+u3 = User.create(:name => 'May', :username => 'may', :password => 'chicken', :password_confirmation => 'chicken', :email => 'may@may.com', :dob => '12/3/1990', :description => 'Hi I am May', :gender => 'F', :location => 'Neutral Bay', :profile_pic => '', :latitude => "-33.8268596", :longitude => "151.226020")
+u4 = User.create(:name => 'Julia', :username => 'julia', :password => 'chicken', :password_confirmation => 'chicken', :email => 'julia@julia.com', :dob => '12/3/1992', :description => 'Hi I am Julia', :gender => 'F', :location => 'Paris', :profile_pic => '', :latitude => "-33.84", :longitude => "151.25")
 
 # Create moments
 m1 = Moment.create(:content => 'https://fbcdn-sphotos-f-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/36367_407213551835_165772_n.jpg?oh=4bfbbbc1014a1a64b772f2fee22b664f&oe=55480EA0&__gda__=1431225705_7799d4a482341ed39bc794ae3feaef1e')
@@ -52,13 +52,13 @@ Like.create(:user_id => u4.id, :moment_id => m6.id)
 
 
 # Create messages 
-msg1 = Message.create(:sender_id => u2.id, :receiver_id => u1.id, :message_content => 'Hi there', :read => true)
-msg2 = Message.create(:sender_id => u1.id, :receiver_id => u2.id, :message_content => 'Hi bob', :read => true)
-msg3 = Message.create(:sender_id => u2.id, :receiver_id => u1.id, :message_content => 'How are you Amy?', :read => true)
-msg4 = Message.create(:sender_id => u1.id, :receiver_id => u2.id, :message_content => 'Good, and you?', :read => false)
-msg5 = Message.create(:sender_id => u2.id, :receiver_id => u4.id, :message_content => 'Hello Julia.', :read => true)
-msg6 = Message.create(:sender_id => u4.id, :receiver_id => u2.id, :message_content => 'How are you bob?', :read => true)
-msg7 = Message.create(:sender_id => u2.id, :receiver_id => u4.id, :message_content => 'Where do you live?', :read => false)
+# msg1 = Message.create(:sender_id => u2.id, :receiver_id => u1.id, :message_content => 'Hi there', :read => true)
+# msg2 = Message.create(:sender_id => u1.id, :receiver_id => u2.id, :message_content => 'Hi bob', :read => true)
+# msg3 = Message.create(:sender_id => u2.id, :receiver_id => u1.id, :message_content => 'How are you Amy?', :read => true)
+# msg4 = Message.create(:sender_id => u1.id, :receiver_id => u2.id, :message_content => 'Good, and you?', :read => false)
+# msg5 = Message.create(:sender_id => u2.id, :receiver_id => u4.id, :message_content => 'Hello Julia.', :read => true)
+# msg6 = Message.create(:sender_id => u4.id, :receiver_id => u2.id, :message_content => 'How are you bob?', :read => true)
+# msg7 = Message.create(:sender_id => u2.id, :receiver_id => u4.id, :message_content => 'Where do you live?', :read => false)
 
 
 # Associate users with moments
@@ -66,6 +66,30 @@ u1.moments << m1 << m2 << m3
 u2.moments << m4 << m5 << m6
 u3.moments << m7 << m8 << m9
 u4.moments << m10 << m11 << m12
+
+
+# MOSMAN
+# -33.8292248,
+# 151.2440601
+
+# NEUTRAL BAY
+# -33.8322525,
+# 151.2218552
+
+# CREMORNE
+# -33.8268596,
+# 151.226020
+
+# CLIFTON GARDENS
+# -33.84,
+# 151.25
+
+
+
+
+
+
+
 
 
 
