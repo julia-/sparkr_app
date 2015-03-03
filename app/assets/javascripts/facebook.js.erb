@@ -13,6 +13,7 @@
       appId: '<%= ENV["facebook_app_id"] %>',
       cookie: true
     });
+
     $('#sign_in').click(function(e) {
       e.preventDefault();
       return FB.login(function(response) {
@@ -32,3 +33,9 @@
   };
 
 }).call(this);
+
+
+
+
+
+
