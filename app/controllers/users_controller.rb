@@ -17,13 +17,14 @@ class UsersController < ApplicationController
   end
  
   def create
-    @user = User.new user_params
-    if @user.save
-      session[:user_id] = @user.id
-      flash[:success] = "You've successfully signed up to Sparkr!"
-      redirect_to(root_path)
+    if !params[:file]
+      @current_user.update( user_params )
+      redirect_to root_path
     else
-      render "pages/home"
+      @current_user.update( profile_pic: params[:file] )  
+      respond_to do |format|
+        format.json{ render :json => { status: "OK"} }
+      end
     end
   end
 

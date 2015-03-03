@@ -69,3 +69,42 @@ $(document).ready(function (){
 
 });
 
+
+$(document).ready(function(){
+    console.log('dropzone in');
+
+    Dropzone.autoDiscover = false;
+
+    Dropzone.options.profileDropzone = {
+
+    maxFiles: 1,
+    accept: function(file, done) {
+      console.log("uploaded");
+      done();
+    },
+    init: function() {
+      this.on("maxfilesexceeded", function(file){
+          alert("Sorry, only three moments allowed!");
+      });
+    }
+  };
+
+  var profileDropzone;
+  profileDropzone = new Dropzone("#profile-dropzone");
+  return profileDropzone.on("success", function(file, responseText) {
+    var imageUrl;
+    console.log(responseText);
+    imageUrl = responseText.content.url;
+
+    // add this img url to the page
+
+  });
+
+});
+
+
+
+
+
+
+

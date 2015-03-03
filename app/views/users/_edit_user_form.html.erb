@@ -1,5 +1,5 @@
 <% if @current_user.present? %>
-  <%= form_for @current_user do |f| %>
+  <%= form_for @current_user, :method => "put" do |f| %>
     <div>
       <%= f.label :name %>
       <%= f.text_field :name, :autofocus => true, :required => true %>
@@ -18,7 +18,7 @@
     </div>
     <div>
       <%= f.label :gender, "Gender"%>
-      <%= select_tag(:gender, options_for_select([['Female'], ['Male'], ['Other']])) %>
+      <%= select(:user, :gender, options_for_select([['Female'], ['Male'], ['Other']])) %>
     </div>
     <div>
       <%= f.label :location, "Location"%>
@@ -27,10 +27,6 @@
     <div>
       <%= f.label :description, "About me" %>
       <%= f.text_area :description %>
-    </div>
-    <div>
-      <%= f.label :profile_pic, "Profile picture"%>
-      <%= f.file_field :profile_pic %>
     </div>
     <div>
       <%= f.submit 'Update profile', :class => 'btn edit-profile-btn' %>
