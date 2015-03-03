@@ -1,26 +1,19 @@
 <div class="edit-container">
-  <div class="moments-container">
-    <h2>Add moments</h2>
+  <div class="edit-moments-container">
+    <h2>Add your moments</h2>
       <%if @current_user.present? %>
-
-
-      <ul class="moments-container" id="current_user_moments"></ul>
-
-      <script type='x-handlebars-template' id='momentTemplate'>
-        <li class="moment" data-moment-id="{{ id }}">
-          <img class="moment-image" src="{{ content.large.url }}"></img>
-          <a href="#" class="delete">Delete</a>
-        </li>
-      
-      </script>
-
-
-
+        <ul class="moments-container" id="current_user_moments"></ul>
+        <script type='x-handlebars-template' id='momentTemplate'>
+          <li class="moment" data-moment-id="{{ id }}">
+            <img class="moment-image" src="{{ content.large.url }}"></img>
+            <a href="#" class="delete">Remove moment</a>
+          </li>
+        </script>
         <%= render :partial => 'moments/moments_form' %>
       <%end%>
   </div>
-  <div class="edit-profile container">
-    <h2>Edit profile</h2>
+  <div class="edit-profile-container">
+    <h2>Edit your profile</h2>
     <%if @current_user.present? %>
       <%= render :partial => 'users/edit_user_form' %>
     <%end%>
