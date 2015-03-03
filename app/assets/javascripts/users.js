@@ -57,6 +57,7 @@ var sparkrApp = {
 
   showMoments: function(userIndex, momentIndex) {  
     $.getJSON('/users/momentshow').done(function(users) {
+      debugger;
       if (userIndex < users.length) {
         var userOnShow = users[userIndex].name;
         sparkrApp.user_id = users[userIndex].id;

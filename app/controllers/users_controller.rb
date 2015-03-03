@@ -17,8 +17,12 @@ class UsersController < ApplicationController
   end
 
   def momentshow
-    user_list = User.all.select {|u| u.id != @current_user.id}
-    render :json => user_list, :include => :moments
+    # binding.pry
+    all_user = User.all.map {|u| u.id}
+    matches = @current_user.matches.map {|u| u.id}
+    users_id = all_user - matches - [@current_user.id]
+    users_list = User.where(:id => users_id) 
+    render :json => users_list, :include => :moments
   end
  
   def create
