@@ -24,10 +24,12 @@ class User < ActiveRecord::Base
   has_secure_password
 
   has_many :moments
-  has_many :likes 
+  has_many :likes
+  has_many :conversations, :foreign_key => :sender_id
+ 
   
-  has_many :messages_received, :class_name => 'Message', :foreign_key => 'receiver_id'
-  has_many :messages_sent, :class_name => 'Message', :foreign_key => 'sender_id'
+  # has_many :messages_received, :class_name => 'Message', :foreign_key => 'receiver_id'
+  # has_many :messages_sent, :class_name => 'Message', :foreign_key => 'sender_id'
 
   # Spark returns true when a user likes all three of another users moments.
   def spark(other_user)

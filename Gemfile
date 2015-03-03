@@ -18,6 +18,8 @@ gem 'font-awesome-rails'
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'mini_magick'
+gem 'private_pub'
+gem 'thin'
 
 group :development do
   gem 'pry-rails'

@@ -10,5 +10,10 @@ Rails.application.routes.draw do
   get '/login' => 'session#new'
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
+  get '/messages' => 'pages#messaging_index'
+
+  resources :conversations do
+    resources :messages
+  end
   
 end

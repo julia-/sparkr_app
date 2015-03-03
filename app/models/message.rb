@@ -3,15 +3,16 @@
 # Table name: messages
 #
 #  id              :integer          not null, primary key
-#  sender_id       :integer
-#  receiver_id     :integer
-#  message_content :text
-#  read            :boolean
 #  created_at      :datetime
 #  updated_at      :datetime
+#  body            :text
+#  conversation_id :integer
+#  user_id         :integer
 #
 
 class Message < ActiveRecord::Base
-  belongs_to :sender, :class_name => 'User'
-  belongs_to :receiver, :class_name => 'User'
+  belongs_to :conversation
+  belongs_to :user
+
+  validates_presence_of :body, :conversation_id, :user_id
 end
