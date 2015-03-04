@@ -1,5 +1,4 @@
 // $(document).ready(function (){
-console.log("IT is working")
 <% if params[:type] == 'discover' %>
   $('.container').empty();
   $('.container').append('<%= escape_javascript(render partial: 'discover') %>');

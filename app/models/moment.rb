@@ -16,6 +16,8 @@ class Moment < ActiveRecord::Base
     belongs_to :user
     has_many :likes 
 
+    default_scope { order('id DESC') }
+
     def likers
       self.likes.map { |l| l.user }
     end
