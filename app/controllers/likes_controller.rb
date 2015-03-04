@@ -17,6 +17,7 @@ class LikesController < ApplicationController
       spark = false
     end
     render :json => { :user => other_user, spark: spark }
+
   end
 
 end

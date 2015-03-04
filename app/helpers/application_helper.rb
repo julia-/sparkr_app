@@ -1,7 +1,7 @@
 module ApplicationHelper
   def nav_menu
     links = 
-      "<div class='nav-links-left'><li class='nav-home'>#{ link_to('Sparkr', root_path(:type => 'discover'), :remote => true) }<a href='#{root_path}'><i class='fa fa-bolt'></i></a></li>
+      "<div class='nav-links-left'><li class='nav-home'>#{ link_to('Sparkr', root_path(:type => 'discover'), :remote => true) }<a href='#{root_path}' class='matches'><i class='fa fa-bolt'></i></a></li>
       
       <li class='nav-matches'>#{ link_to('Matches', root_path(:type => 'matches'), :remote => true) }<a href='#{root_path}'><i class='fa fa-heart'></i></a></li>
 

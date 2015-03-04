@@ -3,7 +3,6 @@
   <head>
     <title>Sparkr</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta content='<%= @current_user.present? ? @current_user.id : "" %>' name='user-id'/>
@@ -28,5 +27,6 @@
       </ul>
     </footer>
     <%= render :partial => 'layouts/handlebars_layouts' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </body>
 </html>
