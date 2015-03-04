@@ -26,6 +26,7 @@ gem 'dropzonejs-rails'
 gem 'normalize-rails'
 gem 'geocoder'
 gem 'rails_12factor', group: :production
+gem 'redis'
 
 
 group :development do
