@@ -1,0 +1,33 @@
+// $(document).ready(function (){
+console.log("IT is working")
+<% if params[:type] == 'discover' %>
+  $('.container').empty();
+  $('.container').append('<%= escape_javascript(render partial: 'discover') %>');
+<% end %>
+<% if params[:type] == 'matches' %>
+  $('.container').empty();
+  $('.container').append('<%= escape_javascript(render partial: 'matches') %>');
+<% end %>
+<% if params[:type] == 'messages' %>
+  $('.container').empty();
+  $('.container').append('<%= escape_javascript(render partial: 'messages') %>');
+<% end %>
+<% if params[:type] == 'edit' %>
+  $('.container').empty();
+  $('.container').append('<%= escape_javascript(render partial: 'edit') %>');
+<% end %>
+<% if params[:type] == 'profile' %>
+  $('.container').empty();
+  $('.container').append('<%= escape_javascript(render partial: 'user_profile') %>');
+<% end %>
+<% if params[:type] == 'help' %>
+  $('.container').empty();
+  $('.container').append('<%= escape_javascript(render partial: 'help') %>');
+<% end %>
+sparkrApp.handlebarsCompile();
+sparkrApp.addDropZones();
+// });
+
+
+
+

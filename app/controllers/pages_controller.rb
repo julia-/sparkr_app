@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  
   def home
     # @user = User.new
     @users = User.all
@@ -9,9 +10,12 @@ class PagesController < ApplicationController
       @nearby_users = User.near(@lat_and_long, 30, :order => 'distance')
       
     end
+
   end
   def messaging_index
     @users = User.all
   end
+
+
 end
 

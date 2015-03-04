@@ -3,6 +3,84 @@ var sparkrApp = {
   userIndex: 0,
   momentIndex: 0,
 
+  addDropZones: function () {
+    sparkrApp.handlebarsCompile();
+    Dropzone.options.profileDropzone = {
+      maxFiles: 1,
+      accept: function(file, done) {
+        console.log("uploaded");
+        done();
+      },
+      init: function() {
+        this.on("maxfilesexceeded", function(file){
+            alert("Sorry, only one profile picture allowed!");
+        });
+      }
+    };
+
+    if ( $("#profile-dropzone").length != 0 ) {
+      var profileDropzone;
+      profileDropzone = new Dropzone("#profile-dropzone");
+      profileDropzone.on("success", function(file, responseText) {
+        var imageUrl;
+        console.log(responseText);
+        imageUrl = responseText.profile_pic.url;
+        console.log(imageUrl);
+        sparkrApp.showUser();
+        profileDropzone.removeAllFiles();
+      });
+    }
+
+    Dropzone.options.mediaDropzone = {
+
+      maxFiles: 3,
+      accept: function(file, done) {
+        console.log("uploaded");
+        done();
+      },
+      init: function() {
+        this.on("maxfilesexceeded", function(file){
+            alert("Sorry, only three moments allowed!");
+        });
+      }
+    };
+    console.log( $("#media-dropzone").length )
+    if ( $("#media-dropzone").length != 0 ) {
+      var mediaDropzone;
+      mediaDropzone = new Dropzone("#media-dropzone");
+      console.log("WHAT", mediaDropzone);
+      console.log("MEDIA DROPZONE")
+      mediaDropzone.on("success", function(file, responseText) {
+        var imageUrl;
+        console.log(responseText);
+        imageUrl = responseText.content.url;
+        sparkrApp.showUser();
+        mediaDropzone.removeAllFiles();
+      });
+    }
+  },
+
+  handlebarsCompile: function () {
+    if ( $('#userTemplate').length != 0 ) {
+      sparkrApp.usersHTML = Handlebars.compile( $('#userTemplate').html() );
+      sparkrApp.loadUsers();
+    }
+
+    if ( $("#current_userTemplate").length != 0) {
+      sparkrApp.currentUserHTML = Handlebars.compile( $('#current_userTemplate').html() );
+      sparkrApp.showUser();
+    }
+
+    if ( $("#matchTemplate").length != 0 ) {
+      sparkrApp.matchesHTML = Handlebars.compile( $('#matchTemplate').html() );
+      sparkrApp.loadMatches();
+    }
+
+    if ( $('#user_moment').length != 0 ) {
+      sparkrApp.showMoments(0,0);
+    }
+  },
+
   loadUsers: function() {
    $.getJSON('/users').done(function(result) {
       sparkrApp.users = result; 
@@ -79,17 +157,8 @@ var sparkrApp = {
 };
 
 $(document).ready(function (){
-    sparkrApp.usersHTML = Handlebars.compile( $('#userTemplate').html() );
-    sparkrApp.loadUsers();
 
-    sparkrApp.currentUserHTML = Handlebars.compile( $('#current_userTemplate').html() );
-    sparkrApp.showUser();
-
-    sparkrApp.matchesHTML = Handlebars.compile( $('#matchTemplate').html() );
-    sparkrApp.loadMatches();
-
-
-    sparkrApp.showMoments(0,0);
+  sparkrApp.handlebarsCompile();
 
     $('#not_like').on('click', function (event) {
       event.preventDefault();
@@ -126,31 +195,7 @@ $(document).ready(function(){
     console.log('dropzone in');
 
     Dropzone.autoDiscover = false;
-
-    Dropzone.options.profileDropzone = {
-
-    maxFiles: 1,
-    accept: function(file, done) {
-      console.log("uploaded");
-      done();
-    },
-    init: function() {
-      this.on("maxfilesexceeded", function(file){
-          alert("Sorry, only one profile picture allowed!");
-      });
-    }
-  };
-
-  var profileDropzone;
-  profileDropzone = new Dropzone("#profile-dropzone");
-  return profileDropzone.on("success", function(file, responseText) {
-    var imageUrl;
-    console.log(responseText);
-    imageUrl = responseText.profile_pic.url;
-    console.log(imageUrl);
-    sparkrApp.showUser();
-    profileDropzone.removeAllFiles();
-  });
+    sparkrApp.addDropZones();
 
 });
 

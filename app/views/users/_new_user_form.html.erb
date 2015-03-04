@@ -1,3 +1,5 @@
+<% @user = @user || User.new %>
+
 <% if @user %>
   <% if @user.errors.any? %>
     <div id="error_explanation">

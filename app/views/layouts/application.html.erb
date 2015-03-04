@@ -8,7 +8,7 @@
   <meta content='<%= @current_user.present? ? @current_user.id : "" %>' name='user-id'/>
 
 </head>
-<body>
+<body class='<%= @current_user.present? ? "logged_in" : "logged_out" %>'>
   <nav class="main-nav">
     <ul>
       <%== nav_menu %>
@@ -19,5 +19,7 @@
   </div>
   <footer>  
   </footer>
+
+  <%= render :partial => 'layouts/handlebars_layouts' %>
 </body>
 </html>

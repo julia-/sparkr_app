@@ -1,0 +1,26 @@
+<div class="discover-container">
+  <div id="moment_on_show">
+    <div id="user_moment"></div>
+    <button id="not_like">No</button>
+    <button id="like">Yes</button>
+  </div> 
+  
+  <h1>NEAR BY USERS</h1>
+
+<% if @nearby_users.length == 0 %>
+  No nearby users!
+<% end %>
+
+  <% if @nearby_users %>
+    <% @nearby_users.each do |user| %>
+      <% if user.id != @current_user.id %>
+        <h3>Name: <%= user.name %></h3>
+        <p>User Name: <%= user.username %></p>
+        <p>Location: <%= user.location %></p>
+        <p>Latitude: <%= user.latitude %></p>
+        <p>Longitude: <%= user.longitude %></p>
+        <br>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

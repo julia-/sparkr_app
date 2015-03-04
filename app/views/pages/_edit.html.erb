@@ -1,14 +1,11 @@
+<div id="current_user_div">
+  <ul id="current_user"></ul>
+</div>
 <div class="edit-container">
   <div class="edit-moments-container">
     <h2>Add your moments</h2>
       <%if @current_user.present? %>
         <ul class="moments-container" id="current_user_moments"></ul>
-        <script type='x-handlebars-template' id='momentTemplate'>
-          <li class="moment" data-moment-id="{{ id }}">
-            <img class="moment-image" src="{{ content.large.url }}"></img>
-            <a href="#" class="delete">Remove moment</a>
-          </li>
-        </script>
         <%= render :partial => 'moments/moments_form' %>
       <%end%>
   </div>

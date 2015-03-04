@@ -1,0 +1,31 @@
+<script type="x-handlebars-template" id="userTemplate">
+  <li data-user-id="{{ id }}">
+    <span id="{{ name }}"> {{ name }} </span>
+  </li>
+</script>
+
+<script type='x-handlebars-template' id='momentTemplate'>
+  <li class="moment" data-moment-id="{{ id }}">
+    <img class="moment-image" src="{{ content.large.url }}"></img>
+    <a href="#" class="delete">Remove moment</a>
+  </li>
+</script>
+
+<script type="x-handlebars-template" id="matchTemplate">
+  <li data-match-id="{{ id }}">
+    <span id="{{ match_username }}">Username: {{ username }} </span>
+    <img id="{{ match_userprofile_pic }}" src="{{ profile_pic.medium.url }}"></img>
+  </li>     
+</script>
+
+<script type="x-handlebars-template" id="current_userTemplate">
+  <li data-user-id="{{ id }}">
+    <span id="{{ current_username }}">Name: {{ name }} </span>
+    <span id="{{ current_userusername }}">Username: {{ username }} </span>
+    <span id="{{ current_useremail }}">Email: {{ email }} </span>
+    <span id="{{ current_userdescription }}">About: {{ description }} </span>
+    <span id="{{ current_usergender }}">Gender: {{ gender }} </span>
+    <span id="{{ current_userlocation }}">Location: {{ location }} </span>
+    <img id="{{ current_userprofile_pic }}" src="{{ profile_pic.medium.url }}"></img>
+  </li>   
+</script>
