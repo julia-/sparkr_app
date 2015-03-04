@@ -368,6 +368,7 @@ footer {
   height: 600px;
   padding: 0.7em 0.7em 0.5em 0.7em;
   background-color: #F5F2E9;
+  margin: 0 auto;
   transition:all linear 2s;
   -webkit-box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
   -moz-box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
@@ -382,6 +383,11 @@ footer {
   font-family: 'Permanent Marker', cursive;
   font-size: 40px;
   margin-top: 20px;
+}
+
+.skipped {
+   transform: translateX(-1000px) rotate(-50deg);
+   opacity:0;
 }
 
 /*end discover view styles */
@@ -418,6 +424,7 @@ footer {
   margin-bottom: 30px;
   padding: 30px;
   text-align: left;
+  margin: 0 auto;
 }
 
 #match_userprofile_pic {
@@ -443,14 +450,7 @@ footer {
 
 /*end show matches styling*/
 
-/*skip moments*/
 
-.skipped {
-   transform: translateX(-1000px) rotate(-50deg);
-   opacity:0;
-}
-
-/*skip moments end*/
 
 
 
