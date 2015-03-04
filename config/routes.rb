@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :likes, only: [:create]
 
 
-  get '/users/:id/match' => 'users#match', as: :match
+  # get '/users/:id/match' => 'users#match', as: :match
 
   get '/login' => 'session#new'
   post '/login' => 'session#create'
