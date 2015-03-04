@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150303041846) do
+ActiveRecord::Schema.define(version: 20150304073807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 20150303041846) do
     t.string   "gender"
     t.string   "location"
     t.text     "profile_pic"
-    t.boolean  "is_admin",         default: false
+    t.boolean  "is_admin",          default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "provider"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20150303041846) do
     t.datetime "oauth_expires_at"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "sexual_preference"
   end
 
 end

@@ -2,25 +2,26 @@
 #
 # Table name: users
 #
-#  id               :integer          not null, primary key
-#  name             :string
-#  username         :string
-#  email            :string
-#  password_digest  :string
-#  dob              :date
-#  description      :text
-#  gender           :string
-#  location         :string
-#  profile_pic      :text
-#  is_admin         :boolean          default("false")
-#  created_at       :datetime
-#  updated_at       :datetime
-#  provider         :string
-#  uid              :string
-#  oauth_token      :string
-#  oauth_expires_at :datetime
-#  latitude         :float
-#  longitude        :float
+#  id                :integer          not null, primary key
+#  name              :string
+#  username          :string
+#  email             :string
+#  password_digest   :string
+#  dob               :date
+#  description       :text
+#  gender            :string
+#  location          :string
+#  profile_pic       :text
+#  is_admin          :boolean          default("false")
+#  created_at        :datetime
+#  updated_at        :datetime
+#  provider          :string
+#  uid               :string
+#  oauth_token       :string
+#  oauth_expires_at  :datetime
+#  latitude          :float
+#  longitude         :float
+#  sexual_preference :string
 #
 
 class User < ActiveRecord::Base

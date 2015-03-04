@@ -1,21 +1,21 @@
-<div id="current_user_div">
-  <ul id="current_user"></ul>
-</div>
-<div class="content-container">
-  <div class="edit-moments-container">
-    <h2>Add your moments</h2>
-      <%if @current_user.present? %>
-        <ul class="moments-container" id="current_user_moments"></ul>
-        <%= render :partial => 'moments/moments_form' %>
-      <%end%>
+<!-- Edit user view - renders moments, profile pic and user profile forms -->
+<%if @current_user.present? %>
+  <div class="content-container">
+    <h2>Edit your Profile</h2>
+    <h3>Your moments</h3>
+    <div class="edit-moments">
+        <%if @current_user.present? %>
+          <ul class="moments-container" id="current_user_moments"></ul>
+          <%= render :partial => 'moments/moments_form' %>
+        <%end%>
+    </div>
+    <h3>Your profile photo</h3>
+    <div class="edit-profile-photo">
+      <%= render :partial => 'users/edit_profile_pic_form' %> 
+    </div>
+    <h3>Your profile</h3>
+    <div class="edit-form">
+      <%= render :partial => 'users/edit_user_form' %> 
+    </div>
   </div>
-  <div class="edit-profile-container">
-    <h2>Edit your profile</h2>
-    <%if @current_user.present? %>
-      <div class="edit-form">
-        <%= render :partial => 'users/edit_profile_pic_form' %> 
-        <%= render :partial => 'users/edit_user_form' %> 
-      </div>
-    <%end%>
-  </div>
-</div>
+<% end %>

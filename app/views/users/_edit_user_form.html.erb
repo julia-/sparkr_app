@@ -21,6 +21,10 @@
       <%= select(:user, :gender, options_for_select([['Female'], ['Male'], ['Other']])) %>
     </div>
     <div>
+      <%= f.label :sexual_preference, "Sexual Preference"%>
+      <%= select(:user, :sexual_preference, options_for_select([['Women'], ['Men'], ['Both']])) %>
+    </div>
+    <div>
       <%= f.label :location, "Location"%>
       <%= f.text_field :location %>
     </div>
