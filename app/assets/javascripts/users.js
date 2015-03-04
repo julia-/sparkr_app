@@ -77,6 +77,10 @@ var sparkrApp = {
     if ( sparkrApp.compiled < 2 ) {
       $('#not_like').on('click', function (event) {
         event.preventDefault();
+        console.log('testing skip');
+        // $('#user_moment').addClass('skipped').done(function() {
+        //   $('#user_moment').removeClass('skipped');
+        // });
         sparkrApp.showMoments(sparkrApp.userIndex += 1, sparkrApp.momentIndex);
       });
 
@@ -197,6 +201,18 @@ var sparkrApp = {
   }
 
 };
+
+
+// var skipMoments = function(){
+
+// $('#not_like').on('click', function(){
+
+//   this.addClass('skipped');
+//   // showMoments();
+
+// });
+
+// };
 
 
 $(document).ready(function(){

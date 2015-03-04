@@ -368,6 +368,7 @@ footer {
   height: 600px;
   padding: 0.7em 0.7em 0.5em 0.7em;
   background-color: #F5F2E9;
+  transition:all linear 2s;
   -webkit-box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
   -moz-box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
   box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
@@ -392,7 +393,6 @@ footer {
   background-color: #F5A503;
   border: 1px solid #F5A503;
   color: #F5F2E9;
-  /*margin-top: 1em;*/
   padding: 0.5em;
   text-transform: uppercase;
   font-weight: 600;
@@ -400,7 +400,7 @@ footer {
   border-radius: 3px;
   margin-top: 10px;
   display: inline-block;
-  /*margin: 15px 20px;*/
+  margin-right: 0.5em;
 }
 
 .match-btn:hover {
@@ -437,6 +437,22 @@ footer {
   display: block;
 }
 
+#match_name {
+  font-weight: bold;
+}
+
 /*end show matches styling*/
+
+/*skip moments*/
+
+.skipped {
+   transform: translateX(-1000px) rotate(-50deg);
+   opacity:0;
+}
+
+/*skip moments end*/
+
+
+
 
 
