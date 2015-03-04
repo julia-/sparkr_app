@@ -3,7 +3,6 @@ class SessionController < ApplicationController
   end
 
   def create
-    # user = User.find_by :username => params[:username] || User.from_omniauth(env["omniauth.auth"]
     user = User.find_by :username => params[:username]
     if user.present? && user.authenticate(params[:password])
       session[:user_id] = user.id
@@ -30,4 +29,3 @@ class SessionController < ApplicationController
     redirect_to root_path
   end
 end
-

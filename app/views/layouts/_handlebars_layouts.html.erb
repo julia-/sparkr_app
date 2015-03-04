@@ -6,15 +6,16 @@
 
 <script type='x-handlebars-template' id='momentTemplate'>
   <li class="moment" data-moment-id="{{ id }}">
-    <img class="moment-image" src="{{ content.large.url }}"></img>
+    <img class="moment-image" src="{{ content.medium.url }}"></img>
     <a href="#" class="delete">Remove moment</a>
   </li>
 </script>
 
 <script type="x-handlebars-template" id="matchTemplate">
   <li data-match-id="{{ id }}">
-    <span id="{{ match_username }}">Username: {{ username }} </span>
-    <img id="{{ match_userprofile_pic }}" src="{{ profile_pic.medium.url }}"></img>
+    <span id="match_username">Username: {{ username }} </span>
+    <img id="match_userprofile_pic" src="{{ profile_pic.medium.url }}"></img>
+    <a data-match-id="{{ id }}" href="#">Fire Works</a>
   </li>     
 </script>
 
