@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def match
     matches = @current_user.matches
-   render json:matches
+    render json:matches
   end
 
   def momentshow
@@ -26,17 +26,18 @@ class UsersController < ApplicationController
     render :json => users_list, :include => :moments
   end
  
-  # def create
-  #   if !params[:file]
-  #     @current_user.update( user_params )
-  #     redirect_to root_path
-  #   else
-  #     @current_user.update( profile_pic: params[:file] )  
-  #     respond_to do |format|
-  #       format.json{ render :json => @current_user }
-  #     end
-  #   end
-  # end
+  def update_profile_pic
+    if !params[:file]
+      @current_user.update( user_params )
+      redirect_to root_path
+    else
+      @current_user.update( profile_pic: params[:file] )  
+      respond_to do |format|
+        format.json{ render :json => @current_user }
+      end
+    end
+  end
+
   def new
     @user = User.new
   end
@@ -57,7 +58,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.find_by :id => session[:user_id]
+    user = @current_user
     user.update user_params
     redirect_to root_path
   end
