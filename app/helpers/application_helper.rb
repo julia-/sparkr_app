@@ -34,7 +34,9 @@ module ApplicationHelper
       links += 
         "<li>#{ link_to('All users', root_path) }</li></div>"
     else 
-        "#{ link_to(root_path, title: 'Sparkr', :remote => true) do fa_icon('bolt 2x', class: 'sparkr-logo') end }"
+        "<h1 class='nav-home'>
+          #{ link_to(root_path(:type => 'discover'), title: 'Sparkr', :remote => true) do fa_icon('bolt', text: 'Sparkr ', right: true) end }
+        </h1>"
     end
   end
 end
