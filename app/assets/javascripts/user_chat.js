@@ -1,5 +1,4 @@
 var userChatReady = function () {
-    console.log('user chat ready')
     /**
      * When the send message link on our home page is clicked
      * send an ajax request to our rails app with the sender_id and

@@ -10,9 +10,6 @@ class PagesController < ApplicationController
       @nearby_users = User.near(@lat_and_long, 30, :order => 'distance')
       
     end
-
-  end
-
-
+  end   
 end
 
