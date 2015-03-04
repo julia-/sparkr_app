@@ -12,8 +12,9 @@ class PagesController < ApplicationController
     end
 
   end
+
   def messaging_index
-    @users = User.all
+    @users = @current_user.matches
   end
 
 
