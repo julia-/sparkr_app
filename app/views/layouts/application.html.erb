@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>SparkrApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <meta content='<%= @current_user.present? ? @current_user.id : "" %>' name='user-id'/>
-
-</head>
-<body class='<%= @current_user.present? ? "logged_in" : "logged_out" %>'>
-  <nav class="main-nav">
-    <ul>
-      <%== nav_menu %>
-    </ul>
-  </nav>
-  <div class="container">
-    <%= yield %>
-  </div>
-  <footer>  
-  </footer>
-
-  <%= render :partial => 'layouts/handlebars_layouts' %>
-</body>
+  <head>
+    <title>Sparkr</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content='<%= @current_user.present? ? @current_user.id : "" %>' name='user-id'/>
+  </head>
+  <body class='<%= @current_user.present? ? "logged_in" : "logged_out" %>'>
+    <header>
+      <nav class="main-nav">
+        <ul>
+          <%== nav_menu %>
+        </ul>
+      </nav>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <footer> 
+      <p class="credit">Made by TJ, May, Amy and Julia</p> 
+      <ul class="support">
+        <li>Privacy Policy</li>
+        <li>Terms of Service</li>
+        <li>User Support</li>
+      </ul>
+    </footer>
+    <%= render :partial => 'layouts/handlebars_layouts' %>
+  </body>
 </html>

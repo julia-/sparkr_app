@@ -16,7 +16,7 @@ module ApplicationHelper
     elsif @current_user.present? && @curent_user.is_admin?
       links += "<li>#{ link_to('All users', root_path) }</li></div>"
     else 
-      "<a href='#{root_path}'><i class='fa fa-bolt'></i></a>"
+      "<a href='#{root_path}'><i class='fa fa-bolt fa-2x sparkr-logo'></i></a>"
     end
   end
 end

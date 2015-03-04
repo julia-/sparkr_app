@@ -1,25 +1,25 @@
-<!-- Message to confirm user has successfully signed up via username and password -->
-<% flash.each do |message_type, message| %>
-  <div class="alert alert-<%= message_type %>">
-    <%= message %>
-  </div>
-<% end %>
-
-<!-- Sign in/out link for Facebook authentication -->
-<div id="user_nav">
-  <% if @current_user %>
-    Signed in as <strong><%= @current_user.name %></strong>!
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
-  <% else %>
-    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-  <% end %>
-</div>
-
 <% if @current_user.present? %>
-
+  <!-- Message to confirm user has successfully signed up via username and password -->
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>">
+      <%= message %>
+    </div>
+  <% end %>
 <% else %>
-  <h2>Already a member?</h2>
-  <%= render :partial => 'session/new_session_form' %>
-  <h2>New user? Sign up</h2>
-  <%= render :partial => 'users/new_user_form' %>
+  <div class="content-container">
+    <!-- Sign up for for username/password - not connected to Facebook -->
+    <div class="signup-container">
+      <h2>New user? Sign up</h2>
+      <%= render :partial => 'users/new_user_form' %>
+    </div>
+    <!-- Sign in/out link for username/password and Facebook authentication -->
+    <div class="signin-container">
+      <h2>Already a member?</h2>
+      <%= render :partial => 'session/new_session_form' %>
+      <%= link_to "/auth/facebook", title: "Log in with Facebook", id: "sign_in", class: "btn-fb-signin" do %>
+        <%= image_tag 'FB-f-Logo__blue_29.png', class: "btn-fb-logo" %>
+        <p class="btn-fb-text">Sign in with <strong>Facebook</strong></p>
+      <% end %>
+    </div>   
+  </div> 
 <% end %>
