@@ -184,10 +184,10 @@ var sparkrApp = {
       var momentOnShow = sparkrApp.momentUsers[userIndex].moments[momentIndex].content.large.url
       sparkrApp.moment_id = sparkrApp.momentUsers[userIndex].moments[momentIndex].id;
       $('#user_moment').empty();
-      var $u = $('<p/>').text = userOnShow;
-      var $m = $('<img/>').attr('src', momentOnShow);
-      $('#user_moment').append($u);
+      var $m = $('<img/>').attr('src', momentOnShow).addClass('moment-image-discover');
+      var $u = $('<div>').addClass('moment-name-discover').text(userOnShow);
       $('#user_moment').append($m);
+      $('#user_moment').append($u);
     } else {
       console.log("You have seen all the users' moments.");
       sparkrApp.userIndex = 0;

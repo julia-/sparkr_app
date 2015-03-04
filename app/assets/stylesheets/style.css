@@ -1,4 +1,5 @@
 @import url("http://fonts.googleapis.com/css?family=Roboto");
+@import url("http://fonts.googleapis.com/css?family=Permanent+Marker|Roboto:500,900,300,700,400");
 
 * {
   margin: 0 auto;
@@ -249,3 +250,50 @@ footer {
 .edit-form {
   margin: 1.5em auto;
 }
+
+/*begin discover view styles */
+
+#not_like, #like {
+  background-color: #F5A503;
+  border: 1px solid #F5A503;
+  color: #F5F2E9;
+  margin-top: 0.5em;
+  padding: 0.5em;
+  text-transform: uppercase;
+  font-weight: 600;
+  width: 75px;
+  height: 75px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin: 30px 10px;
+}
+
+#not_like:hover, #like:hover {
+  background-color: #36B1BF;
+  border: 1px solid #36B1BF;
+  color: #F5F2E9;
+}
+
+#user_moment {
+  width: 550px;
+  height: 600px;
+  padding: 0.7em 0.7em 0.5em 0.7em;
+  background-color: #F5F2E9 ;
+  -webkit-box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
+  -moz-box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
+  box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
+}
+
+.moment-image-discover {
+  
+}
+
+.moment-name-discover {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 40px;
+  margin-top: 20px;
+}
+
+/*end discover view styles */
+
+
