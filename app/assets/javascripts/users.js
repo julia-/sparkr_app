@@ -24,9 +24,7 @@ var sparkrApp = {
       profileDropzone = new Dropzone("#profile-dropzone");
       profileDropzone.on("success", function(file, responseText) {
         var imageUrl;
-        console.log(responseText);
         imageUrl = responseText.profile_pic.url;
-        console.log(imageUrl);
         sparkrApp.showUser();
         profileDropzone.removeAllFiles();
       });
@@ -36,7 +34,6 @@ var sparkrApp = {
 
       maxFiles: 3,
       accept: function(file, done) {
-        console.log("uploaded");
         done();
       },
       init: function() {
@@ -45,13 +42,11 @@ var sparkrApp = {
         });
       }
     };
-    console.log( $("#media-dropzone").length )
     if ( $("#media-dropzone").length != 0 ) {
       var mediaDropzone;
       mediaDropzone = new Dropzone("#media-dropzone");
       mediaDropzone.on("success", function(file, responseText) {
         var imageUrl;
-        console.log(responseText);
         imageUrl = responseText.content.url;
         sparkrApp.showUser();
         mediaDropzone.removeAllFiles();
@@ -97,7 +92,8 @@ var sparkrApp = {
           }
         }).done(function (result) {
           if (result.spark === true){
-            alert('You have a match with '+ result.user.name);
+            var $div = $("<div class='got_a_match'/>").text('You have a match with '+ result.user.name);
+            $('.container').append($div);
           }  
           if (sparkrApp.momentIndex == 2) {
             sparkrApp.momentIndex = 0;
