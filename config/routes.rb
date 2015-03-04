@@ -13,7 +13,6 @@ Rails.application.routes.draw do
 
   get '/login' => 'session#new'
   post '/login' => 'session#create'
-  get '/messages' => 'pages#messaging_index'
 
   resources :conversations do
     resources :messages
