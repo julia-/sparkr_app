@@ -65,12 +65,12 @@ var sparkrApp = {
       sparkrApp.loadUsers();
     }
 
-    if ( $("#current_userTemplate").length != 0) {
+    if ( $("#current_userTemplate").length != 0 && $('.logged_in').length > 0) {
       sparkrApp.currentUserHTML = Handlebars.compile( $('#current_userTemplate').html() );
       sparkrApp.showUser();
     }
 
-    if ( $("#matchTemplate").length != 0 ) {
+    if ( $("#matchTemplate").length != 0 && $('.logged_in').length > 0 ) {
       sparkrApp.matchesHTML = Handlebars.compile( $('#matchTemplate').html() );
       sparkrApp.loadMatches();
     }
@@ -129,7 +129,9 @@ var sparkrApp = {
   },
 
   showUser: function() {
-    $.getJSON('/users/:id').success(function(user){
+    var userid = $('meta[name="user-id"]').attr('content');
+    $.getJSON('/users/' + userid).success(function(user){
+      // debugger;
       $('#current_user').empty();
       var li = sparkrApp.currentUserHTML(user);
       $('#current_user').append(li);
@@ -141,19 +143,21 @@ var sparkrApp = {
 
   renderCurrentUserMoments: function() { 
     $('#current_user_moments').empty();
-    var start = sparkrApp.current_user_moments.length - 3;
-    if (start < 0) {
-      start = 0;
+    var end = 3;
+    if (sparkrApp.current_user_moments.length < 3){
+      end = sparkrApp.current_user_moments.length;
     }
-    for (var i = start; i < sparkrApp.current_user_moments.length; i++) {
+    for (var i = 0; i < end; i++) {
       var moment = sparkrApp.current_user_moments[i];
       var li = sparkrApp.momentHTML(moment);  
-      $('#current_user_moments').prepend(li);
+      $('#current_user_moments').append(li);
+
     };
   },
 
   loadMatches: function() {
-   $.getJSON('/users/:id/match').done(function(result) {
+    var userid = $('meta[name="user-id"]').attr('content');
+    $.getJSON('/users/' + userid + '/match').done(function(result) {
       sparkrApp.matches = result;
       sparkrApp.renderMatches(); 
   });
