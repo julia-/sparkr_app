@@ -12,11 +12,20 @@
 </script>
 
 <script type="x-handlebars-template" id="matchTemplate">
-  <li data-match-id="{{ id }}">
-    <span id="match_username">Username: {{ username }} </span>
+  <div class="match-box" data-match-id="{{ id }}">
     <img id="match_userprofile_pic" src="{{ profile_pic.medium.url }}"></img>
-    <a data-match-id="{{ id }}" href="#">Fire Works</a>
-  </li>     
+
+    <div class="match-content">
+      <span id="match_name">{{ name }}, </span>
+      <span id="match_age">{{ dob }}</span>
+      <span id="match_date">Matched on: {{ created_at }}</span>
+    </div>
+    <a class="match-btn match-profile-btn" href="#">Profile<a>
+    <a class="match-btn match-message-btn" href="#">Message<a>
+    <a class="match-btn match-fireworks-btn" data-match-id="{{ id }}" href="#">Fireworks</a>
+    <div class="got_a_firework"></div>
+    <div class="start_a_firework"></div>
+  </div>     
 </script>
 
 <script type="x-handlebars-template" id="current_userTemplate">
