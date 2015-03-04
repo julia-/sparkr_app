@@ -1,4 +1,4 @@
-<h3><%= flash[:error] if flash[:error].present? %></h3>
+<div class="error"><%= flash[:error] if flash[:error].present? %></div>
 <%= form_tag login_path do %>
   <div class="form-group">
     <%= label_tag :username %>

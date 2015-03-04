@@ -69,7 +69,9 @@ select {
   line-height: 150%;
   display: inline-block;
 }
-
+.error {
+  color: #F2385A;
+}
 /* Header & Navigation */
 header {
   max-width: 100%;
