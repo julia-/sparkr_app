@@ -1,11 +1,12 @@
 var userChatReady = function () {
-
+    console.log('user chat ready')
     /**
      * When the send message link on our home page is clicked
      * send an ajax request to our rails app with the sender_id and
      * recipient_id
      */
-    $('.start-conversation').click(function (e) {
+    $('.container').on('click', '.start-conversation', function (e) {
+        console.log('you clicked');
         e.preventDefault();
 
         var sender_id = $(this).data('sid');
@@ -64,5 +65,6 @@ var userChatReady = function () {
 
 
 }
+
 $(document).ready(userChatReady);
 $(document).on("page:load", userChatReady);

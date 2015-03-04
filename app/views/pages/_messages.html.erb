@@ -1,5 +1,5 @@
 <div class="messages-container">
-    <% @users.each_with_index do |user, index| %>
+    <% @current_user.matches.each_with_index do |user, index| %>
       <tr>
         <td><%= index +=1 %></td>
         <td><%= user.name %></td>
