@@ -25,6 +25,8 @@ gem 'thin'
 gem 'dropzonejs-rails'
 gem 'normalize-rails'
 gem 'geocoder'
+gem 'rails_12factor', group: :production
+
 
 group :development do
   gem 'pry-rails'
