@@ -25,4 +25,6 @@ Rails.application.routes.draw do
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'session#destroy', as: 'signout', via: [:get, :post]
   
+  post '/users/update_profile_pic' => 'users#update_profile_pic'
+
 end
