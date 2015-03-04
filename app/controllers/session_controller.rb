@@ -5,11 +5,11 @@ class SessionController < ApplicationController
   def create
     # user = User.find_by :username => params[:username] || User.from_omniauth(env["omniauth.auth"]
     user = User.find_by :username => params[:username]
-    if user.present?
+    if user.present? && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to root_path
     else
-      flash[:error] = "Invalid login or password"
+      flash[:error] = "Oops! Wrong username or password"
       redirect_to root_path
     end
   end

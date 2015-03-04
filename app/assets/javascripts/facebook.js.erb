@@ -18,7 +18,8 @@
       e.preventDefault();
       return FB.login(function(response) {
         if (response.authResponse) {
-          return window.location = '/auth/facebook/callback?' + $.param({signed_request: response.authResponse.signedRequest});
+          // DO NOT ADD CURLY BRACKETS TO SIGNED_REQUEST - THIS REMORES THE ':' ERROR BUT BREAKS THE SIGN IN
+          return window.location = '/auth/facebook/callback?' + $.param(signed_request: response.authResponse.signedRequest);
         }
       });
     });
