@@ -92,7 +92,8 @@ var sparkrApp = {
           }
         }).done(function (result) {
           if (result.spark === true){
-            alert('You have a match with '+ result.user.name);
+            var $div = $("<div class='got_a_match'/>").text('You have a match with '+ result.user.name);
+            $('.container').append($div);
           }  
           if (sparkrApp.momentIndex == 2) {
             sparkrApp.momentIndex = 0;
