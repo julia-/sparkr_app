@@ -11,6 +11,10 @@
   <% end %>
   <%= form_for @user do |f| %>
     <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, :autofocus => true, :required => true, :placeholder => 'Name'%>
+    </div>
+    <div class="form-group">
       <%= f.label :username %>
       <%= f.text_field :username, :required => true, :placeholder => 'Username' %>
     </div>

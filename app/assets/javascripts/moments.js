@@ -13,10 +13,11 @@ var deleteMoment = function (event){
    }).done(function(){
      $moment.remove()
    });
+   event.preventDefault();
  };
 
 $(document).ready(function(){
 
-  $('.moments-container').on('click', '.delete', deleteMoment); 
+  $('.container').on('click', '.delete', deleteMoment); 
 
 });

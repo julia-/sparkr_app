@@ -9,6 +9,7 @@ class MomentsController < ApplicationController
     @current_user = User.find_by :id => session[:user_id]
 
     @moment = @current_user.moments.create(content: params[:file])
+    puts "CREATING MOMENT !!!!!!!!!!!!!!!!!!"
     if @moment.save!
       respond_to do |format|
         format.json{ render :json => @moment }
