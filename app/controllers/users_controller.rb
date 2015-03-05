@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   def match
     matches = @current_user.matches
-    render json:matches
+    render :json => matches, :methods => :age
   end
 
   def momentshow
