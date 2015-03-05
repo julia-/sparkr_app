@@ -27,11 +27,13 @@ a {
   color: #F5F2E9;
   text-decoration: none;
 }
-
+.main-container {
+  min-height: 100%;
+  position: relative;
+}
 .container {
   width: 85%;
   min-height:100%;
-  position:relative;
   margin: 0 auto;
   padding-bottom: 80px;
 }
@@ -57,7 +59,7 @@ a {
 }
 
 .content-container h2,
-.help-container h2 {
+.help-container > h2 {
   text-align: left;
   background-color: #36B1BF;
   padding: 1em;
@@ -66,8 +68,8 @@ a {
   color: #FFF6E5;
 }
 
-.content-container > h3 
-.help-container > h3 {
+.content-container h3, 
+.help-container h3 {
   text-align: left;
   margin: 1.5em 2em;
   padding-bottom: 0.5em;
