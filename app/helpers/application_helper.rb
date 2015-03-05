@@ -24,7 +24,9 @@ module ApplicationHelper
     if @current_user.present?
       links += 
         "
-
+        <li class='nav-profile'>
+         #{ link_to(root_path(:type => 'profile'), title: @current_user.name, :remote => true) do fa_icon('user', text: (@current_user.name + ' '), right: true) end }
+        </li>
         <li>
           #{ link_to(logout_path, title: 'Sign Out ', :method => :delete) do fa_icon('sign-out', text: 'Sign out ', right: true) end }
         </li>
