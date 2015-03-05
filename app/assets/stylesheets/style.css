@@ -472,7 +472,7 @@ footer {
   box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
 /*  width: 50%;
   margin-bottom: 30px;*/
-  padding: 5em 4em;
+  padding: 2em 5em;
   text-align: left;
   margin: 0 auto;
 }
@@ -515,10 +515,6 @@ footer {
 }
 #match_date{
   display: block;
-}
-
-#match_name {
-  font-weight: 700;
 }
 
 /*end show matches styling*/
