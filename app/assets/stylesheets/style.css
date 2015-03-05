@@ -473,6 +473,15 @@ footer {
   margin: 0 auto;
 }
 
+.matches-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: #fff;
+  margin: 2em auto;
+  padding: 0 0 2em 0;
+  border-radius: 3px;
+}
 #match_userprofile_pic {
   display: inline-block;
 }
@@ -484,10 +493,6 @@ footer {
   vertical-align: top;
 /*  text-align: left;*/
 }
-
-/*.match-btn-container {
-  padding-left: 3em;
-}*/
 
 .match-btn {
   display: inline-block;
