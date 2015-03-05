@@ -11,6 +11,8 @@
   </li>
 </script>
 
+
+
 <script type="x-handlebars-template" id="matchTemplate">
   <div class="match-box" data-match-id="{{ id }}">
     <h3 id="match_name">{{ name }}</h3>
@@ -19,6 +21,8 @@
       <span id="match_age"> {{ dob }}</span>
       <span> {{ location }}</span>
       <span id="match_date">Matched on {{ created_at }}</span>
+      <div id="{{ id }}-got_a_firework"></div>
+      <div id="{{ id }}-start_a_firework"></div>
     </div>
     <div class="match-btn-container">
       <a class="match-btn match-profile-btn" href="#">Profile<a>
