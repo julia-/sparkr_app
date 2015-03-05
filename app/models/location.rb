@@ -11,8 +11,8 @@
 #
 
 class Location < ActiveRecord::Base
-  attr_accessor :address, :latitude, :longitude
+  attr_accessible :address, :latitude, :longitude
   geocoded_by :address
-  after_validation :geocode, :if => lambda{ |obj| obj.address_changed? }
+  after_validation :geocode, :if => address_changed?
 
 end

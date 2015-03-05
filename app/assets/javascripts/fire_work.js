@@ -1,7 +1,7 @@
 fireWorks = function () {
   $('.container').on('click', 'a.fire_work', function(event) {
+    debugger;
     event.preventDefault();
-      debugger;
     var match_id = $(this).data('match-id');
     $.ajax('/fireworks', {
       type: 'POST',

@@ -194,12 +194,12 @@ var sparkrApp = {
       var $u = $('<div>').addClass('moment-name-discover').text(userOnShow);
       $('#user_moment').append($m);
       $('#user_moment').append($u);
-    } else {
+    } else if (userIndex === sparkrApp.momentUsers.length) {
       console.log("You have seen all the users' moments.");
       sparkrApp.userIndex = 0;
       sparkrApp.momentIndex = 0;
       sparkrApp.loadMomentUsers();
-    };
+    } else {};
   }
 
 };
