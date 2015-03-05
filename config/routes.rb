@@ -4,11 +4,10 @@ Rails.application.routes.draw do
 
   root :to => 'pages#home'
 
-<<<<<<< HEAD
+
   get '/users/momentshow' => 'users#momentshow', as: :momentshow
   resources :users
-=======
-  resources :users
+
   
   get '/login' => 'session#new'
   post '/login' => 'session#create'
@@ -19,13 +18,13 @@ Rails.application.routes.draw do
   match 'signout', to: 'session#destroy', as: 'signout', via: [:get, :post]
   
   resources :locations
->>>>>>> 61162ea01290d17b84eb40b8fefa87ccaadfce73
+
   resources :moments
   resources :likes, only: [:create]
 
   get '/users/:id/match' => 'users#match', as: :match
 
-<<<<<<< HEAD
+
   get '/login' => 'session#new'
   post '/login' => 'session#create'
   get '/messages' => 'pages#messaging_index'
@@ -42,6 +41,5 @@ Rails.application.routes.draw do
   
   post '/users/update_profile_pic' => 'users#update_profile_pic'
 
-=======
->>>>>>> 61162ea01290d17b84eb40b8fefa87ccaadfce73
+
 end
