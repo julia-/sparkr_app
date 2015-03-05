@@ -87,8 +87,10 @@ var sparkrApp = {
         event.preventDefault();
         $('#user_moment').addClass('skip-left');
         setTimeout(function(){
+          sparkrApp.momentIndex = 0;
+          var usersIdx = (++sparkrApp.userIndex)%sparkrApp.momentUsers.length;
           $('#user_moment').removeClass('skip-left');
-          sparkrApp.showMoments(sparkrApp.userIndex += 1, sparkrApp.momentIndex);
+          sparkrApp.showMoments(usersIdx, sparkrApp.momentIndex);
         }, 1000);
       });
 
@@ -112,9 +114,11 @@ var sparkrApp = {
             }  
             if (sparkrApp.momentIndex == 2) {
               sparkrApp.momentIndex = 0;
-              sparkrApp.showMoments(sparkrApp.userIndex += 1, sparkrApp.momentIndex);
+              var usersIdx = (++sparkrApp.userIndex)%sparkrApp.momentUsers.length;
+              sparkrApp.showMoments(usersIdx, sparkrApp.momentIndex);
             } else {
-              sparkrApp.showMoments(sparkrApp.userIndex, sparkrApp.momentIndex +=1);
+              var usersIdx = (sparkrApp.userIndex)%sparkrApp.momentUsers.length;
+              sparkrApp.showMoments(usersIdx, sparkrApp.momentIndex +=1);
             }
           });
         }, 1000);
@@ -143,7 +147,6 @@ var sparkrApp = {
   showUser: function() {
     var userid = $('meta[name="user-id"]').attr('content');
     $.getJSON('/users/' + userid).success(function(user){
-      // debugger;
       $('#current_user').empty();
       var li = sparkrApp.currentUserHTML(user);
       $('#current_user').append(li);
@@ -186,34 +189,22 @@ var sparkrApp = {
 
   loadMomentUsers: function() {
     $.getJSON('/users/momentshow').done(function(result) {
-      // debugger;
       sparkrApp.momentUsers = result;
       sparkrApp.showMoments(0,0);
     });
 
   },
 
-
-  showMoments: function(userIndex, momentIndex) {  
-    if (userIndex < sparkrApp.momentUsers.length) {
-      var userOnShow = sparkrApp.momentUsers[userIndex].name;
-      sparkrApp.user_id = sparkrApp.momentUsers[userIndex].id;
-      // debugger;
-      var momentOnShow = sparkrApp.momentUsers[userIndex].moments[momentIndex].content.large.url
-      sparkrApp.moment_id = sparkrApp.momentUsers[userIndex].moments[momentIndex].id;
-      $('#user_moment').empty();
-      var $m = $('<img>').attr('src', momentOnShow).addClass('moment-image-discover');
-      var $u = $('<div>').addClass('moment-name-discover').text(userOnShow);
-      $('#user_moment').append($m);
-      $('#user_moment').append($u);
-    } else if (userIndex === sparkrApp.momentUsers.length) {
-      console.log("You have seen all the users' moments.");
-      sparkrApp.userIndex = 0;
-      sparkrApp.momentIndex = 0;
-      setTimeout(function(){
-        sparkrApp.loadMomentUsers();
-      }, 20000);
-    };
+  showMoments: function(userIndex, momentIndex) {
+    var currentUser = sparkrApp.momentUsers[userIndex];
+    var userOnShow = currentUser.name;
+    sparkrApp.user_id = currentUser.id;
+    var momentOnShow = currentUser.moments[momentIndex].content.large.url
+    sparkrApp.moment_id = currentUser.moments[momentIndex].id;
+    $('#user_moment').empty();
+    var $m = $('<img>').attr('src', momentOnShow).addClass('moment-image-discover');
+    var $u = $('<div>').addClass('moment-name-discover').text(userOnShow);
+    $('#user_moment').append($m).append($u);
   }
 
 };
