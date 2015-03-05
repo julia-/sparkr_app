@@ -80,7 +80,7 @@ var sparkrApp = {
       sparkrApp.loadMomentUsers();
     }
 
-    // if ( sparkrApp.compiled < 2 ) {
+    if ( sparkrApp.compiled < 2 ) {
       $('#not_like').on('click', function (event) {
         event.preventDefault();
         $('#user_moment').addClass('skip-left');
@@ -127,7 +127,7 @@ var sparkrApp = {
         }, 1000);
       });
       sparkrApp.compiled++;
-    // }
+    }
 
   },
 
