@@ -28,6 +28,9 @@ a {
   text-decoration: none;
 }
 
+ul {
+  margin: 0;
+}
 .main-container {
   min-height: 100%;
   position: relative;
@@ -98,7 +101,6 @@ label {
   color: #F5A503;
   font-weight: 700;
   border-bottom: 1px solid #F5A503;
-  padding-left: 2em;
 }
 
 input, textarea {
@@ -247,7 +249,7 @@ footer {
 
 .support {
   display: inline-block;
-  width: 27%;
+  width: 20%;
   list-style-type: none;
   right: 0;
   padding-top: 2em;
@@ -295,7 +297,7 @@ footer {
 .signin-container input,
 .signup-container input {
   display: inline-block;
-  width: 100%;
+  width: 300px;
   background-color: #F5F2E9;
   margin: 0.2em auto;
   padding: 0.4em;
@@ -312,6 +314,7 @@ footer {
   color: #F5F2E9;
   margin-top: 0.5em;
   padding: 0.5em;
+  width: 316px;
 }
 
 .signin-container input[type="submit"]:hover,
@@ -425,8 +428,8 @@ footer {
 
 #user_moment {
   width: 550px;
-  height: 600px;
-  padding: 0.7em 0.7em 0.5em 0.7em;
+  height: 100%;
+  padding: 1.5em 0.7em 2em 0.7em;
   background-color: #F5F2E9;
   margin: 0 auto;
 /*  transition:all linear 2s;*/
@@ -446,13 +449,13 @@ footer {
 }
 
 .skip-left {
-   transform: translateX(-1000px) rotate(-50deg);
-   transition:all linear 1s;
+   transform: translateX(-1800px) rotate(-75deg);
+   transition:all linear .5s;
 }
 
 .skip-right {
-   transform: translateX(1000px) rotate(50deg);
-   transition:all linear 1s;
+  transform: translateX(1800px) rotate(75deg);
+  transition:all linear .5s;
 }
 
 /*end discover view styles */
@@ -515,37 +518,43 @@ footer {
 
 /*end show matches styling*/
 
-
-
 /* View Profile*/
 
 .profile p {
   margin: 0.5em 3em;
   font-size: 20px;
 }
+
 .profile-details {
   display: inline-block;
   width: 50%;
   vertical-align: top;
-  padding-top: 1.5em;
+  padding-top: 1.8em;
+  margin-bottom: 1.5em;
 }
+
 .profile-label {
   font-weight: 700;
   text-transform: uppercase;
+  border-bottom: 2px solid #000;
+  margin-right: 0.3em;
 }
-.profile-photo{
+
+.profile-photo {
   display: inline-block;
   width: 45%;
   vertical-align: top;
-  padding-top: 1.5em;
+  padding-top: 2em;
 }
+
 .about-profile {
   width: 80%;
   margin-left: 2em;
 }
+
 .profile img {
   display: inline-block;
-  margin: 1em 0.3em;
+  margin: 4em 0.3em;
   padding: 0.7em 0.7em 3em 0.7em;
   background-color: #F5F2E9;
   -webkit-box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
@@ -556,5 +565,4 @@ footer {
 .start-conversation{
   color: #000;
 }
-
 
