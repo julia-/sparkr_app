@@ -592,7 +592,7 @@ footer {
 
 .chatboxhead {
   background-color: #F2385A;
-  color: #FFE0A2;
+  color: #F5F2E9;
   padding: 0.5rem;
   overflow: hidden;
   border-right: 1px solid #F2385A;
@@ -600,6 +600,6 @@ footer {
 }
 
 .chatboxcontent {
-  background-color: #FFE0A2;
+  background-color: #F5F2E9;
 }
 
