@@ -33,7 +33,7 @@ module SparkrApp
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-    config.middleware.delete Rack::Lock
-    config.middleware.use Faye::RackAdapter, mount: '/faye', :timeout => 25
+    # config.middleware.delete Rack::Lock
+    # config.middleware.use Faye::RackAdapter, mount: '/faye', :timeout => 25
   end
 end
