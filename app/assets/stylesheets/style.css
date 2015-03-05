@@ -570,7 +570,7 @@ footer {
 }
 
 .chatbox {
-  bottom: 80px;
+  bottom: 80px !important;
   overflow: hidden;
 }
 
@@ -584,8 +584,6 @@ footer {
 }
 
 .chatboxcontent {
-  border-left: 1px solid rgb(245, 165, 3);
-  border-right: 1px solid rgb(245, 165, 3);
-  background: rgb(245, 242, 233);
+  background: #FFE0A2;
 }
 
