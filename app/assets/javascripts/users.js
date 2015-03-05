@@ -205,3 +205,28 @@ $(document).ready(function(){
     Dropzone.autoDiscover = false;
     sparkrApp.addDropZones();
 });
+
+
+ Handlebars.registerHelper('dateFormat', function(date, type) {
+    var d = new Date(date*1000);
+    if (d != null) {
+      switch (type)
+      {
+      case "shortDate":
+        d = d.strftime('%d/%m/%Y');
+        break;
+      case "mediumDate":
+        d = d.toUTCString();
+        break;
+      case "longDate":
+        d = d.strftime('%B %d, %Y')
+        break;
+      case "fullDate":
+        d = d.strftime('%A, %B %d, %Y')
+        break;
+      default:
+        d = d.strftime('%d/%m/%Y %H:%M');
+      }
+    }
+    return d;
+  });
