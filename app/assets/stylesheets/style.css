@@ -98,7 +98,6 @@ label {
   color: #F5A503;
   font-weight: 700;
   border-bottom: 1px solid #F5A503;
-  padding-left: 2em;
 }
 
 input, textarea {
@@ -515,8 +514,6 @@ footer {
 
 /*end show matches styling*/
 
-
-
 /* View Profile*/
 
 .profile p {
@@ -527,17 +524,20 @@ footer {
   display: inline-block;
   width: 50%;
   vertical-align: top;
-  padding-top: 1.5em;
+  padding-top: 1.8em;
+  margin-bottom: 1.5em;
 }
 .profile-label {
   font-weight: 700;
   text-transform: uppercase;
+  border-bottom: 2px solid #000;
+  margin-right: 0.3em;
 }
-.profile-photo{
+.profile-photo {
   display: inline-block;
   width: 45%;
   vertical-align: top;
-  padding-top: 1.5em;
+  padding-top: 2em;
 }
 .about-profile {
   width: 80%;
@@ -545,12 +545,10 @@ footer {
 }
 .profile img {
   display: inline-block;
-  margin: 1em 0.3em;
+  margin: 4em 0.3em;
   padding: 0.7em 0.7em 3em 0.7em;
   background-color: #F5F2E9;
   -webkit-box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
   -moz-box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
   box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
 }
-
-

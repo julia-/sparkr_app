@@ -30,12 +30,15 @@
 
 <script type="x-handlebars-template" id="current_userTemplate">
   <div data-user-id="{{ id }}">
-    <h2 id="{{ current_username }}">{{ name }} 's profile</h2>
+    <h2>Profile</h2>
     <div class="profile-details">
+      <h3 id="{{ current_username }}">{{ name }}</h3>
       <p id="{{ current_userusername }}"><span class="profile-label">Username</span> {{ username }} </p>
-      <p id="{{ current_useremail }}"><span class="profile-label">Email</span> {{ email }} </p>
+      <p id="{{ current_userdob }}"><span class="profile-label">Date of Birth</span> {{ dob }} </p>
       <p id="{{ current_usergender }}"><span class="profile-label">Gender</span> {{ gender }} </p>
+      <p id="{{ current_usersexual_preference }}"><span class="profile-label">Preference</span> {{ sexual_preference }} </p>
       <p id="{{ current_userlocation }}"><span class="profile-label">Location</span> {{ location }} </p>
+      <p id="{{ current_useremail }}"><span class="profile-label">Email</span> {{ email }} </p>
     </div>
     <div class="profile-photo">
       <img id="{{ current_userprofile_pic }}" src="{{ profile_pic.large.url }}"></img>      
