@@ -91,13 +91,21 @@ var sparkrApp = {
           var usersIdx = (++sparkrApp.userIndex)%sparkrApp.momentUsers.length;
           $('#user_moment').removeClass('skip-left');
           sparkrApp.showMoments(usersIdx, sparkrApp.momentIndex);
-        }, 1000);
+        }, 500);
       });
 
       $('#like').on('click', function (event) {
         event.preventDefault();
         $('#user_moment').addClass('skip-right');
         setTimeout(function(){
+          if (sparkrApp.momentIndex == 2) {
+            sparkrApp.momentIndex = 0;
+            var usersIdx = (++sparkrApp.userIndex)%sparkrApp.momentUsers.length;
+            sparkrApp.showMoments(usersIdx, sparkrApp.momentIndex);
+          } else {
+            var usersIdx = (sparkrApp.userIndex)%sparkrApp.momentUsers.length;
+            sparkrApp.showMoments(usersIdx, sparkrApp.momentIndex +=1);
+          }
           $('#user_moment').removeClass('skip-right');
           $.ajax('/likes', {
             type: 'POST',
@@ -112,16 +120,8 @@ var sparkrApp = {
               var $div = $("<div class='got_a_match'/>").text('You have a match with '+ result.user.name);
               $('.container').append($div);
             }  
-            if (sparkrApp.momentIndex == 2) {
-              sparkrApp.momentIndex = 0;
-              var usersIdx = (++sparkrApp.userIndex)%sparkrApp.momentUsers.length;
-              sparkrApp.showMoments(usersIdx, sparkrApp.momentIndex);
-            } else {
-              var usersIdx = (sparkrApp.userIndex)%sparkrApp.momentUsers.length;
-              sparkrApp.showMoments(usersIdx, sparkrApp.momentIndex +=1);
-            }
           });
-        }, 1000);
+        }, 500);
       });
       sparkrApp.compiled++;
     }

@@ -445,13 +445,13 @@ footer {
 }
 
 .skip-left {
-   transform: translateX(-1000px) rotate(-50deg);
-   transition:all linear 1s;
+   transform: translateX(-1800px) rotate(-75deg);
+   transition:all linear .5s;
 }
 
 .skip-right {
-   transform: translateX(1000px) rotate(50deg);
-   transition:all linear 1s;
+  transform: translateX(1800px) rotate(75deg);
+  transition:all linear .5s;
 }
 
 /*end discover view styles */
