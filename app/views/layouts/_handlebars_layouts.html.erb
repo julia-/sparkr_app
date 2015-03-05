@@ -18,7 +18,7 @@
     <div class="match-content">
       <span id="match_name">{{ name }}, </span>
       <span id="match_age">{{ dob }}</span>
-      <span id="match_date">Matched on: {{ created_at }}</span>
+      <span id="match_date">Matched on: {{dateFormat created_at }}</span>
     </div>
     <a class="match-btn match-profile-btn" href="#">Profile<a>
     <a class="match-btn match-message-btn" href="#">Message<a>
@@ -29,13 +29,20 @@
 </script>
 
 <script type="x-handlebars-template" id="current_userTemplate">
-  <li data-user-id="{{ id }}">
-    <span id="{{ current_username }}">Name: {{ name }} </span>
-    <span id="{{ current_userusername }}">Username: {{ username }} </span>
-    <span id="{{ current_useremail }}">Email: {{ email }} </span>
-    <span id="{{ current_userdescription }}">About: {{ description }} </span>
-    <span id="{{ current_usergender }}">Gender: {{ gender }} </span>
-    <span id="{{ current_userlocation }}">Location: {{ location }} </span>
-    <img id="{{ current_userprofile_pic }}" src="{{ profile_pic.medium.url }}"></img>
-  </li>   
+  <div data-user-id="{{ id }}">
+    <h2 id="{{ current_username }}">{{ name }} 's profile</h2>
+    <div class="profile-details">
+      <p id="{{ current_userusername }}"><span class="profile-label">Username</span> {{ username }} </p>
+      <p id="{{ current_useremail }}"><span class="profile-label">Email</span> {{ email }} </p>
+      <p id="{{ current_usergender }}"><span class="profile-label">Gender</span> {{ gender }} </p>
+      <p id="{{ current_userlocation }}"><span class="profile-label">Location</span> {{ location }} </p>
+    </div>
+    <div class="profile-photo">
+      <img id="{{ current_userprofile_pic }}" src="{{ profile_pic.large.url }}"></img>      
+    </div>
+    <div class="profile-about">
+      <h3>About</h3>
+      <p id="{{ current_userdescription }}" class="about-profile"> {{ description }} </p>
+    </div>
+  </div>   
 </script>
