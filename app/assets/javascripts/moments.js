@@ -11,7 +11,7 @@ var deleteMoment = function (event){
        _method: 'DELETE'
      }
    }).done(function(){
-     $moment.remove()
+     $moment.remove();
    });
    event.preventDefault();
  };
