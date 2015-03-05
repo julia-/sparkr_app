@@ -207,26 +207,26 @@ $(document).ready(function(){
 });
 
 
- Handlebars.registerHelper('dateFormat', function(date) {
-    var date;
-    if (d != null) {
-      switch (date)
-      {
-      case "shortDate":
-        d = d.strftime('%d/%m/%Y');
-        break;
-      case "mediumDate":
-        d = d.toUTCString();
-        break;
-      case "longDate":
-        d = d.strftime('%B %d, %Y')
-        break;
-      case "fullDate":
-        d = d.strftime('%A, %B %d, %Y')
-        break;
-      default:
-        d = d.strftime('%d/%m/%Y %H:%M');
-      }
-    }
-    return d;
-  });
+ // Handlebars.registerHelper('dateFormat', function(date) {
+ //    var date;
+ //    if (d != null) {
+ //      switch (date)
+ //      {
+ //      case "shortDate":
+ //        d = d.strftime('%d/%m/%Y');
+ //        break;
+ //      case "mediumDate":
+ //        d = d.toUTCString();
+ //        break;
+ //      case "longDate":
+ //        d = d.strftime('%B %d, %Y')
+ //        break;
+ //      case "fullDate":
+ //        d = d.strftime('%A, %B %d, %Y')
+ //        break;
+ //      default:
+ //        d = d.strftime('%d/%m/%Y %H:%M');
+ //      }
+ //    }
+ //    return d;
+ //  });
