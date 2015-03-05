@@ -409,7 +409,8 @@ footer {
 
 /*begin discover view styles */
 
-#not_like, #like {
+#not_like,
+#like {
   background-color: #F5A503;
   border: 1px solid #F5A503;
   color: #F5F2E9;
@@ -503,7 +504,8 @@ footer {
 /*  text-align: left;*/
 }
 
-.match-btn {
+.match-btn,
+.start-conversation {
   display: inline-block;
   background-color: #F5A503;
   width: 170px;
@@ -518,7 +520,8 @@ footer {
   text-align: center;
 }
 
-.match-btn:hover {
+.match-btn:hover,
+.start-conversation:hover {
   background-color: #36B1BF;
   border: 1px solid #36B1BF;
   color: #F5F2E9;
@@ -528,7 +531,10 @@ footer {
 }
 
 /*end show matches styling*/
-
+.message-thread {
+  margin: 1em 2em;
+  border-bottom: 2px solid #000;
+}
 /* View Profile*/
 
 .profile p {
