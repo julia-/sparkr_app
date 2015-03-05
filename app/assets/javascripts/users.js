@@ -85,33 +85,39 @@ var sparkrApp = {
     if ( sparkrApp.compiled < 2 ) {
       $('#not_like').on('click', function (event) {
         event.preventDefault();
-        console.log('testing skip');
-        // $('#user_moment').addClass('skipped');
-        sparkrApp.showMoments(sparkrApp.userIndex += 1, sparkrApp.momentIndex);
+        $('#user_moment').addClass('skip-left');
+        setTimeout(function(){
+          $('#user_moment').removeClass('skip-left');
+          sparkrApp.showMoments(sparkrApp.userIndex += 1, sparkrApp.momentIndex);
+        }, 1000);
       });
 
       $('#like').on('click', function (event) {
         event.preventDefault();
-        $.ajax('/likes', {
-          type: 'POST',
-          data: {
-            like: {
-              user_id: sparkrApp.user_id,
-              moment_id: sparkrApp.moment_id
+        $('#user_moment').addClass('skip-right');
+        setTimeout(function(){
+          $('#user_moment').removeClass('skip-right');
+          $.ajax('/likes', {
+            type: 'POST',
+            data: {
+              like: {
+                user_id: sparkrApp.user_id,
+                moment_id: sparkrApp.moment_id
+              }
             }
-          }
-        }).done(function (result) {
-          if (result.spark === true){
-            var $div = $("<div class='got_a_match'/>").text('You have a match with '+ result.user.name);
-            $('.container').append($div);
-          }  
-          if (sparkrApp.momentIndex == 2) {
-            sparkrApp.momentIndex = 0;
-            sparkrApp.showMoments(sparkrApp.userIndex += 1, sparkrApp.momentIndex);
-          } else {
-            sparkrApp.showMoments(sparkrApp.userIndex, sparkrApp.momentIndex +=1);
-          }
-        });
+          }).done(function (result) {
+            if (result.spark === true){
+              var $div = $("<div class='got_a_match'/>").text('You have a match with '+ result.user.name);
+              $('.container').append($div);
+            }  
+            if (sparkrApp.momentIndex == 2) {
+              sparkrApp.momentIndex = 0;
+              sparkrApp.showMoments(sparkrApp.userIndex += 1, sparkrApp.momentIndex);
+            } else {
+              sparkrApp.showMoments(sparkrApp.userIndex, sparkrApp.momentIndex +=1);
+            }
+          });
+        }, 1000);
       });
       sparkrApp.compiled++;
     }
@@ -192,11 +198,10 @@ var sparkrApp = {
     if (userIndex < sparkrApp.momentUsers.length) {
       var userOnShow = sparkrApp.momentUsers[userIndex].name;
       sparkrApp.user_id = sparkrApp.momentUsers[userIndex].id;
-      debugger;
+      // debugger;
       var momentOnShow = sparkrApp.momentUsers[userIndex].moments[momentIndex].content.large.url
       sparkrApp.moment_id = sparkrApp.momentUsers[userIndex].moments[momentIndex].id;
       $('#user_moment').empty();
-      // $('#user_moment').removeClass('skipped');
       var $m = $('<img>').attr('src', momentOnShow).addClass('moment-image-discover');
       var $u = $('<div>').addClass('moment-name-discover').text(userOnShow);
       $('#user_moment').append($m);
@@ -212,19 +217,6 @@ var sparkrApp = {
   }
 
 };
-
-
-// var skipMoments = function(){
-
-// $('#not_like').on('click', function(){
-
-//   this.addClass('skipped');
-//   // showMoments();
-
-// });
-
-// };
-
 
 $(document).ready(function(){
     Dropzone.autoDiscover = false;

@@ -422,7 +422,7 @@ footer {
   padding: 0.7em 0.7em 0.5em 0.7em;
   background-color: #F5F2E9;
   margin: 0 auto;
-  transition:all linear 2s;
+/*  transition:all linear 2s;*/
   -webkit-box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
   -moz-box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
   box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
@@ -438,9 +438,14 @@ footer {
   margin-top: 20px;
 }
 
-.skipped {
+.skip-left {
    transform: translateX(-1000px) rotate(-50deg);
-   opacity:0;
+   transition:all linear 1s;
+}
+
+.skip-right {
+   transform: translateX(1000px) rotate(50deg);
+   transition:all linear 1s;
 }
 
 /*end discover view styles */
