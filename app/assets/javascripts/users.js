@@ -87,10 +87,6 @@ var sparkrApp = {
         event.preventDefault();
         console.log('testing skip');
         // $('#user_moment').addClass('skipped');
-
-        // (function() {
-        //   $('#user_moment').removeClass('skipped');
-        // });
         sparkrApp.showMoments(sparkrApp.userIndex += 1, sparkrApp.momentIndex);
       });
 
@@ -196,9 +192,11 @@ var sparkrApp = {
     if (userIndex < sparkrApp.momentUsers.length) {
       var userOnShow = sparkrApp.momentUsers[userIndex].name;
       sparkrApp.user_id = sparkrApp.momentUsers[userIndex].id;
+      debugger;
       var momentOnShow = sparkrApp.momentUsers[userIndex].moments[momentIndex].content.large.url
       sparkrApp.moment_id = sparkrApp.momentUsers[userIndex].moments[momentIndex].id;
       $('#user_moment').empty();
+      // $('#user_moment').removeClass('skipped');
       var $m = $('<img>').attr('src', momentOnShow).addClass('moment-image-discover');
       var $u = $('<div>').addClass('moment-name-discover').text(userOnShow);
       $('#user_moment').append($m);
@@ -207,7 +205,6 @@ var sparkrApp = {
       console.log("You have seen all the users' moments.");
       sparkrApp.userIndex = 0;
       sparkrApp.momentIndex = 0;
-
       setTimeout(function(){
         sparkrApp.loadMomentUsers();
       }, 20000);
