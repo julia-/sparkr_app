@@ -3,8 +3,6 @@ var sparkrApp = {
   userIndex: 0,
   momentIndex: 0,
 
-  compiled: 0,
-
   addDropZones: function () {
     sparkrApp.handlebarsCompile();
     Dropzone.options.profileDropzone = {
@@ -80,50 +78,46 @@ var sparkrApp = {
       sparkrApp.loadMomentUsers();
     }
 
-    if ( sparkrApp.compiled < 2 ) {
-      $('#not_like').on('click', function (event) {
-        event.preventDefault();
-        $('#user_moment').addClass('skip-left');
-        setTimeout(function(){
+    $('#not_like').on('click', function (event) {
+      event.preventDefault();
+      $('#user_moment').addClass('skip-left');
+      setTimeout(function(){
+        sparkrApp.momentIndex = 0;
+        var usersIdx = (++sparkrApp.userIndex)%sparkrApp.momentUsers.length;
+        $('#user_moment').removeClass('skip-left');
+        sparkrApp.showMoments(usersIdx, sparkrApp.momentIndex);
+      }, 1000);
+    });
+
+    $('#like').on('click', function (event) {
+      event.preventDefault();
+      $('#user_moment').addClass('skip-right');
+      setTimeout(function(){
+        if (sparkrApp.momentIndex == 2) {
           sparkrApp.momentIndex = 0;
           var usersIdx = (++sparkrApp.userIndex)%sparkrApp.momentUsers.length;
-          $('#user_moment').removeClass('skip-left');
           sparkrApp.showMoments(usersIdx, sparkrApp.momentIndex);
-        }, 1000);
-      });
-
-      $('#like').on('click', function (event) {
-        event.preventDefault();
-        $('#user_moment').addClass('skip-right');
-        setTimeout(function(){
-          if (sparkrApp.momentIndex == 2) {
-            sparkrApp.momentIndex = 0;
-            var usersIdx = (++sparkrApp.userIndex)%sparkrApp.momentUsers.length;
-            sparkrApp.showMoments(usersIdx, sparkrApp.momentIndex);
-          } else {
-            var usersIdx = (sparkrApp.userIndex)%sparkrApp.momentUsers.length;
-            sparkrApp.showMoments(usersIdx, sparkrApp.momentIndex +=1);
-          }
-          $('#user_moment').removeClass('skip-right');
-          $.ajax('/likes', {
-            type: 'POST',
-            data: {
-              like: {
-                user_id: sparkrApp.user_id,
-                moment_id: sparkrApp.moment_id
-              }
+        } else {
+          var usersIdx = (sparkrApp.userIndex)%sparkrApp.momentUsers.length;
+          sparkrApp.showMoments(usersIdx, sparkrApp.momentIndex +=1);
+        }
+        $('#user_moment').removeClass('skip-right');
+        $.ajax('/likes', {
+          type: 'POST',
+          data: {
+            like: {
+              user_id: sparkrApp.user_id,
+              moment_id: sparkrApp.moment_id
             }
-          }).done(function (result) {
-            if (result.spark === true){
-              var $div = $("<div class='got_a_match'/>").text('You have a match with '+ result.user.name);
-              $('.container').append($div);
-            }  
-          });
-        }, 1000);
-      });
-      sparkrApp.compiled++;
-    }
-
+          }
+        }).done(function (result) {
+          if (result.spark === true){
+            var $div = $("<div class='got_a_match'/>").text('You have a match with '+ result.user.name);
+            $('.container').append($div);
+          }  
+        });
+      }, 1000);
+    });
   },
 
   loadUsers: function() {
