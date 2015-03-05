@@ -467,12 +467,7 @@ footer {
 
 .match-box {
   background-color: #F5F2E9;
-  -webkit-box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
-  -moz-box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
-  box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
-/*  width: 50%;
-  margin-bottom: 30px;*/
-  padding: 2em 5em;
+  padding: 2em 0em 2em 6em;
   text-align: left;
   margin: 0 auto;
 }
@@ -484,7 +479,7 @@ footer {
 .match-content{
   display: inline-block;
   font-size: 20px;
-  padding: 2em;
+  padding: 0.5em 2em;
   vertical-align: top;
 /*  text-align: left;*/
 }
@@ -496,9 +491,9 @@ footer {
 .match-btn {
   display: inline-block;
   background-color: #F5A503;
-  width: 160px;
-  margin-top: 10px;
-  margin-right: 0.5em;
+  width: 170px;
+  margin-top: 1.5em;
+  margin-right: 1.5em;
   padding: 0.5em;
   border: 1px solid #F5A503;
   border-radius: 3px;
