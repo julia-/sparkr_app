@@ -468,10 +468,11 @@ footer {
 /*show matches styling*/
 
 .match-box {
-  background-color: #F5F2E9;
-  padding: 2em 0em 2em 6em;
+  background-color: #fff;
+  padding: 2em;
   text-align: left;
   margin: 0 auto;
+  border-bottom: 2px solid #000;
 }
 
 .matches-container {
