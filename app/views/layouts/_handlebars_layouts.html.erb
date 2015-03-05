@@ -15,9 +15,9 @@
   <div class="match-box" data-match-id="{{ id }}">
     <img id="match_userprofile_pic" src="{{ profile_pic.medium.url }}"></img>
     <div class="match-content">
-      <span id="match_name">{{ name }}, </span>
-      <span id="match_age">{{ dob }}</span>
-      <span id="match_date">Matched on: {{ created_at }}</span>
+      <span id="match_name">{{ name }}</span>
+      <span id="match_age">, {{ dob }}</span>
+      <span id="match_date">Matched on {{ created_at }}</span>
     </div>
     <div class="match-btn-container">
       <a class="match-btn match-profile-btn" href="#">Profile<a>
