@@ -56,8 +56,6 @@ var sparkrApp = {
         mediaDropzone.removeAllFiles();
       }
 
-
-
       });
     }
   },
@@ -88,13 +86,9 @@ var sparkrApp = {
         $('#user_moment').addClass('skip-left');
         setTimeout(function(){
           $('#user_moment').removeClass('skip-left');
-// <<<<<<< HEAD
-//           sparkrApp.showMoments(sparkrApp.userIndex += 1, sparkrApp.momentIndex);
-//         }, 1000);
-// =======
-          sparkrApp.showMoments(usersIdx, sparkrApp.momentIndex);
-        }, 500);
-// >>>>>>> 6dd35f17befb0f25a19002816f29ffcdfa55e284
+
+          sparkrApp.showMoments(sparkrApp.userIndex += 1, sparkrApp.momentIndex);
+        }, 1000);
       });
 
       $('#like').on('click', function (event) {
@@ -130,7 +124,7 @@ var sparkrApp = {
               sparkrApp.showMoments(sparkrApp.userIndex, sparkrApp.momentIndex +=1);
             }
           });
-        }, 500);
+        }, 1000);
       });
       sparkrApp.compiled++;
     // }
