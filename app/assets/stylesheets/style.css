@@ -563,16 +563,29 @@ footer {
   box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
 }
 
+/*chat styles*/
+
 .start-conversation{
   color: #000;
 }
 
+.chatbox {
+  bottom: 80px;
+}
+
 .chatboxhead {
   background: rgb(245, 165, 3);
-  color: rgb(245, 242, 233);
+  color: #36B1BF;
   padding: 0.5rem;
   overflow: hidden;
   border-right: 1px solid rgb(245, 165, 3);
   border-left: 1px solid rgb(245, 165, 3);
+  overflow: hidden;
+}
+
+.chatboxcontent {
+  border-left: 1px solid rgb(245, 165, 3);
+  border-right: 1px solid rgb(245, 165, 3);
+  background: rgb(245, 242, 233);
 }
 
