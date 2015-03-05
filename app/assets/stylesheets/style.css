@@ -475,11 +475,12 @@ footer {
 /*  border-bottom: 2px solid #000;*/
 }
 .matches-container h3 {
-  text-align: left;
-  margin: 0em;
+  margin: 1.5em 0em;
   padding-bottom: 0em;
   border-bottom: 2px solid #000;
   text-transform: uppercase;
+  font-size: 24px;
+  text-align: left;
 }
 
 .matches-container {
