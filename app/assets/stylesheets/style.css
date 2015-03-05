@@ -411,11 +411,11 @@ footer {
 
 #not_like,
 #like {
-  width: 150px;
-  height: 75px;
+  width: 160px;
+  height: 70px;
   background-color: #F5A503;
   border: 1px solid #F5A503;
-  margin-top: 0.5em;
+  margin: 0.5em 0em 2em 0em;
   padding: 0.5em;
   color: #F5F2E9;
   text-transform: uppercase;
@@ -580,9 +580,9 @@ footer {
 
 /*chat styles*/
 
-.start-conversation{
+/*.start-conversation{
   color: #000;
-}
+}*/
 
 .chatbox {
 /*  bottom: 80px !important;*/
