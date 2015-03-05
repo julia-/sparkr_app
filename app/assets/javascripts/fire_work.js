@@ -7,9 +7,9 @@ fireWorks = function () {
       data: {id: match_id}
     }).done(function (result){
       if (result.firework.status === true) {
-        $('.got_a_firework').html('You have a firework with '+ result.matched_user.name);
+        $('#'+match_id +'-got_a_firework').html('You have a firework with '+ result.matched_user.name);
       } else {
-        $('.start_a_firework').html('You have started a firework with '+ result.matched_user.name);
+        $('#'+match_id +'-start_a_firework').html('You have started a firework with '+ result.matched_user.name);
       }      
     });
   });
