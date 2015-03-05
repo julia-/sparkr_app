@@ -207,10 +207,10 @@ $(document).ready(function(){
 });
 
 
- Handlebars.registerHelper('dateFormat', function(date, type) {
-    var d = new Date(date*1000);
+ Handlebars.registerHelper('dateFormat', function(date) {
+    var date;
     if (d != null) {
-      switch (type)
+      switch (date)
       {
       case "shortDate":
         d = d.strftime('%d/%m/%Y');
