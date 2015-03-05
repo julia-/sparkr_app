@@ -566,3 +566,12 @@ footer {
   color: #000;
 }
 
+.chatboxhead {
+  background: rgb(245, 165, 3);
+  color: rgb(245, 242, 233);
+  padding: 0.5rem;
+  overflow: hidden;
+  border-right: 1px solid rgb(245, 165, 3);
+  border-left: 1px solid rgb(245, 165, 3);
+}
+
