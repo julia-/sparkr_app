@@ -472,7 +472,14 @@ footer {
   padding: 2em 2em 2em 3.5em;
   text-align: left;
   margin: 2em;
+/*  border-bottom: 2px solid #000;*/
+}
+.matches-container h3 {
+  text-align: left;
+  margin: 0em;
+  padding-bottom: 0em;
   border-bottom: 2px solid #000;
+  text-transform: uppercase;
 }
 
 .matches-container {
