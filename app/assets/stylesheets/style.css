@@ -492,7 +492,7 @@ footer {
   box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
 /*  width: 50%;
   margin-bottom: 30px;*/
-  padding: 2em 4em;
+  padding: 3em 4em;
   text-align: left;
   margin: 0 auto;
 }
@@ -505,11 +505,17 @@ footer {
   display: inline-block;
   padding: 2em;
   vertical-align: top;
-  text-align: left;
+/*  text-align: left;*/
 }
-.match-btn-container {
-  padding-left: 2em;
+
+/*.match-btn-container {
+  padding-left: 3em;
+}*/
+
+.match-btn {
+  text-align: center;
 }
+
 #match_date{
   display: block;
 }
