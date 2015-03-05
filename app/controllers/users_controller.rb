@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    # @user = User.where(:id => users_id) 
     render :json => @current_user, :include => :moments
   end
 
@@ -46,7 +47,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       session[:user_id] = @user.id
-      flash[:success] = "You've successfully signed up to Sparkr!"
+      # flash[:success] = "You've successfully signed up to Sparkr!"
       redirect_to(root_path)
     else
       render "pages/home"
