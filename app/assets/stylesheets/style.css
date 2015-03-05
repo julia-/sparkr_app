@@ -67,7 +67,8 @@ ul {
 
 .content-container h2,
 .help-container  h2,
-.profile-container h2 {
+.profile-container h2,
+.messages-container h2 {
   text-align: left;
   background-color: #36B1BF;
   padding: 1em;
