@@ -1,4 +1,4 @@
-@import url("http://fonts.googleapis.com/css?family=Permanent+Marker|Roboto:500,900,300,700,400");
+/*@import url("http://fonts.googleapis.com/css?family=Permanent+Marker|Roboto:500,900,300,700,400");*/
 
 * {
   margin: 0 auto;
@@ -42,18 +42,8 @@ a {
   border-radius: 3px;
   text-align: center;
 }
-.help-container {
-  max-width: 80%;
-  height: 100%;
-  position: relative;
-  background-color: #fff;
-  margin: 2em auto;
-  padding: 0 0 2em 0;
-  border-radius: 3px;
-}
 
-.content-container h2,
-.help-container h2 {
+.content-container > h2 {
   text-align: left;
   background-color: #36B1BF;
   padding: 1em;
@@ -62,17 +52,14 @@ a {
   color: #FFF6E5;
 }
 
-.content-container h3,
-.help-container h3 {
+.content-container > h3 {
   text-align: left;
   margin: 1.5em 2em;
   padding-bottom: 0.5em;
   border-bottom: 2px solid #000;
   text-transform: uppercase;
 }
-.help-container p {
-  margin: 0.5em 2.5em;
-}
+
 label {
   display: block;
   text-transform: uppercase;
@@ -214,14 +201,9 @@ footer {
   display: inline-block;
   width: 70%;
   padding-top: 2em;
-  padding-left: 2.5em;
+  padding-left: 2em;
 }
-.credit a:hover,
-.support a:hover {
-  color: #F5A503;
-  font-weight: 700;
-  border-bottom: 1px solid #F5A503;
-}
+
 .support {
   display: inline-block;
   width: 27%;

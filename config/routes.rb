@@ -1,8 +1,18 @@
 Rails.application.routes.draw do
+ 
   root :to => 'pages#home'
-
-  resources :users
   
+  resources :locations
+  resources :users
+  resources :moments
+  resources :likes, only: [:create]
+  resources :fireworks, only: [:create]
+
+# Find users based on location and and absence of a match
+  get '/users/momentshow' => 'users#momentshow', as: :momentshow
+  get '/users/:id/match' => 'users#match', as: :match
+  post '/users/update_profile_pic' => 'users#update_profile_pic'
+
   get '/login' => 'session#new'
   post '/login' => 'session#create'
   delete '/logout' => 'session#destroy'
@@ -11,17 +21,10 @@ Rails.application.routes.draw do
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'session#destroy', as: 'signout', via: [:get, :post]
   
-  resources :locations
-  resources :moments
-  resources :likes, only: [:create]
-
   resources :conversations do
     resources :messages
   end
+  
 
-  get '/users/momentshow' => 'users#momentshow', as: :momentshow
-  get '/users/:id/match' => 'users#match', as: :match
-  post '/users/update_profile_pic' => 'users#update_profile_pic'
-  get '/messages' => 'pages#messaging_index'
 
 end
