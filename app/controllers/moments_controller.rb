@@ -5,16 +5,13 @@ class MomentsController < ApplicationController
   end
 
   def create
-
     @current_user = User.find_by :id => session[:user_id]
-
     @moment = @current_user.moments.create(content: params[:file])
     if @moment.save!
       respond_to do |format|
         format.json{ render :json => @moment }
       end
     end
-
   end
 
   def new

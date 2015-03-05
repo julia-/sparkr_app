@@ -23,9 +23,8 @@ module ApplicationHelper
         </li>"
     if @current_user.present?
       links += 
-        "<li class='nav-profile'>
-          #{ link_to(root_path(:type => 'profile'), title: @current_user.name, :remote => true) do fa_icon('user', text: (@current_user.name + ' '), right: true) end }
-        </li>
+        "
+
         <li>
           #{ link_to(logout_path, title: 'Sign Out ', :method => :delete) do fa_icon('sign-out', text: 'Sign out ', right: true) end }
         </li>
@@ -35,7 +34,7 @@ module ApplicationHelper
         "<li>#{ link_to('All users', root_path) }</li></div>"
     else 
         "<h1 class='nav-home'>
-          #{ link_to(root_path(:type => 'discover'), title: 'Sparkr', :remote => true) do fa_icon('bolt', text: 'Sparkr ', right: true) end }
+          #{ link_to(root_path, title: 'Sparkr', :remote => true) do fa_icon('bolt', text: 'Sparkr ', right: true) end }
         </h1>"
     end
   end

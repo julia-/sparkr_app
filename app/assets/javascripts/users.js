@@ -78,7 +78,7 @@ var sparkrApp = {
       $('#not_like').on('click', function (event) {
         event.preventDefault();
         console.log('testing skip');
-        $('#user_moment').addClass('skipped');
+        // $('#user_moment').addClass('skipped');
 
         // (function() {
         //   $('#user_moment').removeClass('skipped');
