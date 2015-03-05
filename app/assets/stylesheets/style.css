@@ -54,7 +54,8 @@ ul {
 }
 
 .help-container,
-.profile-container {
+.profile-container,
+.matches-container {
   max-width: 80%;
   height: 100%;
   position: relative;
