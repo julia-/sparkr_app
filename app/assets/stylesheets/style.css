@@ -413,11 +413,12 @@ footer {
   padding: 0.5em;
   text-transform: uppercase;
   font-weight: 600;
-  width: 75px;
+  width: 125px;
   height: 75px;
   border: 1px solid #ccc;
   border-radius: 3px;
   margin: 30px 10px;
+  outline: none;
 }
 
 #not_like:hover, #like:hover {
