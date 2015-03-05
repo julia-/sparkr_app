@@ -3,8 +3,6 @@ var sparkrApp = {
   userIndex: 0,
   momentIndex: 0,
 
-  compiled: 0,
-
   addDropZones: function () {
     sparkrApp.handlebarsCompile();
     Dropzone.options.profileDropzone = {
@@ -56,8 +54,6 @@ var sparkrApp = {
         mediaDropzone.removeAllFiles();
       }
 
-
-
       });
     }
   },
@@ -82,59 +78,46 @@ var sparkrApp = {
       sparkrApp.loadMomentUsers();
     }
 
-    // if ( sparkrApp.compiled < 2 ) {
-      $('#not_like').on('click', function (event) {
-        event.preventDefault();
-        $('#user_moment').addClass('skip-left');
-        setTimeout(function(){
-          $('#user_moment').removeClass('skip-left');
-// <<<<<<< HEAD
-//           sparkrApp.showMoments(sparkrApp.userIndex += 1, sparkrApp.momentIndex);
-//         }, 1000);
-// =======
+    $('#not_like').on('click', function (event) {
+      event.preventDefault();
+      $('#user_moment').addClass('skip-left');
+      setTimeout(function(){
+        sparkrApp.momentIndex = 0;
+        var usersIdx = (++sparkrApp.userIndex)%sparkrApp.momentUsers.length;
+        $('#user_moment').removeClass('skip-left');
+        sparkrApp.showMoments(usersIdx, sparkrApp.momentIndex);
+      }, 1000);
+    });
+
+    $('#like').on('click', function (event) {
+      event.preventDefault();
+      $('#user_moment').addClass('skip-right');
+      setTimeout(function(){
+        if (sparkrApp.momentIndex == 2) {
+          sparkrApp.momentIndex = 0;
+          var usersIdx = (++sparkrApp.userIndex)%sparkrApp.momentUsers.length;
           sparkrApp.showMoments(usersIdx, sparkrApp.momentIndex);
-        }, 500);
-// >>>>>>> 6dd35f17befb0f25a19002816f29ffcdfa55e284
-      });
-
-      $('#like').on('click', function (event) {
-        event.preventDefault();
-        $('#user_moment').addClass('skip-right');
-        setTimeout(function(){
-          if (sparkrApp.momentIndex == 2) {
-            sparkrApp.momentIndex = 0;
-            var usersIdx = (++sparkrApp.userIndex)%sparkrApp.momentUsers.length;
-            sparkrApp.showMoments(usersIdx, sparkrApp.momentIndex);
-          } else {
-            var usersIdx = (sparkrApp.userIndex)%sparkrApp.momentUsers.length;
-            sparkrApp.showMoments(usersIdx, sparkrApp.momentIndex +=1);
+        } else {
+          var usersIdx = (sparkrApp.userIndex)%sparkrApp.momentUsers.length;
+          sparkrApp.showMoments(usersIdx, sparkrApp.momentIndex +=1);
+        }
+        $('#user_moment').removeClass('skip-right');
+        $.ajax('/likes', {
+          type: 'POST',
+          data: {
+            like: {
+              user_id: sparkrApp.user_id,
+              moment_id: sparkrApp.moment_id
+            }
           }
-          $('#user_moment').removeClass('skip-right');
-          $.ajax('/likes', {
-            type: 'POST',
-            data: {
-              like: {
-                user_id: sparkrApp.user_id,
-                moment_id: sparkrApp.moment_id
-              }
-            }
-          }).done(function (result) {
-            if (result.spark === true){
-              var $div = $("<div class='got_a_match'/>").text('You have a match with '+ result.user.name);
-              $('.container').append($div);
-            }  
-            if (sparkrApp.momentIndex == 2) {
-              sparkrApp.momentIndex = 0;
-              sparkrApp.showMoments(sparkrApp.userIndex += 1, sparkrApp.momentIndex);
-            } else {
-              sparkrApp.showMoments(sparkrApp.userIndex, sparkrApp.momentIndex +=1);
-            }
-          });
-        }, 500);
-      });
-      sparkrApp.compiled++;
-    // }
-
+        }).done(function (result) {
+          if (result.spark === true){
+            var $div = $("<div class='got_a_match'/>").text('You have a match with '+ result.user.name);
+            $('.container').append($div);
+          }  
+        });
+      }, 1000);
+    });
   },
 
   loadUsers: function() {
@@ -156,7 +139,6 @@ var sparkrApp = {
   showUser: function() {
     var userid = $('meta[name="user-id"]').attr('content');
     $.getJSON('/users/' + userid).success(function(user){
-      // debugger;
       $('#current_user').empty();
       var li = sparkrApp.currentUserHTML(user);
       $('#current_user').append(li);
@@ -199,34 +181,22 @@ var sparkrApp = {
 
   loadMomentUsers: function() {
     $.getJSON('/users/momentshow').done(function(result) {
-      // debugger;
       sparkrApp.momentUsers = result;
       sparkrApp.showMoments(0,0);
     });
 
   },
 
-
-  showMoments: function(userIndex, momentIndex) {  
-    if (userIndex < sparkrApp.momentUsers.length) {
-      var userOnShow = sparkrApp.momentUsers[userIndex].name;
-      sparkrApp.user_id = sparkrApp.momentUsers[userIndex].id;
-      // debugger;
-      var momentOnShow = sparkrApp.momentUsers[userIndex].moments[momentIndex].content.large.url
-      sparkrApp.moment_id = sparkrApp.momentUsers[userIndex].moments[momentIndex].id;
-      $('#user_moment').empty();
-      var $m = $('<img>').attr('src', momentOnShow).addClass('moment-image-discover');
-      var $u = $('<div>').addClass('moment-name-discover').text(userOnShow);
-      $('#user_moment').append($m);
-      $('#user_moment').append($u);
-    } else if (userIndex === sparkrApp.momentUsers.length) {
-      console.log("You have seen all the users' moments.");
-      sparkrApp.userIndex = 0;
-      sparkrApp.momentIndex = 0;
-      setTimeout(function(){
-        sparkrApp.loadMomentUsers();
-      }, 20000);
-    };
+  showMoments: function(userIndex, momentIndex) {
+    var currentUser = sparkrApp.momentUsers[userIndex];
+    var userOnShow = currentUser.name;
+    sparkrApp.user_id = currentUser.id;
+    var momentOnShow = currentUser.moments[momentIndex].content.large.url
+    sparkrApp.moment_id = currentUser.moments[momentIndex].id;
+    $('#user_moment').empty();
+    var $m = $('<img>').attr('src', momentOnShow).addClass('moment-image-discover');
+    var $u = $('<div>').addClass('moment-name-discover').text(userOnShow);
+    $('#user_moment').append($m).append($u);
   }
 
 };
