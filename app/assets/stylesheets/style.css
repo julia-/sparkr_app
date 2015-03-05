@@ -8,7 +8,7 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   background-color: #F5F2E9;
   height: 100%;
   font-size: 18px;
@@ -27,17 +27,31 @@ a {
   color: #F5F2E9;
   text-decoration: none;
 }
+
 .main-container {
   min-height: 100%;
   position: relative;
 }
+
 .container {
   width: 85%;
   min-height:100%;
   margin: 0 auto;
   padding-bottom: 80px;
 }
-.help-container {
+
+.content-container {
+  max-width: 80%;
+  height: 100%;
+  background-color: #fff;
+  margin: 2em auto;
+  padding: 0;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.help-container,
+.profile-container {
   max-width: 80%;
   height: 100%;
   position: relative;
@@ -47,19 +61,9 @@ a {
   border-radius: 3px;
 }
 
-.content-container {
-  max-width: 80%;
-  height: 100%;
-  position: relative;
-  background-color: #fff;
-  margin: 2em auto;
-  padding: 0;
-  border-radius: 3px;
-  text-align: center;
-}
-
 .content-container h2,
-.help-container > h2 {
+.help-container  h2,
+.profile-container h2 {
   text-align: left;
   background-color: #36B1BF;
   padding: 1em;
@@ -69,7 +73,8 @@ a {
 }
 
 .content-container h3, 
-.help-container h3 {
+.help-container h3,
+.profile-container h3 {
   text-align: left;
   margin: 1.5em 2em;
   padding-bottom: 0.5em;
@@ -298,6 +303,7 @@ footer {
   border-radius: 3px;
   line-height: 150%;
 }
+
 .signin-container input[type="submit"],
 .signup-container input[type="submit"] {
 /*  width: 316px;*/
@@ -307,6 +313,7 @@ footer {
   margin-top: 0.5em;
   padding: 0.5em;
 }
+
 .signin-container input[type="submit"]:hover,
 .signup-container input[type="submit"]:hover {
   background-color: #36B1BF;
@@ -505,7 +512,40 @@ footer {
 
 
 
+/* View Profile*/
 
-
+.profile p {
+  margin: 0.5em 3em;
+  font-size: 20px;
+}
+.profile-details {
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+  padding-top: 1.5em;
+}
+.profile-label {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.profile-photo{
+  display: inline-block;
+  width: 45%;
+  vertical-align: top;
+  padding-top: 1.5em;
+}
+.about-profile {
+  width: 80%;
+  margin-left: 2em;
+}
+.profile img {
+  display: inline-block;
+  margin: 1em 0.3em;
+  padding: 0.7em 0.7em 3em 0.7em;
+  background-color: #F5F2E9;
+  -webkit-box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
+  -moz-box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
+  box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
+}
 
 
