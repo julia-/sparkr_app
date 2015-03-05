@@ -23,6 +23,14 @@
   $('.container').empty();
   $('.container').append('<%= escape_javascript(render partial: 'help') %>');
 <% end %>
+<% if params[:type] == 'privacy' %>
+  $('.container').empty();
+  $('.container').append('<%= escape_javascript(render partial: 'privacy') %>');
+<% end %>
+<% if params[:type] == 'tos' %>
+  $('.container').empty();
+  $('.container').append('<%= escape_javascript(render partial: 'tos') %>');
+<% end %>
 sparkrApp.handlebarsCompile();
 sparkrApp.addDropZones();
 // });
