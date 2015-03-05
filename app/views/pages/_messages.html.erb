@@ -1,12 +1,13 @@
 <div class="messages-container">
+  <h2>Your messages</h2>
+  <div class="messages-list">
     <% @current_user.matches.each_with_index do |user, index| %>
-      <tr>
-        <td><%= index +=1 %></td>
-        <td><%= user.name %></td>
-        <td>
-          <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
-                      "data-sid" => @current_user.id, "data-rip" => user.id %>
-        </td>
-      </tr>
-  <% end %>
+    <div class="message-thread">
+      <%= image_tag user.profile_pic.medium.url %>
+      <p><%= user.name %></p>
+        <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
+                    "data-sid" => @current_user.id, "data-rip" => user.id %>
+    </div>
+    <% end %>
+  </div>
 </div>

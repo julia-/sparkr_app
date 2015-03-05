@@ -54,7 +54,8 @@ ul {
 }
 
 .help-container,
-.profile-container {
+.profile-container,
+.messages-container {
   max-width: 80%;
   height: 100%;
   position: relative;
@@ -66,7 +67,8 @@ ul {
 
 .content-container h2,
 .help-container  h2,
-.profile-container h2 {
+.profile-container h2,
+.messages-container h2 {
   text-align: left;
   background-color: #36B1BF;
   padding: 1em;
@@ -407,19 +409,19 @@ footer {
 
 /*begin discover view styles */
 
-#not_like, #like {
+#not_like,
+#like {
+  width: 160px;
+  height: 70px;
   background-color: #F5A503;
   border: 1px solid #F5A503;
-  color: #F5F2E9;
-  margin-top: 0.5em;
+  margin: 2em 0.5em;
   padding: 0.5em;
+  color: #F5F2E9;
   text-transform: uppercase;
   font-weight: 600;
-  width: 125px;
-  height: 75px;
-  border: 1px solid #ccc;
   border-radius: 3px;
-  margin: 30px 10px;
+/*  margin: 30px 10px;*/
   outline: none;
 }
 
@@ -465,62 +467,73 @@ footer {
 
 /*show matches styling*/
 
-
-.match-btn {
-  background-color: #F5A503;
-  border: 1px solid #F5A503;
-  color: #F5F2E9;
-  padding: 0.5em;
-  text-transform: uppercase;
-  font-weight: 600;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  margin-top: 10px;
-  display: inline-block;
-  margin-right: 0.5em;
-}
-
-.match-btn:hover {
-  background-color: #36B1BF;
-  border: 1px solid #36B1BF;
-  color: #F5F2E9;
-}
-
 .match-box {
-  background-color: #F5F2E9;
-  -webkit-box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
-  -moz-box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
-  box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
-  width: 49%;
-  margin-bottom: 30px;
-  padding: 30px;
+  background-color: #fff;
+  padding: 0.3em 4em 0.3em 4em;
+  margin: 1.5em;
   text-align: left;
-  margin: 0 auto;
+}
+.matches-container h3 {
+  margin: 1.5em 0em;
+  padding-bottom: 0em;
+  border-bottom: 2px solid #000;
+  text-transform: uppercase;
+  font-size: 24px;
+  text-align: left;
 }
 
+.matches-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: #fff;
+  margin: 2em auto;
+  padding: 0 0 2em 0;
+  border-radius: 3px;
+}
 #match_userprofile_pic {
-  border-radius: 50%;
   display: inline-block;
 }
 
 .match-content{
-  text-align: left;
   display: inline-block;
-  width: 65%;
-  padding: 10px;
+  font-size: 20px;
+  padding: 0.5em 2em;
   vertical-align: top;
+/*  text-align: left;*/
 }
 
+.match-btn,
+.start-conversation {
+  display: inline-block;
+  background-color: #F5A503;
+  width: 170px;
+  margin-top: 1.5em;
+  margin-right: 1.5em;
+  padding: 0.5em;
+  border: 1px solid #F5A503;
+  border-radius: 3px;
+  color: #F5F2E9;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-align: center;
+}
+
+.match-btn:hover,
+.start-conversation:hover {
+  background-color: #36B1BF;
+  border: 1px solid #36B1BF;
+  color: #F5F2E9;
+}
 #match_date{
   display: block;
 }
 
-#match_name {
-  font-weight: bold;
-}
-
 /*end show matches styling*/
-
+.message-thread {
+  margin: 1em 2em;
+  border-bottom: 2px solid #000;
+}
 /* View Profile*/
 
 .profile p {
@@ -567,25 +580,25 @@ footer {
 
 /*chat styles*/
 
-.start-conversation{
+/*.start-conversation{
   color: #000;
-}
+}*/
 
 .chatbox {
-  bottom: 80px !important;
+/*  bottom: 80px !important;*/
   overflow: hidden;
 }
 
 .chatboxhead {
-  background: rgb(245, 165, 3);
-  color: #36B1BF;
+  background-color: #F2385A;
+  color: #F5F2E9;
   padding: 0.5rem;
   overflow: hidden;
-  border-right: 1px solid rgb(245, 165, 3);
-  border-left: 1px solid rgb(245, 165, 3);
+  border-right: 1px solid #F2385A;
+  border-left: 1px solid #F2385A;
 }
 
 .chatboxcontent {
-  background: #FFE0A2;
+  background-color: #F5F2E9;
 }
 
