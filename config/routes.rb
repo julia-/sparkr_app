@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users
   resources :moments
   resources :likes, only: [:create]
+  resources :fireworks, only: [:create]
 
 # Find users based on location and and absence of a match
   get '/users/momentshow' => 'users#momentshow', as: :momentshow

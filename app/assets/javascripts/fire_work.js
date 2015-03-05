@@ -1,6 +1,5 @@
 fireWorks = function () {
-  $('.container').on('click', 'a.fire_work', function(event) {
-    debugger;
+  $('.container').on('click', 'a.match-fireworks-btn', function(event) {
     event.preventDefault();
     var match_id = $(this).data('match-id');
     $.ajax('/fireworks', {
