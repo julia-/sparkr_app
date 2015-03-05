@@ -2,6 +2,8 @@ Rails.application.routes.draw do
  
   root :to => 'pages#home'
   
+  get '/users/momentshow' => 'users#momentshow'
+
   resources :locations
   resources :users
   resources :moments
@@ -9,7 +11,7 @@ Rails.application.routes.draw do
   resources :fireworks, only: [:create]
 
 # Find users based on location and and absence of a match
-  get '/users/momentshow' => 'users#momentshow', as: :momentshow
+
   get '/users/:id/match' => 'users#match', as: :match
   post '/users/update_profile_pic' => 'users#update_profile_pic'
 
