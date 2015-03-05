@@ -32,7 +32,7 @@ var sparkrApp = {
 
     Dropzone.options.mediaDropzone = {
 
-      maxFiles: 3,
+      maxFiles: 4,
       accept: function(file, done) {
         done();
       },
@@ -46,10 +46,18 @@ var sparkrApp = {
       var mediaDropzone;
       mediaDropzone = new Dropzone("#media-dropzone");
       mediaDropzone.on("success", function(file, responseText) {
+        console.log('dropzone moment success')
+
         var imageUrl;
         imageUrl = responseText.content.url;
+
+      if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
         sparkrApp.showUser();
         mediaDropzone.removeAllFiles();
+      }
+
+
+
       });
     }
   },
@@ -78,7 +86,7 @@ var sparkrApp = {
       $('#not_like').on('click', function (event) {
         event.preventDefault();
         console.log('testing skip');
-        $('#user_moment').addClass('skipped');
+        // $('#user_moment').addClass('skipped');
 
         // (function() {
         //   $('#user_moment').removeClass('skipped');
@@ -198,8 +206,11 @@ var sparkrApp = {
       console.log("You have seen all the users' moments.");
       sparkrApp.userIndex = 0;
       sparkrApp.momentIndex = 0;
-      sparkrApp.loadMomentUsers();
-    } else {};
+
+      setTimeout(function(){
+        sparkrApp.loadMomentUsers();
+      }, 20000);
+    };
   }
 
 };
