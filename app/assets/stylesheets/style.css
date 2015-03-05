@@ -469,10 +469,9 @@ footer {
 
 .match-box {
   background-color: #fff;
-  padding: 2em 2em 2em 3.5em;
+  padding: 0.3em 4em 0.3em 4em;
+  margin: 1.5em;
   text-align: left;
-  margin: 2em;
-/*  border-bottom: 2px solid #000;*/
 }
 .matches-container h3 {
   margin: 1.5em 0em;
