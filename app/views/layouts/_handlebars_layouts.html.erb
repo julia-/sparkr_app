@@ -13,10 +13,11 @@
 
 <script type="x-handlebars-template" id="matchTemplate">
   <div class="match-box" data-match-id="{{ id }}">
+    <h3 id="match_name">{{ name }}</h3>
     <img id="match_userprofile_pic" src="{{ profile_pic.medium.url }}"></img>
     <div class="match-content">
-      <span id="match_name"><strong>{{ name }}</strong>,</span>
       <span id="match_age"> {{ dob }}</span>
+      <span> {{ location }}</span>
       <span id="match_date">Matched on {{ created_at }}</span>
     </div>
     <div class="match-btn-container">
