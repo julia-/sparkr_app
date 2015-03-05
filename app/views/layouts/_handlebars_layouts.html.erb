@@ -26,8 +26,7 @@
     </div>
     <div class="match-btn-container">
       <a class="match-btn match-profile-btn" href="#">Profile<a>
-      <a class="match-btn match-message-btn" href="#">Message<a>
-      <a class="btn btn-success btn-xs start-conversation" data-sid={{ @current_user.id }} data-rip={{ user.id }} href="#">Send Message</a>
+      <a class="btn btn-success btn-xs start-conversation" data-sid="<%=@current_user.try(:id)%>" data-rip="{{ id }}" href="#">Message</a>
       <a class="match-btn match-fireworks-btn" data-match-id="{{ id }}" href="#">Fireworks</a>
     </div>
     <div class="got_a_firework"></div>
