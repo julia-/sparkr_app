@@ -503,9 +503,16 @@ footer {
 /*  text-align: left;*/
 }
 
-.match-btn,
+.match-btn {
+  display: block; 
+}
+
 .start-conversation {
   display: inline-block;
+}
+
+.match-btn,
+.start-conversation {
   background-color: #F5A503;
   width: 170px;
   margin-top: 1.5em;
@@ -532,7 +539,7 @@ footer {
 /*end show matches styling*/
 .message-thread {
   margin: 1em 2em;
-  border-bottom: 2px solid #000;
+
 }
 /* View Profile*/
 
