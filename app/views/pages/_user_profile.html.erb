@@ -1,5 +1,12 @@
-<h1>testing</h1>
 <!-- Show current user's information here --> 
-<div id="current_user_div">
-  <ul id="current_user"></ul>
+<div id="current_user_div" class="profile-container">
+  <div id="current_user" class="profile"></div>
+<!--   <% if @current_user.present? == @user %>
+    <div class="controls">
+      <ul>
+        <li><%= link_to 'Edit profile', edit_user_path(@user) %></li>
+          <li> | <%= link_to 'Delete account', @user, :method => 'delete', :data => {:confirm => "Are you sure?"} %></li>
+        <% end %>
+      </ul>
+    </div> -->
 </div>

@@ -11,31 +11,47 @@
   </li>
 </script>
 
+
+
 <script type="x-handlebars-template" id="matchTemplate">
   <div class="match-box" data-match-id="{{ id }}">
+    <h3 id="match_name">{{ name }}</h3>
     <img id="match_userprofile_pic" src="{{ profile_pic.medium.url }}"></img>
-
     <div class="match-content">
-      <span id="match_name">{{ name }}, </span>
-      <span id="match_age">{{ age }}</span>
-      <span id="match_date">Matched on: {{ created_at }}</span>
+      <span id="match_age"> {{ age }}</span>
+      <span> {{ location }}</span>
+      <span id="match_date">Matched on {{ created_at }}</span>
+      <div id="{{ id }}-got_a_firework"></div>
+      <div id="{{ id }}-start_a_firework"></div>
     </div>
-    <a class="match-btn match-profile-btn" href="#">Profile<a>
-    <a class="match-btn match-message-btn" href="#">Message<a>
-    <a class="match-btn match-fireworks-btn" data-match-id="{{ id }}" href="#">Fireworks</a>
+    <div class="match-btn-container">
+      <a class="match-btn match-profile-btn" href="#">Profile<a>
+      <a class="match-btn match-message-btn" href="#">Message<a>
+      <a class="match-btn match-fireworks-btn" data-match-id="{{ id }}" href="#">Fireworks</a>
+    </div>
     <div class="got_a_firework"></div>
     <div class="start_a_firework"></div>
   </div>     
 </script>
 
 <script type="x-handlebars-template" id="current_userTemplate">
-  <li data-user-id="{{ id }}">
-    <span id="{{ current_username }}">Name: {{ name }} </span>
-    <span id="{{ current_userusername }}">Username: {{ username }} </span>
-    <span id="{{ current_useremail }}">Email: {{ email }} </span>
-    <span id="{{ current_userdescription }}">About: {{ description }} </span>
-    <span id="{{ current_usergender }}">Gender: {{ gender }} </span>
-    <span id="{{ current_userlocation }}">Location: {{ location }} </span>
-    <img id="{{ current_userprofile_pic }}" src="{{ profile_pic.medium.url }}"></img>
-  </li>   
+  <div data-user-id="{{ id }}">
+    <h2>Profile</h2>
+    <div class="profile-details">
+      <h3 id="{{ current_username }}">{{ name }}</h3>
+      <p id="{{ current_userusername }}"><span class="profile-label">Username</span> {{ username }} </p>
+      <p id="{{ current_userdob }}"><span class="profile-label">Date of Birth</span> {{ dob }} </p>
+      <p id="{{ current_usergender }}"><span class="profile-label">Gender</span> {{ gender }} </p>
+      <p id="{{ current_usersexual_preference }}"><span class="profile-label">Preference</span> {{ sexual_preference }} </p>
+      <p id="{{ current_userlocation }}"><span class="profile-label">Location</span> {{ location }} </p>
+      <p id="{{ current_useremail }}"><span class="profile-label">Email</span> {{ email }} </p>
+    </div>
+    <div class="profile-photo">
+      <img id="{{ current_userprofile_pic }}" src="{{ profile_pic.large.url }}"></img>      
+    </div>
+    <div class="profile-about">
+      <h3>About</h3>
+      <p id="{{ current_userdescription }}" class="about-profile"> {{ description }} </p>
+    </div>
+  </div>   
 </script>

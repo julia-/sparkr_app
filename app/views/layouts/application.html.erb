@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Sparkr</title>
-    <link href='http://fonts.googleapis.com/css?family=Permanent+Marker|Roboto:500,900,300,700,400' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Permanent+Marker|Roboto:500,900,300,700,400' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,11 +21,15 @@
         <%= yield %>
       </div>
       <footer> 
-        <p class="credit">Made by <a href="https://github.com/einartj" title="TJ's GitHub">TJ</a>, <a href="https://github.com/wxm112" title="May's GitHub">May</a>, <a href="https://github.com/amysimmons" title="Amy's GitHub">Amy</a> and <a href="https://github.com/julia-" title="Julia's GitHub">Julia</a></p>
+        <p class="credit">Made by <a href="https://github.com/wxm112" title="May's GitHub">May</a>, <a href="https://github.com/amysimmons" title="Amy's GitHub">Amy</a>, <a href="https://github.com/julia-" title="Julia's GitHub">Julia</a> and <a href="https://github.com/einartj" title="TJ's GitHub">TJ</p>
         <ul class="support">
-          <li><a href="privacy">Privacy Policy</a><span> | </span></li>
-          <li><a href="tos">Terms of Service</a><span> | </span></li>
-          <li><a href="support">User Support</a></li>
+          <li><a class="privacy-fb" data-remote="true" href="/?type=privacy">Privacy Policy</a><span> | </span></li>
+          <li><a class="tos-fb" data-remote="true" href="/?type=tos">Terms of Service</a><span> | </span></li>
+          <li><a class="help-footer" data-remote="true" href="/?type=help">Help</a></li>
+
+<!-- :remote => true -->
+
+
         </ul>
       </footer>
     </div>
