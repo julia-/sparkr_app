@@ -586,6 +586,10 @@ footer {
   text-transform: uppercase;
 }
 
+.other-user-profile p {
+  margin-left: 2.5em;
+}
+
 /* Messages */
 .message-thread {
   margin: 1em 1.5em;
