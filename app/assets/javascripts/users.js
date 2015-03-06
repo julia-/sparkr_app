@@ -243,6 +243,8 @@ $(document).ready(function(){
     if (window.location.hash === '#edit') {
       $('a[title="Edit"]').trigger('click');
       window.location.hash = '';
+    } else {
+      $('.nav-home a').trigger('click');
     }
 
     $('.container').on('click', '.match-profile-btn', function(){

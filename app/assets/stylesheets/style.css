@@ -493,16 +493,15 @@ footer {
   display: block; 
 }*/
 
-.start-conversation {
+/*.start-conversation {
   display: inline-block;
 }
-
+*/
 .match-btn,
 .start-conversation {
   background-color: #F5A503;
   display: inline-block;
   width: 170px;
-  margin-right: 0.5em;
   padding: 0.5em;
   border: 1px solid #F5A503;
   border-radius: 3px;
@@ -513,6 +512,15 @@ footer {
   vertical-align: top;
 }
 
+
+.start-conversation {
+  margin-left: 1.5em;
+}
+.match-btn {
+  margin-top: 1em;
+  margin-right: 0.5em;
+  margin-left: 0em;
+}
 .match-btn:hover,
 .start-conversation:hover {
   background-color: #36B1BF;
