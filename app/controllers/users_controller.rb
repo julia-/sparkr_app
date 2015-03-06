@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     # ORIGINAL: render :json => @current_user, :include => :moments
     user_id = params[:id] || @current_user.id
     @user = User.find user_id
-    render :json => @user, :include => :moments
+    render :json => @user, :include => :moments, :methods => :age
   end
 
   def match
