@@ -31,7 +31,7 @@ Sparkr - where the sparks fly!
 
 ==== Credits
 
-Sparkr was designed and developed by TJ, May, Amy and Julia. We created Sparkr for project two of the Web Development Immersive Eight course at General Assembly, Sydney.
+Sparkr was designed and developed by [TJ](https://github.com/einartj), [May](https://github.com/wxm112), [Amy](https://github.com/amysimmons) and [Julia](https://github.com/julia-). We created Sparkr for project two of the Web Development Immersive Eight course at General Assembly, Sydney.
 
 ==== Thank you!
 
