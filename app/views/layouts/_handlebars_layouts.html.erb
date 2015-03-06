@@ -20,13 +20,13 @@
     <div class="match-content">
       <span id="match_age"> {{ age }}</span>
       <span> {{ location }}</span>
-      <span id="match_date">Matched on {{ created_at }}</span>
+      // <span id="match_date">Matched on {{ updated_at }}</span>
       <div id="{{ id }}-got_a_firework"></div>
       <div id="{{ id }}-start_a_firework"></div>
     </div>
     <div class="match-btn-container">
       <a class="match-btn match-profile-btn" href="#">Profile<a>
-      <a class="btn btn-success btn-xs start-conversation" data-sid="<%=@current_user.try(:id)%>" data-rip="{{ id }}" href="#">Message</a>
+      <a class="match-btn btn btn-success btn-xs start-conversation" data-sid="<%=@current_user.try(:id)%>" data-rip="{{ id }}" href="#">Message</a>
       <a class="match-btn match-fireworks-btn" data-match-id="{{ id }}" href="#">Fireworks</a>
     </div>
   </div>     
