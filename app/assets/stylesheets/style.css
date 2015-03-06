@@ -561,12 +561,13 @@ footer {
   display: inline-block;
   width: 45%;
   vertical-align: top;
-  padding-top: 5em;
+  padding-top: 3em;
 }
 
 .about-profile {
   width: 80%;
   margin-left: 2.5em;
+  margin-bottom: 2em;
 }
 
 .profile img {
