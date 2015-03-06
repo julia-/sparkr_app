@@ -83,7 +83,7 @@ class User < ActiveRecord::Base
   end
 
   def age
-    (Date.today - dob).to_i / 365
+    (Date.today - dob).to_i / 365 unless dob.nil?
   end
 
 end

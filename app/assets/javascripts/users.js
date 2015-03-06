@@ -228,7 +228,7 @@ var sparkrApp = {
 
 $(document).ready(function(){
     Dropzone.autoDiscover = false;
-    sparkrApp.addDropZones();
+    // sparkrApp.addDropZones();
 
     if (window.location.hash === '#edit') {
       $('a[title="Edit"]').trigger('click');
