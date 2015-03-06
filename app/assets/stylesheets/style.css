@@ -489,9 +489,9 @@ footer {
   vertical-align: top;
 }
 
-.match-btn {
+/*.match-btn {
   display: block; 
-}
+}*/
 
 .start-conversation {
   display: inline-block;
@@ -500,8 +500,9 @@ footer {
 .match-btn,
 .start-conversation {
   background-color: #F5A503;
+  display: inline-block;
   width: 170px;
-  margin: 0em 1.5em;
+  margin-right: 0.5em;
   padding: 0.5em;
   border: 1px solid #F5A503;
   border-radius: 3px;
