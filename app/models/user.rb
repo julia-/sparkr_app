@@ -82,4 +82,8 @@ class User < ActiveRecord::Base
     User.all.select {|u| self.spark(u) && u.spark(self)}
   end
 
+  def age
+    (Date.today - dob).to_i / 365
+  end
+
 end
