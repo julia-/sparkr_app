@@ -21,12 +21,12 @@ class UsersController < ApplicationController
   end
 
   def momentshow
-    # lat_and_long = "" + @current_user.latitude.to_s + ", " + @current_user.longitude.to_s
-    # nearby_users = User.near(lat_and_long, 30, :order => 'distance')
-    # nearby_users_id = nearby_users.map {|u| u.id}
-    all_user_id = User.all.map {|u| u.id} 
+    lat_and_long = "" + @current_user.latitude.to_s + ", " + @current_user.longitude.to_s
+    nearby_users = User.near(lat_and_long, 30, :order => 'distance')
+    nearby_users_id = nearby_users.map {|u| u.id}
+    # all_user_id = User.all.map {|u| u.id} 
     matches = @current_user.matches.map {|u| u.id}
-    users_id = all_user_id - matches - [@current_user.id]
+    users_id = nearby_users_id - matches - [@current_user.id]
     users_list = User.where(:id => users_id) 
     render :json => users_list, :include => :moments
   end
