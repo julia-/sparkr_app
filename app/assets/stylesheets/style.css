@@ -545,6 +545,10 @@ footer {
   padding-top: 1.8em;
   margin-bottom: 1.5em;
 }
+.profile-about {
+  margin-left: 1em;
+  text-align: left;
+}
 
 .profile-label {
   font-weight: 700;
@@ -557,12 +561,13 @@ footer {
   display: inline-block;
   width: 45%;
   vertical-align: top;
-  padding-top: 2em;
+/*  padding-top: 2em;*/
+  padding-top: 5em;
 }
 
 .about-profile {
   width: 80%;
-  margin-left: 2em;
+  margin-left: 2.5em;
 }
 
 .profile img {
