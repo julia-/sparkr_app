@@ -512,14 +512,15 @@ footer {
   vertical-align: top;
 }
 
-.match-btn {
-  margin-top: 1em;
-  margin-right: 0.5em;
-}
+
 .start-conversation {
   margin-left: 1.5em;
 }
-
+.match-btn {
+  margin-top: 1em;
+  margin-right: 0.5em;
+  margin-left: 0em;
+}
 .match-btn:hover,
 .start-conversation:hover {
   background-color: #36B1BF;
