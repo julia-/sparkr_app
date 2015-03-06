@@ -398,6 +398,9 @@ footer {
   padding-bottom: 2em;
   text-align: left;
 }
+.edit-form input[type="submit"] {
+  width: 535px;
+}
 
 /* Discover Moments */
 
