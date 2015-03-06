@@ -545,7 +545,7 @@ footer {
   padding-top: 1.8em;
   margin-bottom: 1.5em;
 }
-.profile-about {
+.other-user-about {
   margin-left: 1em;
   text-align: left;
 }
@@ -557,11 +557,10 @@ footer {
   margin-right: 0.3em;
 }
 
-.profile-photo {
+.other-user-photo {
   display: inline-block;
   width: 45%;
   vertical-align: top;
-/*  padding-top: 2em;*/
   padding-top: 5em;
 }
 
