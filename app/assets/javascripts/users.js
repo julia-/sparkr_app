@@ -145,6 +145,7 @@ var sparkrApp = {
       sparkrApp.current_user_moments = user.moments;    
       sparkrApp.momentHTML = Handlebars.compile( $('#momentTemplate').html() );
       sparkrApp.renderCurrentUserMoments();
+      // sparkrApp.renderCurrentUserProfile();
     });
   },
 
@@ -186,6 +187,15 @@ var sparkrApp = {
 
     };
   },
+
+  // renderCurrentUserProfile: function() { 
+  //   $('#current_user_profile').empty();
+  //     var profile = user.profile_pic;
+  //     var img = sparkrApp.momentHTML(moment);  
+  //     $('#current_user_moments').append(li);
+
+  //   };
+  // },
 
   loadMatches: function() {
     var userid = $('meta[name="user-id"]').attr('content');
