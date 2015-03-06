@@ -9,7 +9,10 @@ class UsersController < ApplicationController
 
   def show
     # @user = User.where(:id => users_id) 
-    render :json => @current_user, :include => :moments
+    # ORIGINAL: render :json => @current_user, :include => :moments
+    user_id = params[:id] || @current_user.id
+    @user = User.find user_id
+    render :json => @user, :include => :moments
   end
 
   def match

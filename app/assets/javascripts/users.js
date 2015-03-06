@@ -150,13 +150,27 @@ var sparkrApp = {
 
   showMatchUser: function(userid) {
     $.getJSON('/users/' + userid).success(function(user){
-      $('.container').empty();
+      $('.content-container').empty();
       var li = sparkrApp.currentUserHTML(user);
-      $('.container').append(li);
-      sparkrApp.current_user_moments = user.moments;    
-      sparkrApp.momentHTML = Handlebars.compile( $('#momentTemplate').html() );
-      sparkrApp.renderCurrentUserMoments();
+      $('.content-container').append(li);
+      // redo the following to work with a userid
+      // sparkrApp.momentHTML = Handlebars.compile( $('#momentTemplate').html() );
+      // sparkrApp.renderMoments(user.moments);
     });
+  },
+
+  renderMoments: function(moments) { 
+    $('#current_user_moments').empty();
+    var end = 3;
+    if (moments.length < 3){
+      end = moments.length;
+    }
+    for (var i = 0; i < end; i++) {
+      var moment = moments[i];
+      var li = sparkrApp.momentHTML(moment);  
+      $('#current_user_moments').append(li);
+
+    };
   },
 
   renderCurrentUserMoments: function() { 
