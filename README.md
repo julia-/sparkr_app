@@ -52,6 +52,17 @@ Sparkr - where the sparks fly!
 - Amy: Dropzone and ajax
 - Julia: Styling
 
+### What's next?
+
+- email verification
+- forgot your password
+- matches notification
+- fireworks functionality
+- facebook authentication
+- upload photos from facebook
+- user profile photo display on edit
+- ajax on all pages
+
 ### Credits
 
 Sparkr was designed and developed by [TJ](https://github.com/einartj), [May](https://github.com/wxm112), [Amy](https://github.com/amysimmons) and [Julia](https://github.com/julia-). We created Sparkr for project two of the Web Development Immersive Eight course at General Assembly, Sydney.
