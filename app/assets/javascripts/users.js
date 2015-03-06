@@ -235,7 +235,7 @@ $(document).ready(function(){
       window.location.hash = '';
     }
 
-    $('.container').on('click', '.match-btn', function(){
+    $('.container').on('click', '.match-profile-btn', function(){
       var userid = $(this).closest('.match-box').data('match-id');
       sparkrApp.showMatchUser(userid);
     });
