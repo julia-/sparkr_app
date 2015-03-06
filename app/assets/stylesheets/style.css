@@ -66,7 +66,7 @@ ul {
 }
 
 .content-container h2,
-.help-container  h2,
+.help-container h2,
 .profile-container h2,
 .messages-container h2 {
   text-align: left;
@@ -573,6 +573,17 @@ footer {
   -webkit-box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
   -moz-box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
   box-shadow: 3px 3px 10px 1px rgba(153,153,153,0.65);
+}
+
+.other-user-profile {
+  text-align: left;
+}
+
+.other-user-profile h3 {
+  margin: 0em 0em 2em 2em;
+  padding-bottom: 0.5em;
+  border-bottom: 2px solid #000;
+  text-transform: uppercase;
 }
 
 /* Messages */
