@@ -1,10 +1,33 @@
 # README
 
-## Sparkr
+## [Sparkr](http://sparkr---.herokuapp.com/)
 
 ### Problem
 
+Everyones talking about Tinder but Tinder isn't for everyone, particularly for people over 50. There are dating sites out there for people in this age range but these sites aren't simple like Tinder and charge like crazy. 
+
 We wanted to create a web application that catered for people over 50 to meet a potential love interest or two! The application needed to be simple and more than about appearance. And most importantly a bit of fun!
+
+### Libraries, Gems and other stuff
+
+- Faye
+- handlebars.js
+- dropzone.js
+
+```ruby
+gem 'figaro'
+gem 'font-awesome-rails'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'carrierwave'
+gem 'cloudinary'
+gem 'mini_magick'
+gem 'private_pub'
+gem 'thin'
+gem 'dropzonejs-rails'
+gem 'normalize-rails'
+gem 'geocoder'
+```
 
 ### Solution
 
