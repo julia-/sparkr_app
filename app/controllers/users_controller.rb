@@ -28,6 +28,7 @@ class UsersController < ApplicationController
     matches = @current_user.matches.map {|u| u.id}
     users_id = nearby_users_id - matches - [@current_user.id]
     users_list = User.where(:id => users_id) 
+    users_list = User.all if users_list.empty?
     render :json => users_list, :include => :moments
   end
  
