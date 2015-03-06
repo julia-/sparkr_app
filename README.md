@@ -54,6 +54,7 @@ Sparkr - where the sparks fly!
 
 ### What's next?
 
+- filtering users
 - email verification
 - forgot your password
 - matches notification
