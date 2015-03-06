@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       # flash[:success] = "You've successfully signed up to Sparkr!"
-      redirect_to(root_path)
+      redirect_to '/#edit'
     else
       render "pages/home"
     end

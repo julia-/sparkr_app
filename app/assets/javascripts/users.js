@@ -148,6 +148,17 @@ var sparkrApp = {
     });
   },
 
+  showMatchUser: function(userid) {
+    $.getJSON('/users/' + userid).success(function(user){
+      $('.container').empty();
+      var li = sparkrApp.currentUserHTML(user);
+      $('.container').append(li);
+      sparkrApp.current_user_moments = user.moments;    
+      sparkrApp.momentHTML = Handlebars.compile( $('#momentTemplate').html() );
+      sparkrApp.renderCurrentUserMoments();
+    });
+  },
+
   renderCurrentUserMoments: function() { 
     $('#current_user_moments').empty();
     var end = 3;
@@ -204,6 +215,17 @@ var sparkrApp = {
 $(document).ready(function(){
     Dropzone.autoDiscover = false;
     sparkrApp.addDropZones();
+
+    if (window.location.hash === '#edit') {
+      $('a[title="Edit"]').trigger('click');
+      window.location.hash = '';
+    }
+
+    $('.container').on('click', '.match-btn', function(){
+      var userid = $(this).closest('.match-box').data('match-id');
+      sparkrApp.showMatchUser(userid);
+    });
+
 });
 
 
