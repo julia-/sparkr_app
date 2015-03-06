@@ -9,7 +9,10 @@ class UsersController < ApplicationController
 
   def show
     # @user = User.where(:id => users_id) 
-    render :json => @current_user, :include => :moments
+    # ORIGINAL: render :json => @current_user, :include => :moments
+    user_id = params[:id] || @current_user.id
+    @user = User.find user_id
+    render :json => @user, :include => :moments
   end
 
   def match
@@ -18,13 +21,14 @@ class UsersController < ApplicationController
   end
 
   def momentshow
-    # lat_and_long = "" + @current_user.latitude.to_s + ", " + @current_user.longitude.to_s
-    # nearby_users = User.near(lat_and_long, 30, :order => 'distance')
-    # nearby_users_id = nearby_users.map {|u| u.id}
-    all_user_id = User.all.map {|u| u.id} 
+    lat_and_long = "" + @current_user.latitude.to_s + ", " + @current_user.longitude.to_s
+    nearby_users = User.near(lat_and_long, 30, :order => 'distance')
+    nearby_users_id = nearby_users.map {|u| u.id}
+    # all_user_id = User.all.map {|u| u.id} 
     matches = @current_user.matches.map {|u| u.id}
-    users_id = all_user_id - matches - [@current_user.id]
+    users_id = nearby_users_id - matches - [@current_user.id]
     users_list = User.where(:id => users_id) 
+    users_list = User.all if users_list.empty?
     render :json => users_list, :include => :moments
   end
  
@@ -49,7 +53,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       # flash[:success] = "You've successfully signed up to Sparkr!"
-      redirect_to(root_path)
+      redirect_to '/#edit'
     else
       render "pages/home"
     end

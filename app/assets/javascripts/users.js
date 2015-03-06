@@ -148,6 +148,31 @@ var sparkrApp = {
     });
   },
 
+  showMatchUser: function(userid) {
+    $.getJSON('/users/' + userid).success(function(user){
+      $('.content-container').empty();
+      var li = sparkrApp.currentUserHTML(user);
+      $('.content-container').append(li);
+      // redo the following to work with a userid
+      // sparkrApp.momentHTML = Handlebars.compile( $('#momentTemplate').html() );
+      // sparkrApp.renderMoments(user.moments);
+    });
+  },
+
+  renderMoments: function(moments) { 
+    $('#current_user_moments').empty();
+    var end = 3;
+    if (moments.length < 3){
+      end = moments.length;
+    }
+    for (var i = 0; i < end; i++) {
+      var moment = moments[i];
+      var li = sparkrApp.momentHTML(moment);  
+      $('#current_user_moments').append(li);
+
+    };
+  },
+
   renderCurrentUserMoments: function() { 
     $('#current_user_moments').empty();
     var end = 3;
@@ -204,6 +229,17 @@ var sparkrApp = {
 $(document).ready(function(){
     Dropzone.autoDiscover = false;
     sparkrApp.addDropZones();
+
+    if (window.location.hash === '#edit') {
+      $('a[title="Edit"]').trigger('click');
+      window.location.hash = '';
+    }
+
+    $('.container').on('click', '.match-btn', function(){
+      var userid = $(this).closest('.match-box').data('match-id');
+      sparkrApp.showMatchUser(userid);
+    });
+
 });
 
 
