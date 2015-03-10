@@ -18,11 +18,11 @@
     </div>
     <div>
       <%= f.label :gender, "Gender"%>
-      <%= select(:user, :gender, options_for_select([['Female'], ['Male'], ['Other']])) %>
+      <%= select(:user, :gender, options_for_select([['Female'], ['Male'], ['Other']], @current_user.gender)) %>
     </div>
     <div>
       <%= f.label :sexual_preference, "Sexual Preference"%>
-      <%= select(:user, :sexual_preference, options_for_select([['Women'], ['Men'], ['Both']])) %>
+      <%= select(:user, :sexual_preference, options_for_select([['Women'], ['Men'], ['Both']], @current_user.sexual_preference)) %>
     </div>
     <div>
       <%= f.label :location, "Location"%>
