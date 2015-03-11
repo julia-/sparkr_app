@@ -20,7 +20,6 @@ var sparkrApp = {
         });
       }
     };
-
     if ( $("#profile-dropzone").length != 0 ) {
       var profileDropzone;
       profileDropzone = new Dropzone("#profile-dropzone");

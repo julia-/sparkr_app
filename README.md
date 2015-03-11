@@ -1,6 +1,6 @@
 # README
 
-## [Sparkr](http://sparkr---.herokuapp.com/)
+## [Sparkr - Make Sparks Fly!](http://make-sparks-fly.herokuapp.com/)
 
 ### Problem
 
@@ -35,7 +35,7 @@ Sparkr - where the sparks fly!
 
 ### Sore bits
 
-- Facebook authentication - works in development but not production (app domain name the cause)
+- Facebook authentication
 - Faye - running two servers on Heroku
 - Fireworks
 
@@ -55,13 +55,14 @@ Sparkr - where the sparks fly!
 ### What's next?
 
 - filtering users
+- make it responsive
 - email verification
 - forgot your password
 - matches notification
 - fireworks functionality
-- facebook authentication
+- facebook authentication - DONE
 - upload photos from facebook
-- user profile photo display on edit
+- user profile photo display on edit - DONE
 - ajax on all pages
 
 ### Credits
