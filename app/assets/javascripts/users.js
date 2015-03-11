@@ -8,7 +8,6 @@ var sparkrApp = {
   momentIndex: 0,
 
   addDropZones: function () {
-    // sparkrApp.handlebarsCompile();
     Dropzone.options.profileDropzone = {
       maxFiles: 1,
       accept: function(file, done) {
@@ -99,10 +98,8 @@ var sparkrApp = {
       });
 
       $('.container').on('click', '#like', function (event) {
-                    // debugger;
         console.log('user id is: ' + sparkrApp.user_id);
         console.log('moment id is: ' + sparkrApp.moment_id);
-        // console.log('users moments: ' + User.find(user_id).moments);
 
         event.preventDefault();
         $('#user_moment').addClass('skip-right');
@@ -111,7 +108,6 @@ var sparkrApp = {
         var userid = sparkrApp.user_id;
         console.log('about to like', sparkrApp.moment_id);
         setTimeout(function(){
-          // console.log("Set Timeout run")
           console.log("Sparkr App Moment Index: " + sparkrApp.momentIndex)
           if (sparkrApp.momentIndex > 1) {
             usersIdx = (++sparkrApp.userIndex) % sparkrApp.momentUsers.length;
@@ -133,7 +129,6 @@ var sparkrApp = {
               }
             }
           }).done(function (result) {
-            // debugger;
             console.log('im !!!', result);
             if (result.spark === true){
               var $div = $("<div class='got_a_match'/>").text('You have a match with '+ result.user.name);
@@ -162,7 +157,6 @@ var sparkrApp = {
   },
 
   showUser: function() {
-    // console.log("Show User run.");
     var userid = $('meta[name="user-id"]').attr('content');
     $.getJSON('/users/' + userid).success(function(user){
       $('#current_user').empty();
@@ -170,7 +164,6 @@ var sparkrApp = {
       $('#current_user').append(li);
       sparkrApp.current_user_moments = user.moments; 
       sparkrApp.current_user_profile_pic = user.profile_pic.medium.url; 
-      // debugger;
       sparkrApp.momentHTML = Handlebars.compile( $('#momentTemplate').html() );
       sparkrApp.renderCurrentUserMoments();
       sparkrApp.renderCurrentUserProfile();
@@ -182,9 +175,6 @@ var sparkrApp = {
       $('.content-container').empty();
       var li = sparkrApp.currentUserHTML(user);
       $('.content-container').append(li);
-      // redo the following to work with a userid
-      // sparkrApp.momentHTML = Handlebars.compile( $('#momentTemplate').html() );
-      // sparkrApp.renderMoments(user.moments);
     });
   },
 
@@ -203,7 +193,6 @@ var sparkrApp = {
   },
 
   renderCurrentUserMoments: function() { 
-    // console.log("Render Current User Moments");
     $('#current_user_moments').empty();
     var end = 3;
     if (sparkrApp.current_user_moments.length < 3){
@@ -218,20 +207,11 @@ var sparkrApp = {
   },
 
   renderCurrentUserProfile: function() { 
-      // debugger;
     $('#current_user_profile').empty();
 
     var url = sparkrApp.current_user_profile_pic;
     var img = $('<img>').attr('src', url);
     $('#current_user_profile').append(img);
-
-    // var imgUrl = user.profile_pic;
-    // debugger;
-  //     var profile = user.profile_pic;
-  //     var img = sparkrApp.momentHTML(moment);  
-      // $('#current_user_moments').append(li);
-
-    // };
   },
 
   loadMatches: function() {
@@ -265,15 +245,10 @@ var sparkrApp = {
 
     console.log("\tUser Index passed in: " + userIndex);
     console.log("\tMoment Index: " + momentIndex);
-    // console.log("Show Moments Run.")
     var currentUser = sparkrApp.momentUsers[userIndex];
     var userOnShow = currentUser.name;
     sparkrApp.user_id = currentUser.id;
     var momentOnShow = currentUser.moments[momentIndex].content.large.url;
-    // console.log("Moment on show: " + momentOnShow);
-    // console.log("Last Run URL: " + window.lastRunUrl + "\n");
-
-
     if ( window.lastRunUrl !== momentOnShow) {
       sparkrApp.moment_id = currentUser.moments[momentIndex].id;
       $('#user_moment').empty();
@@ -281,16 +256,12 @@ var sparkrApp = {
       var $u = $('<div>').addClass('moment-name-discover').text(userOnShow);
       $('#user_moment').append($m).append($u);
     }
-    console.log('user id is: ' + sparkrApp.user_id);
-    console.log('moment id is: ' + sparkrApp.moment_id);
-
   }
 
 };
 
 $(document).ready(function(){
     Dropzone.autoDiscover = false;
-    // sparkrApp.addDropZones();
 
     if (window.location.hash === '#edit') {
       $('a[title="Edit"]').trigger('click');
@@ -305,29 +276,3 @@ $(document).ready(function(){
     });
 
 });
-
-
-
- // Handlebars.registerHelper('dateFormat', function(date) {
- //    var date;
- //    if (d != null) {
- //      switch (date)
- //      {
- //      case "shortDate":
- //        d = d.strftime('%d/%m/%Y');
- //        break;
- //      case "mediumDate":
- //        d = d.toUTCString();
- //        break;
- //      case "longDate":
- //        d = d.strftime('%B %d, %Y')
- //        break;
- //      case "fullDate":
- //        d = d.strftime('%A, %B %d, %Y')
- //        break;
- //      default:
- //        d = d.strftime('%d/%m/%Y %H:%M');
- //      }
- //    }
- //    return d;
- //  });

@@ -38,7 +38,6 @@ class MomentsController < ApplicationController
   
   private
   def moment_params
-    # binding.pry
     params.require(:moment).permit(:content)
   end
 

@@ -9,6 +9,5 @@ module MessagesHelper
 
   def message_profile_picker(message)
     message.user == message.conversation.sender ? message.conversation.sender : message.conversation.receiver
-    # message.user
   end
 end

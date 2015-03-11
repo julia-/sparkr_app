@@ -42,9 +42,6 @@ class User < ActiveRecord::Base
   has_many :conversations, :foreign_key => :sender_id
  
   
-  # has_many :messages_received, :class_name => 'Message', :foreign_key => 'receiver_id'
-  # has_many :messages_sent, :class_name => 'Message', :foreign_key => 'sender_id'
-
   # Create user account when signing in using Facebook for the first time
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -82,7 +79,6 @@ class User < ActiveRecord::Base
   # Matches returns a list of users for whom I have liked all three of their moments, 
   # and they have liked all three of my moments.
   def matches
-    # binding.pry
     User.all.select {|u| self.spark(u) && u.spark(self)}
   end
 

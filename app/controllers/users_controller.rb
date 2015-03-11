@@ -1,15 +1,11 @@
 class UsersController < ApplicationController
 
- # before_action :check_if_admin, :only => [:index, :destroy]
-
   def index
     @users = User.all
     render :json => @users, :include => :moments
   end
 
   def show
-    # @user = User.where(:id => users_id) 
-    # ORIGINAL: render :json => @current_user, :include => :moments
     user_id = params[:id] || @current_user.id
     @user = User.find user_id
     render :json => @user, :include => :moments, :methods => :age
@@ -24,7 +20,6 @@ class UsersController < ApplicationController
     lat_and_long = "" + @current_user.latitude.to_s + ", " + @current_user.longitude.to_s
     nearby_users = User.near(lat_and_long, 30, :order => 'distance')
     nearby_users_id = nearby_users.map {|u| u.id}
-    # all_user_id = User.all.map {|u| u.id} 
     matches = @current_user.matches.map {|u| u.id}
     users_id = nearby_users_id - matches - [@current_user.id]
     users_list = User.where(:id => users_id) 
@@ -53,7 +48,6 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       session[:user_id] = @user.id
-      # flash[:success] = "You've successfully signed up to Sparkr!"
       redirect_to '/#edit'
     else
       render "pages/home"
@@ -80,9 +74,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :username, :password, :password_confirmation, :dob, :description, :gender, :location, :profile_pic, :is_admin, :latitude, :longitude, :sexual_preference)
   end
-
-  # def check_if_admin
-  #   redirect_to(root_path)
-  # end
 
 end
