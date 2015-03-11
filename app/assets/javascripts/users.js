@@ -7,6 +7,7 @@ var sparkrApp = {
 
   addDropZones: function () {
     sparkrApp.handlebarsCompile();
+
     Dropzone.options.profileDropzone = {
       maxFiles: 1,
       accept: function(file, done) {
@@ -18,7 +19,6 @@ var sparkrApp = {
         });
       }
     };
-
     if ( $("#profile-dropzone").length != 0 ) {
       var profileDropzone;
       profileDropzone = new Dropzone("#profile-dropzone");
@@ -31,7 +31,6 @@ var sparkrApp = {
     }
 
     Dropzone.options.mediaDropzone = {
-
       maxFiles: 4,
       accept: function(file, done) {
         done();
@@ -232,7 +231,7 @@ var sparkrApp = {
   loadMomentUsers: function() {
     $.getJSON('/users/momentshow').done(function(result) {
       sparkrApp.momentUsers = result;
-      debugger;
+      // debugger;
       sparkrApp.showMoments(0,0);
     });
 
