@@ -29,7 +29,8 @@ class UsersController < ApplicationController
     users_id = nearby_users_id - matches - [@current_user.id]
     users_list = User.where(:id => users_id) 
     users_list = User.all if users_list.empty?
-    render :json => users_list, :include => :moments
+    users_with_moments = users_list.reject { |i| i.moments.length < 3 }
+    render :json => users_with_moments, :include => :moments
   end
  
   def update_profile_pic

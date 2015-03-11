@@ -1,5 +1,6 @@
 <% @user = @user || User.new %>
 <%= form_tag '/users/update_profile_pic', method: :post, class: "dropzone", id: "profile-dropzone" do %>
+  <div class="dz-message" data-dz-message><span>Drag and drop or double click to upload your profile picture.</span></div>
   <div class="fallback">
     <%= file_field_tag "media"%>
   </div>
