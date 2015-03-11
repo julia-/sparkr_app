@@ -63,11 +63,15 @@ class User < ActiveRecord::Base
 
   # Spark returns true when a user likes all three of another users moments.
   def spark(other_user)
-    user_likes = self.likes.map {|l| l.moment_id}
-    other_user_moments = other_user.moments.map { |m| m.id }
+    user_likes = self.likes.pluck(:moment_id) #.map {|l| l.moment_id}
+    other_user_moments = other_user.moment_ids # moments.map { |m| m.id }
     # To check if current user lided other user's three moments.
     common_element = user_likes & other_user_moments
-    common_element.length == 3
+    puts "THIS MANY IN COMMON: " + common_element.length.to_s 
+    puts "self moment ids: #{ user_likes.join(', ')}"
+    puts "other moment ids: #{ other_user_moments.join(', ')}"
+    puts "common ids: #{ common_element.join(', ')}"
+    common_element.length >= 3
   end
 
   # Sparks returns a list of users for whom I have liked three of their moments.

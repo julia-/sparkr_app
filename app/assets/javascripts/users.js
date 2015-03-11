@@ -88,7 +88,7 @@ var sparkrApp = {
 
     if ( $("#not_like.embedded").length != 0 && window.runBefore != true) {
       window.runBefore = true;
-      $('#not_like').on('click', function (event) {
+      $('.container').on('click', '#not_like', function (event) {
         event.preventDefault();
         $('#user_moment').addClass('skip-left');
         setTimeout(function(){
@@ -99,7 +99,7 @@ var sparkrApp = {
         }, 1000);
       });
 
-      $('#like').on('click', function (event) {
+      $('.container').on('click', '#like', function (event) {
                     // debugger;
         console.log('user id is: ' + sparkrApp.user_id);
         console.log('moment id is: ' + sparkrApp.moment_id);
@@ -108,6 +108,9 @@ var sparkrApp = {
         event.preventDefault();
         $('#user_moment').addClass('skip-right');
         var usersIdx;
+        var momentid = sparkrApp.moment_id;
+        var userid = sparkrApp.user_id;
+        console.log('about to like', sparkrApp.moment_id);
         setTimeout(function(){
           // console.log("Set Timeout run")
           console.log("Sparkr App Moment Index: " + sparkrApp.momentIndex)
@@ -121,15 +124,18 @@ var sparkrApp = {
             sparkrApp.showMoments(usersIdx, sparkrApp.momentIndex += 1);
           }
           $('#user_moment').removeClass('skip-right');
+          console.log('now liking', momentid);
           $.ajax('/likes', {
             type: 'POST',
             data: {
               like: {
-                user_id: sparkrApp.user_id,
-                moment_id: sparkrApp.moment_id
+                user_id: userid,
+                moment_id: momentid
               }
             }
           }).done(function (result) {
+            // debugger;
+            console.log('im !!!', result);
             if (result.spark === true){
               var $div = $("<div class='got_a_match'/>").text('You have a match with '+ result.user.name);
               $('.container').append($div);
@@ -275,7 +281,6 @@ var sparkrApp = {
       var $m = $('<img>').attr('src', momentOnShow).addClass('moment-image-discover');
       var $u = $('<div>').addClass('moment-name-discover').text(userOnShow);
       $('#user_moment').append($m).append($u);
-      window.lastRunUrl = momentOnShow;
     }
     console.log('user id is: ' + sparkrApp.user_id);
     console.log('moment id is: ' + sparkrApp.moment_id);
@@ -301,6 +306,7 @@ $(document).ready(function(){
     });
 
 });
+
 
 
  // Handlebars.registerHelper('dateFormat', function(date) {

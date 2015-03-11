@@ -13,6 +13,9 @@ class LikesController < ApplicationController
       other_user = User.find user_id
       # check if there is a mach between current user and the moment's owner, 
       # if not create one
+
+      @current_user.likes.reload
+
       if @current_user.spark(other_user) && other_user.spark(@current_user)
         Match.create :user1_id => @current_user.id, :user2_id => user_id
         spark = true
